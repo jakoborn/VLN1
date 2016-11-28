@@ -17,7 +17,7 @@ public:
     ServiceLayer();
 
     int search();
-    void add();
+    void add(string n, int bY, int dY, char g, bool a);
 };
 
 #endif // SERVICELAYER_H

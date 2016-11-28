@@ -13,7 +13,7 @@ int ServiceLayer::search()
     return placement;
 }
 
-void ServiceLayer::add()
+void ServiceLayer::add(string n, int bY, int dY, char g, bool a)
 {
 
 }
