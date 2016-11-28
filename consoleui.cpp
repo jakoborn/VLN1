@@ -20,16 +20,22 @@ void ConsoleUI::run()
        int choice = 0;
        cin >> choice;
 
-       switch (choice)
+       bool error = false;
+
+       while (!error)
        {
-       case 1:
+            switch (choice)
+            {
+            case 1:
 
-       case 2:
+            case 2:
 
-       case 3:
+            case 3:
 
-       default:
-        cout << "error!" << endl;
+            default:
+                cout << "error!" << endl;
+                error = true;
+            }
        }
 
 }
