@@ -6,6 +6,9 @@ class ServiceLayer
 {
 public:
     ServiceLayer();
+
+    int search();
+    void add();
 };
 
 #endif // SERVICELAYER_H

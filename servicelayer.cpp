@@ -5,3 +5,15 @@ ServiceLayer::ServiceLayer()
 {
 
 }
+
+int ServiceLayer::search()
+{
+    int placement = 0;
+
+    return placement;
+}
+
+void ServiceLayer::add()
+{
+
+}
