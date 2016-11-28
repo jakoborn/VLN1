@@ -1,4 +1,5 @@
 #include "consoleui.h"
+#include "servicelayer.h"
 #include <iostream>
 
 using namespace std;
@@ -28,7 +29,7 @@ void ConsoleUI::run()
        case 3:
 
        default:
-
+        cout << "error!" << endl;
        }
 
 }
