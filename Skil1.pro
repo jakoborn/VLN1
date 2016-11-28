@@ -12,9 +12,11 @@ TEMPLATE = app
 SOURCES += main.cpp \
     consoleui.cpp \
     servicelayer.cpp \
-    datalayer.cpp
+    datalayer.cpp \
+    persons.cpp
 
 HEADERS += \
     consoleui.h \
     servicelayer.h \
-    datalayer.h
+    datalayer.h \
+    persons.h

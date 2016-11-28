@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "datalayer.h"
+#include "persons.h"
 
 using namespace std;
 
@@ -10,7 +11,7 @@ class ServiceLayer
 {
 private:
 
-    vector <DataLayer> persons;
+    vector <Persons> persons;
 
 public:
     ServiceLayer();
