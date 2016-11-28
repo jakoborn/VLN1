@@ -16,5 +16,19 @@ void ConsoleUI::run()
        cout << " Press 3 for search"  << endl;
        cout << " ================================" << endl;
 
+       int choice = 0;
+       cin >> choice;
+
+       switch (choice)
+       {
+       case 1:
+
+       case 2:
+
+       case 3:
+
+       default:
+
+       }
 
 }
