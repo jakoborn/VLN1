@@ -16,6 +16,7 @@ private:
 
 public:
     Persons();
+    Persons(string n, int bY, int dY, char g, bool a);
 };
 
 #endif // PERSONS_H

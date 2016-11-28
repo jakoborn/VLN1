@@ -9,3 +9,12 @@ Persons::Persons()
     alive = true;
     gender = 'M';
 }
+
+Persons::Persons(string n, int bY, int dY, char g, bool a)
+{
+    name = n;
+    birthYear = bY;
+    deathYear = dY;
+    gender = g;
+    alive = a;
+}
