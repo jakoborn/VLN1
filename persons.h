@@ -11,8 +11,9 @@ private:
     string name;
     int birthYear;
     int deathYear;
-    char gender;
+    string gender;
     bool alive;
+
 public:
     Persons();
 };
