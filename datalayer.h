@@ -14,12 +14,7 @@ public:
 
    void loadFromFile();
    void saveToFile();
-
-   void sortByName();
-   void sortByBirthYear();
-   void sortByDeathYear();
-   void sortByGender();
-
+   void addPerson(const Persons& p);
 };
 
 #endif // DATALAYER_H

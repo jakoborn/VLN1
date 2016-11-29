@@ -24,7 +24,7 @@ void DataLayer::loadFromFile()
 
     while(inStream >> p)
     {
-        people.push_back(p);
+        addPerson(p);
     }
     inStream.close();
 }
@@ -43,22 +43,6 @@ void DataLayer::saveToFile()
     out.close();
 }
 
-void DataLayer::sortByName()
-{
-
-}
-
-void DataLayer::sortByBirthYear()
-{
-    //std::sort (people.begin(), people.end());
-}
-
-void DataLayer::sortByDeathYear()
-{
-    //std::sort ( );
-}
-
-void DataLayer::sortByGender()
-{
-
+void DataLayer::addPerson(const Persons& p) {
+    people.push_back(p);
 }

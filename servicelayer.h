@@ -9,16 +9,13 @@ using namespace std;
 
 class ServiceLayer
 {
-private:
-
-    vector <Persons> persons;
     DataLayer dl;
 public:
     ServiceLayer();
 
     int search();
     void add();
-    void sort(int type);
+    void sort(/*int type*/);
 };
 
 #endif // SERVICELAYER_H
