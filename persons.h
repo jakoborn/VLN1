@@ -17,6 +17,13 @@ private:
 public:
     Persons();
     Persons(string n, int bY, int dY, char g, bool a);
+    string getName() const;
+    int getBirthYear() const;
+    int getDeathYear() const;
+    char getGender() const;
+    bool getAlive() const;
+    friend ostream& operator << (ostream& out, const Persons& p);
+    friend istream& operator >> (istream& in, Persons& p);
 };
 
 #endif // PERSONS_H
