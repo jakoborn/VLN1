@@ -12,7 +12,10 @@ class ServiceLayer
 private:
 
     vector <Persons> persons;
-
+    void sortByName();
+    void sortByBirthYear();
+    void sortByDeathYear();
+    void sortByGender();
 public:
     ServiceLayer();
 
