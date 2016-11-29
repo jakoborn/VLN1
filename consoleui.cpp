@@ -11,7 +11,6 @@ ConsoleUI::ConsoleUI()
 
 void ConsoleUI::run()
 {
-    ServiceLayer serve;
 
        cout << " ================================" << endl;
        cout << " Press 1 for sorting" << endl;
@@ -33,12 +32,17 @@ void ConsoleUI::run()
             case 2:
 
             case 3:
-            serve.search();
+            //serve.search();
 
             default:
                 cout << "error!" << endl;
                 error = true;
             }
        }
+
+}
+
+void ConsoleUI::showData()
+{
 
 }
