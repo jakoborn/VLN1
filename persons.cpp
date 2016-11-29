@@ -3,20 +3,25 @@
 Persons::Persons()
 {
 
-    name = "";
+    name = " ";
+    gender = ' ';
     birthYear = 1980;
     deathYear = 0;
     alive = true;
-    gender = 'M';
 }
 
-Persons::Persons(string n, int bY, int dY, char g, bool a)
+Persons::Persons(string n, char g, int bY, int dY)
 {
     name = n;
     birthYear = bY;
     deathYear = dY;
     gender = g;
-    alive = a;
+    if (dY == 0) {
+        alive = true;
+    }
+    else {
+        alive = false;
+    }
 }
 
 string Persons::getName() const{
@@ -40,25 +45,26 @@ bool Persons::getAlive() const{
 }
 
 ostream& operator << (ostream& out, const Persons& p) {
-    out << "Name: " << p.getName() << endl << "Birth year: " << p.getBirthYear() << endl << "Death year: " << p.getDeathYear() << endl;
-    out << "Gender: " << p.getGender() << endl;
-    if (p.getAlive()) {
-        out << "Alive" << endl;
+    out << "Name: " << p.getName() << endl << "Gender: " << p.getGender() << endl << "Born: " << p.getBirthYear() << endl;
+    if (!p.getAlive()) {
+        out << "Died: " << p.getDeathYear() << endl;
     }
     else {
-        out << "Deceased" << endl;
+        out << "Alive" << endl;
     }
     return out;
 }
 
 istream& operator >> (istream& in, Persons& p) {
     string a = " ";
-    in >> p.name >> p.birthYear >> p.deathYear >> p.gender >> a;
+    in >> p.name >> p.gender >> p.birthYear >> a;
     if (a == "Alive") {
         p.alive = true;
+        p.deathYear = 0;
     }
-    else if (a == "Deceased") {
+    else {
         p.alive = false;
+        in >> p.deathYear;
     }
     return in;
 }

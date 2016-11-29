@@ -16,7 +16,7 @@ private:
 
 public:
     Persons();
-    Persons(string n, int bY, int dY, char g, bool a);
+    Persons(string n, char g, int bY, int dY);
     string getName() const;
     int getBirthYear() const;
     int getDeathYear() const;

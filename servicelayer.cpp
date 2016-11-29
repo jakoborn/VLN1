@@ -17,19 +17,19 @@ int ServiceLayer::search()
 void ServiceLayer::add()
 {
     string name;
+    char gender;
     int birthYear;
     int DeathYear;
-    char gender;
     bool alive;
 
     cout << "Enter the Name: ";
     cin >> name;
+    cout << "Enter the gender (M/F): ";
+    cin >> gender;
     cout << "Enter the birth year: ";
     cin >> birthYear;
     cout << "Enter the death year (0 for living person): ";
     cin >> DeathYear;
-    cout << "Enter the gender (M/L): ";
-    cin >> gender;
 
     if (DeathYear == 0)
     {
@@ -40,7 +40,7 @@ void ServiceLayer::add()
         alive = false;
     }
 
-    Persons newPerson(name, birthYear, DeathYear, gender, alive);
+    Persons newPerson(name, gender, birthYear, DeathYear);
 }
 
 void ServiceLayer::sort(int type)
