@@ -42,8 +42,3 @@ void ServiceLayer::add()
 
     Persons newPerson(name, birthYear, DeathYear, gender, alive);
 }
-
-void ServiceLayer::LoadData()
-{
-
-}
