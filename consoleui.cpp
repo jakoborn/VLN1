@@ -64,7 +64,7 @@ void ConsoleUI::showData()
 {
 
     cout << serve.list().size() << endl;
-    for(int i = 0; i < serve.list().size();i++)
+    for(size_t i = 0; i < serve.list().size();i++)
     {
         cout << serve.list()[i] << " ";
     }
