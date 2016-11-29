@@ -3,7 +3,8 @@
 
 ServiceLayer::ServiceLayer()
 {
-
+    DataLayer dl;
+    persons = dl.loadFromFile();
 }
 
 int ServiceLayer::search()
@@ -40,4 +41,9 @@ void ServiceLayer::add()
     }
 
     Persons newPerson(name, birthYear, DeathYear, gender, alive);
+}
+
+void ServiceLayer::LoadData()
+{
+
 }

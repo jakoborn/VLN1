@@ -18,6 +18,7 @@ public:
 
     int search();
     void add();
+    void LoadData();
 };
 
 #endif // SERVICELAYER_H

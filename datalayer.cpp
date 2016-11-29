@@ -11,6 +11,11 @@ using namespace std;
 DataLayer::DataLayer()
 {
 
+
+}
+
+vector <Persons> DataLayer::loadFromFile()
+{
     vector<Persons> myVec;
     string input, name;
     int bY, dY;
@@ -61,4 +66,7 @@ DataLayer::DataLayer()
         }
         counter++;
     }
+
+    return myVec;
 }
+
