@@ -1,5 +1,7 @@
 #include "consoleui.h"
 #include "servicelayer.h"
+#include <fstream>
+#include <string>
 #include <iostream>
 
 using namespace std;
@@ -49,7 +51,14 @@ void ConsoleUI::run()
 
 void ConsoleUI::showData()
 {
+    string name;
 
+       fstream file("textFile.txt");
+       string content;
+       while (std::getline(file, content))
+           {
+              cout << content << endl;
+           }
 }
 
 void ConsoleUI::sortData()
