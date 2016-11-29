@@ -41,7 +41,6 @@ void ConsoleUI::run()
                 break;
             case 4:
                 searchData();
-            //serve.search();
                 break;
             case 5:
                 run = false;
@@ -101,7 +100,7 @@ void ConsoleUI::sortData()
     cout << "Press 4 for Gender" << endl;
     cout << " ================================" << endl;
 
-    /*int choice = 0;
+    int choice = 0;
     cin >> choice;
 
     switch (choice)
@@ -122,7 +121,7 @@ void ConsoleUI::sortData()
              cout << "Error! Invalid input!" << endl;
          }
 
-*/
+
     //showData(); viljum við láta hann sýna listann strax?
 
 }
