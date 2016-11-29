@@ -3,7 +3,6 @@ Charles Babbage
 1971
 M
 false
-
 Ada Lovelace
 1815
 1852
