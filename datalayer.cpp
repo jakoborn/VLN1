@@ -14,7 +14,6 @@ using namespace std;
 DataLayer::DataLayer()
 {
     loadFromFile();
-
 }
 vector<Persons> DataLayer::getVector()
 {
@@ -35,14 +34,19 @@ void DataLayer::loadFromFile()
     Persons p;
     ifstream inStream;
 
+
     inStream.open("textFile.txt");
 
 
 
     while(inStream >> p)
     {
+
         people.push_back(p);
         cout << p;
+
+        addPerson(p);
+
     }
     inStream.close();
 
@@ -50,7 +54,7 @@ void DataLayer::loadFromFile()
 
 void DataLayer::saveToFile()
 {
-    ofstream out;
+    fstream out;
 
     out.open("textFile.txt");
 
@@ -62,6 +66,15 @@ void DataLayer::saveToFile()
     out.close();
 }
 
+void DataLayer::addPerson(const Persons& p) {
+    people.push_back(p);
+}
+
+void DataLayer::listPersons()
+{
+
+}
+
 void DataLayer::sortByName()
 {
 
@@ -69,12 +82,56 @@ void DataLayer::sortByName()
 
 void DataLayer::sortByBirthYear()
 {
-    //std::sort (people.begin(), people.end());
+    int i = 0, j = people.size();
+    Persons tmp;
+    int pivot = people[people.size() / 2].getBirthYear();
+
+  while (i <= j)
+  {
+        while (people[i].getBirthYear() < pivot)
+        {
+              i++;
+        }
+        while (people[j].getBirthYear() > pivot)
+        {
+              j--;
+        }
+        if (i <= j)
+        {
+              tmp = people[i];
+              people[i] = people[j];
+              people[j] = tmp;
+              i++;
+              j--;
+        }
+  }
 }
 
 void DataLayer::sortByDeathYear()
 {
-    //std::sort ( );
+    int i = 0, j = people.size();
+    Persons tmp;
+    int pivot = people[people.size() / 2].getDeathYear();
+
+    while (i <= j)
+    {
+        while (people[i].getDeathYear() < pivot)
+        {
+              i++;
+        }
+        while (people[j].getDeathYear() > pivot)
+        {
+              j--;
+        }
+        if (i <= j)
+        {
+              tmp = people[i];
+              people[i] = people[j];
+              people[j] = tmp;
+              i++;
+              j--;
+        }
+    }
 }
 
 void DataLayer::sortByGender()

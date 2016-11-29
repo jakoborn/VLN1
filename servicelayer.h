@@ -9,9 +9,6 @@ using namespace std;
 
 class ServiceLayer
 {
-private:
-
-    vector <Persons> persons;
     DataLayer dl;
 public:
     ServiceLayer();

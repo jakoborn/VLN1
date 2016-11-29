@@ -3,7 +3,7 @@
 
 ServiceLayer::ServiceLayer()
 {
-
+    dl.loadFromFile();
 }
 
 vector<Persons> ServiceLayer::list()
@@ -20,8 +20,7 @@ void ServiceLayer::add()
     string name;
     char gender;
     int birthYear;
-    int DeathYear;
-    bool alive;
+    int deathYear;
 
     cout << "Enter the Name: ";
     cin >> name;
@@ -30,18 +29,10 @@ void ServiceLayer::add()
     cout << "Enter the birth year: ";
     cin >> birthYear;
     cout << "Enter the death year (0 for living person): ";
-    cin >> DeathYear;
+    cin >> deathYear;
 
-    if (DeathYear == 0)
-    {
-        alive = true;
-    }
-    else
-    {
-        alive = false;
-    }
-
-    Persons newPerson(name, gender, birthYear, DeathYear);
+    Persons newPerson(name, gender, birthYear, deathYear);
+    dl.addPerson(newPerson);
 }
 
 void ServiceLayer::sort(int type)
