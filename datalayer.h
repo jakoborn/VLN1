@@ -14,11 +14,15 @@ public:
 
    void loadFromFile();
    void saveToFile();
+   vector<Persons> getVector();
+
    void addPerson(const Persons& p);
+   void listPersons();
    void sortByName();
    void sortByBirthYear();
    void sortByDeathYear();
    void sortByGender();
+
 };
 
 #endif // DATALAYER_H

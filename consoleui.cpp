@@ -63,6 +63,12 @@ void ConsoleUI::addData()
 void ConsoleUI::showData()
 {
 
+    cout << serve.list().size() << endl;
+    for(size_t i = 0; i < serve.list().size();i++)
+    {
+        cout << serve.list()[i] << " ";
+    }
+
 }
 
 void ConsoleUI::searchData()
