@@ -52,6 +52,13 @@ ostream& operator << (ostream& out, const Persons& p) {
 }
 
 istream& operator >> (istream& in, Persons& p) {
-    in >> p.name >> p.birthYear >> p.deathYear >> p.gender >> p.alive;
+    string a = " ";
+    in >> p.name >> p.birthYear >> p.deathYear >> p.gender >> a;
+    if (a == "true") {
+        p.alive = true;
+    }
+    else if (a == "false") {
+        p.alive = false;
+    }
     return in;
 }
