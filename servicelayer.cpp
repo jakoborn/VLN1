@@ -46,17 +46,41 @@ void ServiceLayer::sort(int type)
 {
     switch (type) {
     case 1:
+        sortByName();
         break;
     case 2:
+        sortByBirthYear();
         break;
     case 3:
+        sortByDeathYear();
         break;
     case 4:
+        sortByGender();
         break;
 
     default:
         break;
     }
 
+
+}
+
+void ServiceLayer::sortByName()
+{
+
+}
+
+void ServiceLayer::sortByBirthYear()
+{
+
+}
+
+void ServiceLayer::sortByDeathYear()
+{
+
+}
+
+void ServiceLayer::sortByGender()
+{
 
 }
