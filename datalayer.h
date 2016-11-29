@@ -6,6 +6,7 @@ class DataLayer
 {
 public:
     DataLayer();
+
 };
 
 #endif // DATALAYER_H
