@@ -51,14 +51,12 @@ void ConsoleUI::run()
 
 void ConsoleUI::showData()
 {
-    string name;
-
-       fstream file("textFile.txt");
-       string content;
-       while (std::getline(file, content))
-           {
-              cout << content << endl;
-           }
+    fstream file("textFile.txt");
+    string content;
+    while (getline(file, content))
+    {
+        cout << content << endl;
+    }
 }
 
 void ConsoleUI::sortData()
