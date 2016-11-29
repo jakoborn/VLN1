@@ -24,27 +24,23 @@ void ConsoleUI::run()
        int choice = 0;
        cin >> choice;
 
-       bool error = false;
-
-       while (error)
-       {
             switch (choice)
             {
             case 1:
 
+                break;
             case 2:
                 showData();
-
+                break;
             case 3:
             //serve.search();
-
+                break;
             case 4:
                 run = false;
+                break;
             default:
                 cout << "error!" << endl;
-                error = true;
             }
-       }
 
     }
 
