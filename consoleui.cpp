@@ -75,16 +75,16 @@ void ConsoleUI::sortData()
     switch (choice)
          {
          case 1:
-
+        serve.sort(choice);
              break;
          case 2:
-
+        serve.sort(choice);
              break;
          case 3:
-
+        serve.sort(choice);
              break;
          case 4:
-
+        serve.sort(choice);
              break;
          default:
              cout << "Error! Invalid input!" << endl;

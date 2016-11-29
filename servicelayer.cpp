@@ -42,3 +42,22 @@ void ServiceLayer::add()
 
     Persons newPerson(name, birthYear, DeathYear, gender, alive);
 }
+
+void ServiceLayer::sort(int type)
+{
+    switch (type) {
+    case 1:
+        break;
+    case 2:
+        break;
+    case 3:
+        break;
+    case 4:
+        break;
+
+    default:
+        break;
+    }
+
+
+}
