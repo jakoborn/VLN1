@@ -30,6 +30,7 @@ void ConsoleUI::run()
             case 1:
 
             case 2:
+                showData();
 
             case 3:
             //serve.search();

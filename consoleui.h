@@ -7,12 +7,11 @@ class ConsoleUI
 {
 private:
     ServiceLayer serve;
-
+    void showData();
 public:
     ConsoleUI();
 
     void run();
-    void showData();
 };
 
 #endif // CONSOLEUI_H
