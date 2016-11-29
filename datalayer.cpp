@@ -19,7 +19,7 @@ vector<Persons> DataLayer::getVector()
 {
     vector<Persons> myV;
 
-    for(int i = 0; i < people.size();i++)
+    for(size_t i = 0; i < people.size();i++)
     {
        // vector<Persons> myV = people;
         myV.push_back(people[i]);
@@ -34,10 +34,7 @@ void DataLayer::loadFromFile()
     Persons p;
     ifstream inStream;
 
-
     inStream.open("textFile.txt");
-
-
 
     while(inStream >> p)
     {
