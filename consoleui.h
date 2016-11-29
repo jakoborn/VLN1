@@ -9,6 +9,7 @@ private:
     ServiceLayer serve;
     void showData();
     void sortData();
+    void searchData();
 public:
     ConsoleUI();
 
