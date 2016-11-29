@@ -1,6 +1,7 @@
 #include "datalayer.h"
 #include "persons.h"
 
+#include <string>
 #include <vector>
 #include <fstream>
 #include <string>
@@ -12,21 +13,44 @@ using namespace std;
 
 DataLayer::DataLayer()
 {
+    loadFromFile();
+}
+vector<Persons> DataLayer::getVector()
+{
+    vector<Persons> myV;
 
+    for(int i = 0; i < people.size();i++)
+    {
+       // vector<Persons> myV = people;
+        myV.push_back(people[i]);
+
+    }
+       return myV;
 }
 
 void DataLayer::loadFromFile()
 {
+
     Persons p;
-    fstream inStream;
+    ifstream inStream;
+
+
     inStream.open("textFile.txt");
+
+
 
     while(inStream >> p)
     {
+
+        people.push_back(p);
+        cout << p;
+
         addPerson(p);
+
     }
     inStream.close();
-}
+
+    }
 
 void DataLayer::saveToFile()
 {

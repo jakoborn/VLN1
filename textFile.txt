@@ -1,10 +1,10 @@
-Charles Babbage
-1871
+Babbage
+Male
 1971
-M
-false
-Ada Lovelace
+1871
+
+Lovelace
+Female
 1815
 1852
-F
-false
+
