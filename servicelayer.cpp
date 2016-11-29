@@ -6,11 +6,13 @@ ServiceLayer::ServiceLayer()
 
 }
 
-int ServiceLayer::search()
+vector<Persons> ServiceLayer::list()
 {
-    int placement = 0;
+   // int placement = 0;
 
-    return placement;
+   return dl.getVector();
+
+    //return placement;
 }
 
 void ServiceLayer::add()

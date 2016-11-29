@@ -15,6 +15,7 @@ private:
     DataLayer dl;
 public:
     ServiceLayer();
+    vector<Persons> list();
 
     int search();
     void add();

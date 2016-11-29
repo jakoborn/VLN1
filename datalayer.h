@@ -14,11 +14,13 @@ public:
 
    void loadFromFile();
    void saveToFile();
+   vector<Persons> getVector();
 
    void sortByName();
    void sortByBirthYear();
    void sortByDeathYear();
    void sortByGender();
+
 
 };
 
