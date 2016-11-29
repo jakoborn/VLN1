@@ -36,6 +36,7 @@ void ConsoleUI::run()
                 showData();
                 break;
             case 3:
+                searchData();
             //serve.search();
                 break;
             case 4:
@@ -54,13 +55,38 @@ void ConsoleUI::showData()
 
 }
 
+void ConsoleUI::searchData()
+{
+    cout << "How would you like to search the data?" << endl;
+    cout << " =====================================" << endl;
+    cout << " Press 1 to search by name" << endl;
+    cout << " Press 2 to search by birth year" << endl;
+    cout << "====================================="  << endl;
+
+    int choice = 0;
+    cin >> choice;
+
+    switch(choice)
+    {
+    case 1:
+        // Todo: search by name.
+        break;
+    case 2:
+        // Todo:: search by birth year.
+        break;
+
+    default:
+        cout << "Error! invalid input" << endl;
+    }
+}
+
 void ConsoleUI::sortData()
 {
     cout << "How would you like to sort the list?" << endl;
     cout << " ================================" << endl;
     cout << "Press 1 for Name" << endl;
     cout << "Press 2 for Birth Year" << endl;
-    cout << "Press 3 for Death Year (Living Persons will not be shown)" << endl; //eða hvernig viljum við hafa þetta?
+    cout << "Press 3 for Death Year " << endl;
     cout << "Press 4 for Gender" << endl;
     cout << " ================================" << endl;
 
