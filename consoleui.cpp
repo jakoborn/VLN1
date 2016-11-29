@@ -20,10 +20,11 @@ void ConsoleUI::run()
     while (run)
     {
        cout << " ================================" << endl;
-       cout << " Press 1 for sorting" << endl;
-       cout << " Press 2 for listing" << endl;
-       cout << " Press 3 for search"  << endl;
-       cout << " Press 4 to exit"     << endl;
+       cout << " Press 1 for adding" << endl;
+       cout << " Press 2 for sorting" << endl;
+       cout << " Press 3 for listing" << endl;
+       cout << " Press 4 for search"  << endl;
+       cout << " Press 5 to exit"     << endl;
        cout << " ================================" << endl;
 
        int choice = 0;
@@ -32,17 +33,19 @@ void ConsoleUI::run()
             switch (choice)
             {
             case 1:
+                addData();
+                break;
+            case 2:
                 sortData();
 
                 break;
-            case 2:
+            case 3:
                 showData();
                 break;
-            case 3:
-                searchData();
-            //serve.search();
-                break;
             case 4:
+                searchData();
+                break;
+            case 5:
                 run = false;
                 break;
             default:
@@ -52,6 +55,13 @@ void ConsoleUI::run()
     }
 
 }
+
+
+void ConsoleUI::addData()
+{
+
+}
+
 
 void ConsoleUI::showData()
 {
@@ -93,7 +103,7 @@ void ConsoleUI::sortData()
     cout << "Press 4 for Gender" << endl;
     cout << " ================================" << endl;
 
-    /*int choice = 0;
+    int choice = 0;
     cin >> choice;
 
     switch (choice)
@@ -114,7 +124,7 @@ void ConsoleUI::sortData()
              cout << "Error! Invalid input!" << endl;
          }
 
-*/
+
     //showData(); viljum við láta hann sýna listann strax?
 
 }

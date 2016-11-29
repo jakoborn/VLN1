@@ -7,9 +7,11 @@ class ConsoleUI
 {
 private:
     ServiceLayer serve;
+    void addData();
     void showData();
     void sortData();
     void searchData();
+
 public:
     ConsoleUI();
 
