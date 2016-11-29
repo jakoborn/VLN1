@@ -21,11 +21,9 @@ void DataLayer::loadFromFile()
     ifstream inStream;
     inStream.open("textFile.txt");
 
-    while(!inStream.eof()) {
-        inStream >> p;
-        if(!inStream.eof()) {
-            people.push_back(p);
-        }
+    while(inStream >> p)
+    {
+        people.push_back(p);
     }
     inStream.close();
 }

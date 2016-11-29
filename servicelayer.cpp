@@ -1,5 +1,6 @@
 #include "servicelayer.h"
 #include "datalayer.h"
+#include <algorithm>
 
 ServiceLayer::ServiceLayer()
 {
@@ -72,12 +73,12 @@ void ServiceLayer::sortByName()
 
 void ServiceLayer::sortByBirthYear()
 {
-
+    //std::sort ( );
 }
 
 void ServiceLayer::sortByDeathYear()
 {
-
+    //std::sort ( );
 }
 
 void ServiceLayer::sortByGender()
