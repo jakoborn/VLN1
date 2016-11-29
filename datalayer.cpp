@@ -46,6 +46,11 @@ void DataLayer::addPerson(const Persons& p) {
     people.push_back(p);
 }
 
+void DataLayer::listPersons()
+{
+
+}
+
 void DataLayer::sortByName()
 {
 
