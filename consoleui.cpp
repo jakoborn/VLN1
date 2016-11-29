@@ -17,10 +17,10 @@ void ConsoleUI::run()
     while (run)
     {
        cout << " ================================" << endl;
-       cout << " Press 1 for adding" << endl;
-       cout << " Press 2 for sorting" << endl;
-       cout << " Press 3 for listing" << endl;
-       cout << " Press 4 for search"  << endl;
+       cout << " Press 1 to add" << endl;
+       cout << " Press 2 to sort" << endl;
+       cout << " Press 3 to list" << endl;
+       cout << " Press 4 to search"  << endl;
        cout << " Press 5 to exit"     << endl;
        cout << " ================================" << endl;
 
