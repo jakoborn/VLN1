@@ -85,7 +85,29 @@ void DataLayer::sortByBirthYear()
 
 void DataLayer::sortByDeathYear()
 {
+    int i = 0, j = people.size();
+    Persons tmp;
+    int pivot = people[people.size() / 2].getDeathYear();
 
+    while (i <= j)
+    {
+        while (people[i].getDeathYear() < pivot)
+        {
+              i++;
+        }
+        while (people[j].getDeathYear() > pivot)
+        {
+              j--;
+        }
+        if (i <= j)
+        {
+              tmp = people[i];
+              people[i] = people[j];
+              people[j] = tmp;
+              i++;
+              j--;
+        }
+    }
 }
 
 void DataLayer::sortByGender()
