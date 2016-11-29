@@ -33,25 +33,25 @@ void ServiceLayer::add()
     dl.addPerson(newPerson);
 }
 
-void ServiceLayer::sort(/*int type*/)
+void ServiceLayer::sort(int type)
 {
-    /*switch (type) {
+    switch (type) {
     case 1:
-        sortByName();
+        dl.sortByName();
         break;
     case 2:
-        sortByBirthYear();
+        dl.sortByBirthYear();
         break;
     case 3:
-        sortByDeathYear();
+        dl.sortByDeathYear();
         break;
     case 4:
-        sortByGender();
+        dl.sortByGender();
         break;
 
     default:
         break;
-    }*/
+    }
 
 
 }

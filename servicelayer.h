@@ -15,7 +15,7 @@ public:
 
     int search();
     void add();
-    void sort(/*int type*/);
+    void sort(int type);
 };
 
 #endif // SERVICELAYER_H
