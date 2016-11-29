@@ -1,10 +1,9 @@
 #include "servicelayer.h"
 #include "datalayer.h"
-#include <algorithm>
 
 ServiceLayer::ServiceLayer()
 {
-    DataLayer dl;
+
 }
 
 int ServiceLayer::search()
@@ -47,16 +46,16 @@ void ServiceLayer::sort(int type)
 {
     switch (type) {
     case 1:
-        sortByName();
+        dl.sortByName();
         break;
     case 2:
-        sortByBirthYear();
+        dl.sortByBirthYear();
         break;
     case 3:
-        sortByDeathYear();
+        dl.sortByDeathYear();
         break;
     case 4:
-        sortByGender();
+        dl.sortByGender();
         break;
 
     default:
@@ -66,22 +65,3 @@ void ServiceLayer::sort(int type)
 
 }
 
-void ServiceLayer::sortByName()
-{
-
-}
-
-void ServiceLayer::sortByBirthYear()
-{
-    //std::sort ( );
-}
-
-void ServiceLayer::sortByDeathYear()
-{
-    //std::sort ( );
-}
-
-void ServiceLayer::sortByGender()
-{
-
-}

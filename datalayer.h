@@ -15,6 +15,11 @@ public:
    void loadFromFile();
    void saveToFile();
 
+   void sortByName();
+   void sortByBirthYear();
+   void sortByDeathYear();
+   void sortByGender();
+
 };
 
 #endif // DATALAYER_H

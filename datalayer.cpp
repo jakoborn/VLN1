@@ -6,6 +6,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -40,4 +41,24 @@ void DataLayer::saveToFile()
     }
 
     out.close();
+}
+
+void DataLayer::sortByName()
+{
+
+}
+
+void DataLayer::sortByBirthYear()
+{
+    //std::sort (people.begin(), people.end());
+}
+
+void DataLayer::sortByDeathYear()
+{
+    //std::sort ( );
+}
+
+void DataLayer::sortByGender()
+{
+
 }

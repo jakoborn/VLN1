@@ -86,7 +86,7 @@ void ConsoleUI::sortData()
     cout << " ================================" << endl;
     cout << "Press 1 for Name" << endl;
     cout << "Press 2 for Birth Year" << endl;
-    cout << "Press 3 for Death Year (Living Persons will not be shown)" << endl; //eða hvernig viljum við hafa þetta?
+    cout << "Press 3 for Death Year " << endl;
     cout << "Press 4 for Gender" << endl;
     cout << " ================================" << endl;
 
