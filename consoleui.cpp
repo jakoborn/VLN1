@@ -14,6 +14,9 @@ ConsoleUI::ConsoleUI()
 void ConsoleUI::run()
 {
     bool run = true;
+    Persons A;
+    cin >> A;
+    cout << A;
     while (run)
     {
        cout << " ================================" << endl;
