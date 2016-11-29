@@ -19,7 +19,7 @@ DataLayer::DataLayer()
 void DataLayer::loadFromFile()
 {
     Persons p;
-    ifstream inStream;
+    fstream inStream;
     inStream.open("textFile.txt");
 
     while(inStream >> p)
@@ -31,7 +31,7 @@ void DataLayer::loadFromFile()
 
 void DataLayer::saveToFile()
 {
-    ofstream out;
+    fstream out;
 
     out.open("textFile.txt");
 
