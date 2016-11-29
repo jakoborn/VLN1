@@ -8,10 +8,12 @@ using namespace std;
 
 class DataLayer
 {
+    vector<Persons> people;
 public:
-    DataLayer();
+   DataLayer();
 
-    vector <Persons> loadFromFile();
+   vector <Persons>  loadFromFile();
+   void loadIntoFile();
 
 };
 

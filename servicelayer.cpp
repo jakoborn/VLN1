@@ -4,7 +4,6 @@
 ServiceLayer::ServiceLayer()
 {
     DataLayer dl;
-    persons = dl.loadFromFile();
 }
 
 int ServiceLayer::search()

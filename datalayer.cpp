@@ -10,7 +10,7 @@ using namespace std;
 
 DataLayer::DataLayer()
 {
-
+    people = loadFromFile();
 
 }
 
@@ -69,4 +69,3 @@ vector <Persons> DataLayer::loadFromFile()
 
     return myVec;
 }
-
