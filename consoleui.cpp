@@ -39,7 +39,7 @@ void ConsoleUI::run()
                 run = false;
                 break;
             default:
-                cout << "error!" << endl;
+                cout << "Error! Invalid Input" << endl;
             }
 
     }
@@ -48,5 +48,41 @@ void ConsoleUI::run()
 
 void ConsoleUI::showData()
 {
+
+}
+
+void ConsoleUI::sortData()
+{
+    cout << "How would you like to sort the list?" << endl;
+    cout << " ================================" << endl;
+    cout << "Press 1 for Name" << endl;
+    cout << "Press 2 for Birth Year" << endl;
+    cout << "Press 3 for Death Year. Living Persons will not be shown" << endl; //eða hvernig viljum við hafa þetta?
+    cout << "Press 4 for Gender" << endl;
+    cout << " ================================" << endl;
+
+    int choice = 0;
+    cin >> choice;
+
+    switch (choice)
+         {
+         case 1:
+
+             break;
+         case 2:
+
+             break;
+         case 3:
+
+             break;
+         case 4:
+
+             break;
+         default:
+             cout << "Error! Invalid input!" << endl;
+         }
+
+
+    //showData(); viljum við láta hann sýna listann strax?
 
 }
