@@ -2,9 +2,10 @@ Charles Babbage
 Male
 1971
 1871
+false
 
 Ada Lovelace
 Female
 1815
 1852
-
+false
