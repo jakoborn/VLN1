@@ -13,7 +13,7 @@ public:
    DataLayer();
 
    vector <Persons>  loadFromFile();
-   void loadIntoFile();
+   void saveToFile();
 
 };
 

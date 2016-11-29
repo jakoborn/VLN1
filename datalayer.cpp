@@ -69,3 +69,21 @@ vector <Persons> DataLayer::loadFromFile()
 
     return myVec;
 }
+
+void DataLayer::saveToFile()
+{
+    ofstream out;
+
+    out.open("textFile.txt");
+
+    for (size_t i = 0; i < people.size(); i++)
+    {
+        out << people[i].getName() << endl;
+        out << people[i].getBirthYear() << endl;
+        out << people[i].getDeathYear() << endl;
+        out << people[i].getGender() << endl;
+        out << people[i].getAlive() << endl;
+    }
+
+    out.close();
+}
