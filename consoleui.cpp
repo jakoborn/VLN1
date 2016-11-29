@@ -11,11 +11,14 @@ ConsoleUI::ConsoleUI()
 
 void ConsoleUI::run()
 {
-
+    bool run = true;
+    while (run)
+    {
        cout << " ================================" << endl;
        cout << " Press 1 for sorting" << endl;
        cout << " Press 2 for listing" << endl;
        cout << " Press 3 for search"  << endl;
+       cout << " Press 4 to exit"     << endl;
        cout << " ================================" << endl;
 
        int choice = 0;
@@ -23,7 +26,7 @@ void ConsoleUI::run()
 
        bool error = false;
 
-       while (!error)
+       while (error)
        {
             switch (choice)
             {
@@ -35,11 +38,15 @@ void ConsoleUI::run()
             case 3:
             //serve.search();
 
+            case 4:
+                run = false;
             default:
                 cout << "error!" << endl;
                 error = true;
             }
        }
+
+    }
 
 }
 
