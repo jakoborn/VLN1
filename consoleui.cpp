@@ -37,7 +37,6 @@ void ConsoleUI::run()
                 break;
             case 3:
                 searchData();
-            //serve.search();
                 break;
             case 4:
                 run = false;

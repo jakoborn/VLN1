@@ -3,7 +3,7 @@
 
 ServiceLayer::ServiceLayer()
 {
-
+    dl.loadFromFile();
 }
 
 int ServiceLayer::search()

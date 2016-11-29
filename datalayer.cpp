@@ -12,7 +12,6 @@ using namespace std;
 
 DataLayer::DataLayer()
 {
-    loadFromFile();
 
 }
 
@@ -56,8 +55,8 @@ void DataLayer::sortByBirthYear()
 {
     int i = 0, j = people.size();
     Persons tmp;
-    int pivot = people[people.size() / 2].getBirthYear();
-
+    int pivot = people[0].getBirthYear();
+/*
   while (i <= j)
   {
         while (people[i].getBirthYear() < pivot)
@@ -76,7 +75,7 @@ void DataLayer::sortByBirthYear()
               i++;
               j--;
         }
-  }
+  }*/
 }
 
 void DataLayer::sortByDeathYear()
