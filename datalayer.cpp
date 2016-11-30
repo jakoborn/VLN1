@@ -1,13 +1,5 @@
 #include "datalayer.h"
-#include "persons.h"
-#include "sortings.h"
-
-#include <string>
-#include <vector>
 #include <fstream>
-#include <string>
-#include <iostream>
-#include <vector>
 #include <algorithm>
 
 using namespace std;
@@ -16,7 +8,7 @@ const string FILENAME = "science.txt";
 
 DataLayer::DataLayer()
 {
-   // loadFromFile();
+    loadFromFile();
 }
 vector<Persons> DataLayer::getVector()
 {
@@ -28,15 +20,16 @@ void DataLayer::loadFromFile()
 {
 
     Persons p;
-    ifstream inStream;
+    ifstream in;
 
-    inStream.open(FILENAME);
+    in.open(FILENAME);
+    in.seekg(89);
 
-    while(inStream >> p)
+    while(in >> p)
     {
         addPerson(p);
     }
-    inStream.close();
+    in.close();
  }
 
 void DataLayer::saveToFile()
@@ -45,9 +38,20 @@ void DataLayer::saveToFile()
 
     out.open(FILENAME);
 
+    out.width(16);
+    out << left << "Name";
+    out <<  "\tGender\tBorn\tDied" << endl;
+    out << "_____________________________________________________" << endl;
+
     for (size_t i = 0; i < people.size(); i++)
     {
-        out << people[i];
+        out << people[i].getName() << ";\t" << people[i].getGender() << "\t" << people[i].getBirthYear() << "\t";
+        if(people[i].getAlive()) {
+            out << "Alive\n";
+        }
+        else {
+            out << "Died " << people[i].getDeathYear() << endl;
+        }
     }
 
     out.close();

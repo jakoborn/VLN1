@@ -1,8 +1,4 @@
 #include "consoleui.h"
-#include "servicelayer.h"
-#include <fstream>
-#include <string>
-#include <iostream>
 
 using namespace std;
 
@@ -81,16 +77,7 @@ void ConsoleUI::showData()
     printLine();
     for(size_t i = 0; i < serve.list().size();i++)
     {
-        cout.width(16);
-        cout << serve.list()[i].getName() << "\t " << serve.list()[i].getGender() << "\t" << serve.list()[i].getBirthYear() << "\t";
-        if (serve.list()[i].getAlive())
-        {
-            cout << "Alive\n";
-        }
-        else
-        {
-            cout << serve.list()[i].getDeathYear() << endl;
-        }
+        cout << serve.list()[i];
     }
 
 }
@@ -105,7 +92,7 @@ void ConsoleUI::searchData()
         cout << " Press 1 to search by name" << endl;
         cout << " Press 2 to search by birth year" << endl;
         cout << " Press 3 to cancel" << endl;
-        cout << "======================================"  << endl;
+        cout << " ======================================"  << endl;
 
         char input = '0';
         cin >> input;
@@ -117,7 +104,8 @@ void ConsoleUI::searchData()
             {
                 string n = " ";
                 cout << "Enter name: ";
-                cin >> n;
+                cin >> ws;
+                getline(cin, n);
                 vector<int> v_n = serve.searchByName(n);
                 if (v_n.size() == 0) {
                     cout << "No results found\n";
@@ -126,15 +114,7 @@ void ConsoleUI::searchData()
                     printLine();
                     for (unsigned int i = 0; i < v_n.size(); i++)
                     {
-                        cout << serve.list()[v_n[i]].getName() << "\t " << serve.list()[v_n[i]].getGender() << "\t" << serve.list()[v_n[i]].getBirthYear() << "\t";
-                        if (serve.list()[v_n[i]].getAlive())
-                        {
-                            cout << "Alive\n";
-                        }
-                        else
-                        {
-                            cout << serve.list()[v_n[i]].getDeathYear() << endl;
-                        }
+                        cout << serve.list()[v_n[i]];
                     }
                 }
                 error = false;
@@ -153,15 +133,7 @@ void ConsoleUI::searchData()
                     printLine();
                     for (unsigned int i = 0; i < v_y.size(); i++)
                     {
-                        cout << serve.list()[v_y[i]].getName() << "\t " << serve.list()[v_y[i]].getGender() << "\t" << serve.list()[v_y[i]].getBirthYear() << "\t";
-                        if (serve.list()[v_y[i]].getAlive())
-                        {
-                            cout << "Alive\n";
-                        }
-                        else
-                        {
-                            cout << serve.list()[v_y[i]].getDeathYear() << endl;
-                        }
+                        cout << serve.list()[v_y[i]];
                     }
                 }
                 error = false;
@@ -189,11 +161,11 @@ void ConsoleUI::sortData()
 
     cout << "How would you like to sort the list?" << endl;
     cout << " ================================" << endl;
-    cout << "Press 1 for Name" << endl;
-    cout << "Press 2 for Birth Year" << endl;
-    cout << "Press 3 for Death Year " << endl;
-    cout << "Press 4 for Gender" << endl;
-    cout << "Press 5 to cancel" << endl;
+    cout << " Press 1 for Name" << endl;
+    cout << " Press 2 for Birth Year" << endl;
+    cout << " Press 3 for Death Year " << endl;
+    cout << " Press 4 for Gender" << endl;
+    cout << " Press 5 to cancel" << endl;
     cout << " ================================" << endl;
 
     char input = '0';
@@ -236,6 +208,6 @@ void ConsoleUI::printLine()
 {
     cout.width(16);
     cout << left << "Name";
-    cout <<  "\tGender" << "\t" << "Born" << "\t" << "Died" << endl;
+    cout <<  "\tGender\tBorn\tDied" << endl;
     cout << "_____________________________________________________" << endl;
 }

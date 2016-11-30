@@ -1,9 +1,7 @@
 #ifndef SERVICELAYER_H
 #define SERVICELAYER_H
 
-#include <vector>
 #include "datalayer.h"
-#include "persons.h"
 
 using namespace std;
 

@@ -47,30 +47,27 @@ bool Persons::getAlive() const{
 
 ostream& operator << (ostream& out, const Persons& p) {
     out.width(16);
-    out << left << p.getName() << ";\t" <<  p.getGender() << "\t" << p.getBirthYear() << "\t";
+    out << left << p.getName() << "\t" <<  p.getGender() << "\t" << p.getBirthYear() << "\t";
     if (!p.getAlive()) {
-        out << "\t" << "Died " << p.getDeathYear();
+        out << "\t" << p.getDeathYear() << endl;
     }
     else {
-        out << "\t" << "Alive " << p.getDeathYear();
+        out << "\t" << "Alive " << endl;
     }
     return out;
 }
 
 istream& operator >> (istream& in, Persons& p) {
     string a = " ";
+    in >> ws;
     getline(in, p.name, ';');
     in >> p.gender >> p.birthYear >> a;
     if (a == "Alive") {
         p.alive = true;
-<<<<<<< HEAD
-=======
-        in >> p.deathYear;
->>>>>>> 34a878318004ce91cb9ea5b203bfc0ea790d21a7
     }
     else if (a == "Died"){
         p.alive = false;
+        in >> p.deathYear;
     }
-    in >> p.deathYear;
     return in;
 }

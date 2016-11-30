@@ -2,7 +2,7 @@
 #define DATALAYER_H
 
 #include <vector>
-#include "persons.h"
+#include <string>
 #include "sortings.h"
 
 using namespace std;

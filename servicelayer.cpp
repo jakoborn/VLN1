@@ -1,9 +1,8 @@
 #include "servicelayer.h"
-#include "datalayer.h"
 
 ServiceLayer::ServiceLayer()
 {
-    dl.loadFromFile();
+
 }
 
 vector<Persons> ServiceLayer::list()
