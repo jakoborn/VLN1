@@ -61,7 +61,8 @@ void ConsoleUI::addData()
     int deathYear;
 
     cout << "Enter Name: ";
-    cin >> name;
+    cin >> ws;
+    getline(cin,name);
     cout << "Enter gender (M/F): ";
     cin >> gender;
     cout << "Enter birth year: ";
