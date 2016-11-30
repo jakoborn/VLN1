@@ -1,4 +1,5 @@
 #include "persons.h"
+#include <iomanip>
 
 Persons::Persons()
 {
@@ -45,12 +46,14 @@ bool Persons::getAlive() const{
 }
 
 ostream& operator << (ostream& out, const Persons& p) {
-    out << p.getName() << "\t" << p.getGender() << "\t" << p.getBirthYear();
+    out.width(15);
+    out << left << p.getName();
+    out <<  p.getGender() << "\t" << p.getBirthYear() << "\t";
     if (!p.getAlive()) {
         out << " - " << p.getDeathYear() << endl;
     }
     else {
-        out << "\t" << "Alive" << endl;
+        out << "Alive" << endl;
     }
     return out;
 }
