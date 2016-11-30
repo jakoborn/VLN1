@@ -50,7 +50,7 @@ void DataLayer::saveToFile()
             out << "Alive\n";
         }
         else {
-            out << "Died " << people[i].getDeathYear() << endl;
+            out << people[i].getDeathYear() << endl;
         }
     }
 

@@ -49,10 +49,10 @@ ostream& operator << (ostream& out, const Persons& p) {
     out.width(16);
     out << left << p.getName() << "\t" <<  p.getGender() << "\t" << p.getBirthYear() << "\t";
     if (!p.getAlive()) {
-        out << "\t" << p.getDeathYear() << endl;
+        out << p.getDeathYear() << endl;
     }
     else {
-        out << "\t" << "Alive " << endl;
+        out << "Alive " << endl;
     }
     return out;
 }
@@ -65,9 +65,9 @@ istream& operator >> (istream& in, Persons& p) {
     if (a == "Alive") {
         p.alive = true;
     }
-    else if (a == "Died"){
+    else {
         p.alive = false;
-        in >> p.deathYear;
+        p.deathYear = atoi(a.c_str());
     }
     return in;
 }
