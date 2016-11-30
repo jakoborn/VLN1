@@ -63,11 +63,10 @@ istream& operator >> (istream& in, Persons& p) {
     in >> p.gender >> p.birthYear >> a;
     if (a == "Alive") {
         p.alive = true;
-        p.deathYear = 0;
     }
     else if (a == "Died"){
         p.alive = false;
-        in >> p.deathYear;
     }
+    in >> p.deathYear;
     return in;
 }
