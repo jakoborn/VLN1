@@ -52,7 +52,7 @@ ostream& operator << (ostream& out, const Persons& p) {
         out << "\t" << "Died " << p.getDeathYear();
     }
     else {
-        out << "\t" << "Alive ";
+        out << "\t" << "Alive " << p.getDeathYear();
     }
     return out;
 }
