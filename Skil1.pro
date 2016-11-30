@@ -13,10 +13,12 @@ SOURCES += main.cpp \
     consoleui.cpp \
     servicelayer.cpp \
     datalayer.cpp \
-    persons.cpp
+    persons.cpp \
+    sortings.cpp
 
 HEADERS += \
     consoleui.h \
     servicelayer.h \
     datalayer.h \
-    persons.h
+    persons.h \
+    sortings.h

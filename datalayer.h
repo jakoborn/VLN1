@@ -3,12 +3,14 @@
 
 #include <vector>
 #include "persons.h"
+#include "sortings.h"
 
 using namespace std;
 
 class DataLayer
 {
     vector<Persons> people;
+    Sortings sorter;
 public:
    DataLayer();
 
@@ -22,7 +24,6 @@ public:
    void sortByBirthYear();
    void sortByDeathYear();
    void sortByGender();
-
 };
 
 #endif // DATALAYER_H
