@@ -34,7 +34,6 @@ void ConsoleUI::run()
                 break;
             case 2:
                 sortData();
-
                 break;
             case 3:
                 showData();
@@ -56,7 +55,22 @@ void ConsoleUI::run()
 
 void ConsoleUI::addData()
 {
+    string name;
+    char gender;
+    int birthYear;
+    int deathYear;
 
+    cout << "Enter Name: ";
+    cin >> name;
+    cout << "Enter gender (M/F): ";
+    cin >> gender;
+    cout << "Enter birth year: ";
+    cin >> birthYear;
+    cout << "Enter death year (0 for living person): ";
+    cin >> deathYear;
+
+    Persons newPerson(name, gender, birthYear, deathYear);
+    serve.add(newPerson);
 }
 
 
@@ -66,7 +80,7 @@ void ConsoleUI::showData()
     cout << serve.list().size() << endl;
     for(size_t i = 0; i < serve.list().size();i++)
     {
-        cout << serve.list()[i] << " ";
+        cout << serve.list()[i] << endl;
     }
 
 }
