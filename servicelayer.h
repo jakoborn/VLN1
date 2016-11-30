@@ -14,7 +14,8 @@ public:
     ServiceLayer();
     vector<Persons> list();
 
-    int search();
+    vector<int> searchByYear(const int year);
+    vector<int> searchByName(const string name);
     void add(const Persons& p);
     void sort(int type);
 };
