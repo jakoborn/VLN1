@@ -17,7 +17,8 @@ void ConsoleUI::run()
        cout << " Press 2 to sort" << endl;
        cout << " Press 3 to list" << endl;
        cout << " Press 4 to search"  << endl;
-       cout << " Press 5 to exit"     << endl;
+       cout << " Press 5 to remove scientist"     << endl;
+       cout << " Press 6 to exit"     << endl;
        cout << " ================================" << endl;
 
        char input = '0';
@@ -39,6 +40,8 @@ void ConsoleUI::run()
                 searchData();
                 break;
             case 5:
+                removeData();
+            case 6:
                 run = false;
                 break;
             default:
@@ -74,11 +77,13 @@ void ConsoleUI::addData()
 
 void ConsoleUI::showData()
 {
+    cout << endl;
     printLine();
     for(size_t i = 0; i < serve.list().size();i++)
     {
         cout << serve.list()[i];
     }
+     cout << "_____________________________________________________" << endl;
 
 }
 
@@ -210,4 +215,12 @@ void ConsoleUI::printLine()
     cout << left << "Name";
     cout <<  "\tGender\tBorn\tDied" << endl;
     cout << "_____________________________________________________" << endl;
+}
+void ConsoleUI::removeData()
+{
+    string str;
+    cout << "Enter the name of the scientist you want to remove: ";
+    cin  >> str;
+
+
 }

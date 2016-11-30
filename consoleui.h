@@ -12,6 +12,7 @@ private:
     void sortData();
     void searchData();
     void printLine();
+    void removeData();
 
 
 public:
