@@ -1,5 +1,6 @@
 #include "datalayer.h"
 #include "persons.h"
+#include "sortings.h"
 
 #include <string>
 #include <vector>
@@ -17,15 +18,7 @@ DataLayer::DataLayer()
 }
 vector<Persons> DataLayer::getVector()
 {
-    vector<Persons> myV;
-
-    for(size_t i = 0; i < people.size();i++)
-    {
-       // vector<Persons> myV = people;
-        myV.push_back(people[i]);
-
-    }
-       return myV;
+    return people;
 }
 
 void DataLayer::loadFromFile()
@@ -72,46 +65,27 @@ void DataLayer::listPersons()
 
 }
 
+bool sortByName2(const Persons &lhs, const Persons &rhs) { return lhs.getName() < rhs.getName(); } //reyndi að nota klasaföll, en það vill þýðandinn ekki.
+bool sortByGender2(const Persons &lhs, const Persons &rhs) { return lhs.getGender() < rhs.getGender(); }
+bool sortByBirthYear2(const Persons &lhs, const Persons &rhs) { return lhs.getBirthYear() < rhs.getBirthYear(); }
+bool sortByDeathYear2(const Persons &lhs, const Persons &rhs) { return lhs.getDeathYear() < rhs.getDeathYear(); }
+
 void DataLayer::sortByName()
 {
-
+    sort(people.begin(), people.end(), sortByName2);
 }
 
 void DataLayer::sortByBirthYear()
 {
-    for (size_t index = 1; index < people.size(); index++)
-    {
-        for (int i = index; i > 0; i--)
-        {
-            if (people[i].getBirthYear() < people[i - 1].getBirthYear())
-            {
-                Persons temp;
-                temp = people[i];
-                people[i] = people[i - 1];
-                people[i - 1] = temp;
-            }
-        }
-    }
+    sort(people.begin(), people.end(), sortByBirthYear2);
 }
 
 void DataLayer::sortByDeathYear()
 {
-    for (size_t index = 1; index < people.size(); index++)
-    {
-        for (int i = index; i > 0; i--)
-        {
-            if (people[i].getDeathYear() < people[i - 1].getDeathYear())
-            {
-                Persons temp;
-                temp = people[i];
-                people[i] = people[i - 1];
-                people[i - 1] = temp;
-            }
-        }
-    }
+    sort(people.begin(), people.end(), sortByDeathYear2);
 }
 
 void DataLayer::sortByGender()
 {
-
+    sort(people.begin(), people.end(), sortByGender2);
 }

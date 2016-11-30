@@ -140,8 +140,4 @@ void ConsoleUI::sortData()
          default:
              cout << "Error! Invalid input!" << endl;
          }
-
-
-    //showData(); viljum við láta hann sýna listann strax?
-
 }
