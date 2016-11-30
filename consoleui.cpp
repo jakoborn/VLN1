@@ -232,7 +232,7 @@ void ConsoleUI::sortData()
 void ConsoleUI::printLine()
 {
     cout.width(16);
-    cout << left << "Name";
+    cout << left << "Name\t";
     cout <<  "\tGender" << "\t" << "Born" << "\t" << "Died" << endl;
     cout << "_____________________________________________________" << endl;
 }
