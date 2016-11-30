@@ -12,6 +12,8 @@
 
 using namespace std;
 
+const string FILENAME = "science.txt";
+
 DataLayer::DataLayer()
 {
    // loadFromFile();
@@ -28,19 +30,11 @@ void DataLayer::loadFromFile()
     Persons p;
     ifstream inStream;
 
-    inStream.open("science.txt");
-
-    if(!inStream.is_open())
-    {
-        cout << "We could not find the text file!." << endl;
-    }
+    inStream.open(FILENAME);
 
     while(inStream >> p)
     {
-     ///       cout << p;
-
         addPerson(p);
-
     }
     inStream.close();
  }
@@ -49,7 +43,7 @@ void DataLayer::saveToFile()
 {
     fstream out;
 
-    out.open("textFile.txt");
+    out.open(FILENAME);
 
     for (size_t i = 0; i < people.size(); i++)
     {
@@ -61,6 +55,7 @@ void DataLayer::saveToFile()
 
 void DataLayer::addPerson(const Persons& p) {
     people.push_back(p);
+    saveToFile();
 }
 
 bool sortByName2(const Persons &lhs, const Persons &rhs) { return lhs.getName() < rhs.getName(); } //reyndi að nota klasaföll, en það vill þýðandinn ekki.

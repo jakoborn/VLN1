@@ -104,7 +104,7 @@ void ConsoleUI::searchData()
         cin >> n;
         vector<int> v_n = serve.searchByName(n);
         for (unsigned int i = 0; i < v_n.size(); i++) {
-            cout << serve.list()[i];
+            cout << serve.list()[v_n[i]];
         }
         if (v_n.size() == 0) {
             cout << "No results found\n";
@@ -118,7 +118,7 @@ void ConsoleUI::searchData()
         cin >> y;
         vector<int> v_y = serve.searchByYear(y);
         for (unsigned int i = 0; i < v_y.size(); i++) {
-            cout << serve.list()[i];
+            cout << serve.list()[v_y[i]];
         }
         if (v_y.size() == 0) {
             cout << "No results found\n";
