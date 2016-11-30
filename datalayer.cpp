@@ -13,7 +13,7 @@ using namespace std;
 
 DataLayer::DataLayer()
 {
-    loadFromFile();
+   // loadFromFile();
 }
 vector<Persons> DataLayer::getVector()
 {
@@ -44,9 +44,7 @@ void DataLayer::loadFromFile()
         cout << "Right" << endl;
     while(inStream >> p)
     {
-
-        people.push_back(p);
-        cout << p;
+     ///       cout << p;
 
         addPerson(p);
 
