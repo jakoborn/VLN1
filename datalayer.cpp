@@ -47,7 +47,7 @@ void DataLayer::saveToFile()
 
     for (size_t i = 0; i < people.size(); i++)
     {
-        out << people[i] << endl;
+        out << people[i];
     }
 
     out.close();
