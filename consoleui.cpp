@@ -141,12 +141,14 @@ void ConsoleUI::sortData()
     cout << "Press 4 for Gender" << endl;
     cout << " ================================" << endl;
 
+    bool error = false;
+
+    do
+    {
+
     int choice = 0;
     cin >> choice;
 
-    bool error = false;
-    do
-    {
     switch (choice)
          {
          case 1:
