@@ -83,10 +83,12 @@ void ConsoleUI::showData()
     {
         cout.width(16);
         cout << serve.list()[i].getName() << "\t " << serve.list()[i].getGender() << "\t" << serve.list()[i].getBirthYear() << "\t";
-        if (serve.list()[i].getAlive()) {
+        if (serve.list()[i].getAlive())
+        {
             cout << "Alive\n";
         }
-        else {
+        else
+        {
             cout << serve.list()[i].getDeathYear() << endl;
         }
     }
@@ -122,8 +124,17 @@ void ConsoleUI::searchData()
                 }
                 else {
                     printLine();
-                    for (unsigned int i = 0; i < v_n.size(); i++) {
-                        cout << serve.list()[v_n[i]];
+                    for (unsigned int i = 0; i < v_n.size(); i++)
+                    {
+                        cout << serve.list()[v_n[i]].getName() << "\t " << serve.list()[v_n[i]].getGender() << "\t" << serve.list()[v_n[i]].getBirthYear() << "\t";
+                        if (serve.list()[v_n[i]].getAlive())
+                        {
+                            cout << "Alive\n";
+                        }
+                        else
+                        {
+                            cout << serve.list()[v_n[i]].getDeathYear() << endl;
+                        }
                     }
                 }
                 error = false;
@@ -140,8 +151,17 @@ void ConsoleUI::searchData()
                 }
                 else {
                     printLine();
-                    for (unsigned int i = 0; i < v_y.size(); i++) {
-                        cout << serve.list()[v_y[i]];
+                    for (unsigned int i = 0; i < v_y.size(); i++)
+                    {
+                        cout << serve.list()[v_y[i]].getName() << "\t " << serve.list()[v_y[i]].getGender() << "\t" << serve.list()[v_y[i]].getBirthYear() << "\t";
+                        if (serve.list()[v_y[i]].getAlive())
+                        {
+                            cout << "Alive\n";
+                        }
+                        else
+                        {
+                            cout << serve.list()[v_y[i]].getDeathYear() << endl;
+                        }
                     }
                 }
                 error = false;
