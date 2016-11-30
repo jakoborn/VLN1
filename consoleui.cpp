@@ -76,8 +76,6 @@ void ConsoleUI::addData()
 
 void ConsoleUI::showData()
 {
-
-    cout << serve.list().size() << endl;
     for(size_t i = 0; i < serve.list().size();i++)
     {
         cout << serve.list()[i] << endl;
@@ -99,15 +97,38 @@ void ConsoleUI::searchData()
     switch(choice)
     {
     case 1:
-        // Todo: search by name.
+    {
+        string n = " ";
+        cout << "Enter name: ";
+        cin >> n;
+        vector<int> v_n = serve.searchByName(n);
+        for (unsigned int i = 0; i < v_n.size(); i++) {
+            cout << serve.list()[i];
+        }
+        if (v_n.size() == 0) {
+            cout << "No results found\n";
+        }
         break;
+    }
     case 2:
-        // Todo:: search by birth year.
+    {
+        int y = 0;
+        cout << "Enter year: ";
+        cin >> y;
+        vector<int> v_y = serve.searchByYear(y);
+        for (unsigned int i = 0; i < v_y.size(); i++) {
+            cout << serve.list()[i];
+        }
+        if (v_y.size() == 0) {
+            cout << "No results found\n";
+        }
         break;
-
+    }
     default:
+    {
         cout << "Error! invalid input" << endl;
     }
+}
 }
 
 void ConsoleUI::sortData()

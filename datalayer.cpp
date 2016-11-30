@@ -27,8 +27,14 @@ void DataLayer::loadFromFile()
     Persons p;
     ifstream inStream;
 
-    inStream.open("textFile.txt");
+    inStream.open("science.txt");
 
+    if(!inStream.is_open())
+    {
+        cout << "We could not find the text file!." << endl;
+    }
+    if(inStream.is_open())
+        cout << "Right" << endl;
     while(inStream >> p)
     {
 
@@ -39,8 +45,7 @@ void DataLayer::loadFromFile()
 
     }
     inStream.close();
-
-    }
+ }
 
 void DataLayer::saveToFile()
 {

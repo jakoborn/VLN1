@@ -15,6 +15,26 @@ vector<Persons> ServiceLayer::list()
     //return placement;
 }
 
+vector<int> ServiceLayer::searchByYear(const int year) {
+    vector<int> v;
+    for (unsigned int i = 0; i < list().size(); i++) {
+        if (list()[i].getBirthYear() == year) {
+            v.push_back(i);
+        }
+    }
+    return v;
+}
+
+vector<int> ServiceLayer::searchByName(const string name) {
+    vector<int> v;
+    for (unsigned int i = 0; i < list().size(); i++) {
+        if(list()[i].getName() == name) {
+            v.push_back(i);
+        }
+    }
+    return v;
+}
+
 void ServiceLayer::add(const Persons& p)
 {
     dl.addPerson(p);
