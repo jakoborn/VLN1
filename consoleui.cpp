@@ -202,6 +202,6 @@ void ConsoleUI::printLine()
 {
     cout.width(15);
     cout << left << "Name";
-    cout <<  "Gender" << "\t" << "BirthYear" << "\t" << "DeathYear" << endl;
+    cout <<  "Gender" << "\t" << "Born" << "\t" << "Died" << endl;
     cout << "_____________________________________________________" << endl;
 }
