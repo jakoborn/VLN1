@@ -24,8 +24,9 @@ void ConsoleUI::run()
        cout << " Press 5 to exit"     << endl;
        cout << " ================================" << endl;
 
-       int choice = 0;
-       cin >> choice;
+       char input = '0';
+       cin >> input;
+       int choice = input - '0';
 
             switch (choice)
             {
@@ -97,8 +98,9 @@ void ConsoleUI::searchData()
         cout << " Press 3 to cancel" << endl;
         cout << "====================================="  << endl;
 
-        int choice = 0;
-        cin >> choice;
+        char input = '0';
+        cin >> input;
+        int choice = input - '0';
 
         switch(choice)
         {
@@ -163,8 +165,9 @@ void ConsoleUI::sortData()
     cout << "Press 5 to cancel" << endl;
     cout << " ================================" << endl;
 
-    int choice = 0;
-    cin >> choice;
+    char input = '0';
+    cin >> input;
+    int choice = input - '0';
 
     switch (choice)
          {
