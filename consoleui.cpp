@@ -77,6 +77,7 @@ void ConsoleUI::addData()
 
 void ConsoleUI::showData()
 {
+    printLine();
     for(size_t i = 0; i < serve.list().size();i++)
     {
         cout << serve.list()[i] ;
@@ -107,6 +108,7 @@ void ConsoleUI::searchData()
                 cout << "Enter name: ";
                 cin >> n;
                 vector<int> v_n = serve.searchByName(n);
+                printLine();
                 for (unsigned int i = 0; i < v_n.size(); i++) {
                     cout << serve.list()[i];
                 }
@@ -122,6 +124,7 @@ void ConsoleUI::searchData()
                 cout << "Enter year: ";
                 cin >> y;
                 vector<int> v_y = serve.searchByYear(y);
+                printLine();
                 for (unsigned int i = 0; i < v_y.size(); i++) {
                     cout << serve.list()[i];
                 }
@@ -193,4 +196,12 @@ void ConsoleUI::sortData()
     while (error);
 
     showData();
+}
+
+void ConsoleUI::printLine()
+{
+    cout.width(15);
+    cout << left << "Name";
+    cout <<  "Gender" << "\t" << "BirthYear" << "\t" << "DeathYear" << endl;
+    cout << "_____________________________________________________" << endl;
 }

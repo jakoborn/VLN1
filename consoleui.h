@@ -11,6 +11,8 @@ private:
     void showData();
     void sortData();
     void searchData();
+    void printLine();
+
 
 public:
     ConsoleUI();
