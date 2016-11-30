@@ -15,24 +15,9 @@ vector<Persons> ServiceLayer::list()
     //return placement;
 }
 
-void ServiceLayer::add()
+void ServiceLayer::add(const Persons& p)
 {
-    string name;
-    char gender;
-    int birthYear;
-    int deathYear;
-
-    cout << "Enter the Name: ";
-    cin >> name;
-    cout << "Enter the gender (M/F): ";
-    cin >> gender;
-    cout << "Enter the birth year: ";
-    cin >> birthYear;
-    cout << "Enter the death year (0 for living person): ";
-    cin >> deathYear;
-
-    Persons newPerson(name, gender, birthYear, deathYear);
-    dl.addPerson(newPerson);
+    dl.addPerson(p);
 }
 
 void ServiceLayer::sort(int type)

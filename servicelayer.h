@@ -15,7 +15,7 @@ public:
     vector<Persons> list();
 
     int search();
-    void add();
+    void add(const Persons& p);
     void sort(int type);
 };
 
