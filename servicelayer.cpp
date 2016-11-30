@@ -8,11 +8,7 @@ ServiceLayer::ServiceLayer()
 
 vector<Persons> ServiceLayer::list()
 {
-   // int placement = 0;
-
    return dl.getVector();
-
-    //return placement;
 }
 
 vector<int> ServiceLayer::searchByYear(const int year) {

@@ -19,7 +19,6 @@ public:
    vector<Persons> getVector();
 
    void addPerson(const Persons& p);
-   void listPersons();
    void sortByName();
    void sortByBirthYear();
    void sortByDeathYear();
