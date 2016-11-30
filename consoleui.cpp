@@ -89,7 +89,6 @@ void ConsoleUI::showData()
             cout << serve.list()[i].getDeathYear() << endl;
         }
     }
-
 }
 
 void ConsoleUI::searchData()
