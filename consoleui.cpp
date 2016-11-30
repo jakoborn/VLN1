@@ -81,7 +81,13 @@ void ConsoleUI::showData()
     printLine();
     for(size_t i = 0; i < serve.list().size();i++)
     {
-        cout << serve.list()[i] ;
+        cout << serve.list()[i].getName() << "\t" << serve.list()[i].getGender() << "\t" << serve.list()[i].getBirthYear() << "\t";
+        if (serve.list()[i].getAlive()) {
+            cout << "Alive\n";
+        }
+        else {
+            cout << serve.list()[i].getDeathYear() << endl;
+        }
     }
 
 }
@@ -110,12 +116,14 @@ void ConsoleUI::searchData()
                 cout << "Enter name: ";
                 cin >> n;
                 vector<int> v_n = serve.searchByName(n);
-                printLine();
-                for (unsigned int i = 0; i < v_n.size(); i++) {
-                    cout << serve.list()[v_n[i]];
-                }
                 if (v_n.size() == 0) {
                     cout << "No results found\n";
+                }
+                else {
+                    printLine();
+                    for (unsigned int i = 0; i < v_n.size(); i++) {
+                        cout << serve.list()[v_n[i]];
+                    }
                 }
                 error = false;
                 break;
@@ -126,12 +134,14 @@ void ConsoleUI::searchData()
                 cout << "Enter year: ";
                 cin >> y;
                 vector<int> v_y = serve.searchByYear(y);
-                printLine();
-                for (unsigned int i = 0; i < v_y.size(); i++) {
-                    cout << serve.list()[v_y[i]];
-                }
                 if (v_y.size() == 0) {
                     cout << "No results found\n";
+                }
+                else {
+                    printLine();
+                    for (unsigned int i = 0; i < v_y.size(); i++) {
+                        cout << serve.list()[v_y[i]];
+                    }
                 }
                 error = false;
                 break;
