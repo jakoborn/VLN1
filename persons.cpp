@@ -50,10 +50,10 @@ ostream& operator << (ostream& out, const Persons& p) {
     out << left << p.getName();
     out <<  p.getGender() << "\t" << p.getBirthYear() << "\t";
     if (!p.getAlive()) {
-        out << " - " << p.getDeathYear() << endl;
+        out << "\t" << " - " << p.getDeathYear() << endl;
     }
     else {
-        out << "Alive" << endl;
+        out << "\t" << "Alive" << endl;
     }
     return out;
 }
