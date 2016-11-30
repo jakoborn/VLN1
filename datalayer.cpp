@@ -33,8 +33,7 @@ void DataLayer::loadFromFile()
     {
         cout << "We could not find the text file!." << endl;
     }
-    if(inStream.is_open())
-        cout << "Right" << endl;
+
     while(inStream >> p)
     {
      ///       cout << p;
