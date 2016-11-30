@@ -19,7 +19,7 @@ vector<Persons> DataLayer::getVector()
 {
     vector<Persons> myV;
 
-    for(int i = 0; i < people.size();i++)
+    for(size_t i = 0; i < people.size();i++)
     {
        // vector<Persons> myV = people;
         myV.push_back(people[i]);
@@ -34,10 +34,7 @@ void DataLayer::loadFromFile()
     Persons p;
     ifstream inStream;
 
-
     inStream.open("textFile.txt");
-
-
 
     while(inStream >> p)
     {
@@ -82,54 +79,34 @@ void DataLayer::sortByName()
 
 void DataLayer::sortByBirthYear()
 {
-    int i = 0, j = people.size();
-    Persons tmp;
-    int pivot = people[people.size() / 2].getBirthYear();
-
-  while (i <= j)
-  {
-        while (people[i].getBirthYear() < pivot)
+    for (size_t index = 1; index < people.size(); index++)
+    {
+        for (int i = index; i > 0; i--)
         {
-              i++;
+            if (people[i].getBirthYear() < people[i - 1].getBirthYear())
+            {
+                Persons temp;
+                temp = people[i];
+                people[i] = people[i - 1];
+                people[i - 1] = temp;
+            }
         }
-        while (people[j].getBirthYear() > pivot)
-        {
-              j--;
-        }
-        if (i <= j)
-        {
-              tmp = people[i];
-              people[i] = people[j];
-              people[j] = tmp;
-              i++;
-              j--;
-        }
-  }
+    }
 }
 
 void DataLayer::sortByDeathYear()
 {
-    int i = 0, j = people.size();
-    Persons tmp;
-    int pivot = people[people.size() / 2].getDeathYear();
-
-    while (i <= j)
+    for (size_t index = 1; index < people.size(); index++)
     {
-        while (people[i].getDeathYear() < pivot)
+        for (int i = index; i > 0; i--)
         {
-              i++;
-        }
-        while (people[j].getDeathYear() > pivot)
-        {
-              j--;
-        }
-        if (i <= j)
-        {
-              tmp = people[i];
-              people[i] = people[j];
-              people[j] = tmp;
-              i++;
-              j--;
+            if (people[i].getDeathYear() < people[i - 1].getDeathYear())
+            {
+                Persons temp;
+                temp = people[i];
+                people[i] = people[i - 1];
+                people[i - 1] = temp;
+            }
         }
     }
 }
