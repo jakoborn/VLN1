@@ -81,6 +81,7 @@ void ConsoleUI::showData()
     printLine();
     for(size_t i = 0; i < serve.list().size();i++)
     {
+        cout.width(16);
         cout << serve.list()[i].getName() << "\t " << serve.list()[i].getGender() << "\t" << serve.list()[i].getBirthYear() << "\t";
         if (serve.list()[i].getAlive()) {
             cout << "Alive\n";
@@ -89,6 +90,7 @@ void ConsoleUI::showData()
             cout << serve.list()[i].getDeathYear() << endl;
         }
     }
+
 }
 
 void ConsoleUI::searchData()
@@ -120,17 +122,8 @@ void ConsoleUI::searchData()
                 }
                 else {
                     printLine();
-                    for (unsigned int i = 0; i < v_n.size(); i++)
-                    {
-                        cout << serve.list()[v_n[i]].getName() << "\t " << serve.list()[v_n[i]].getGender() << "\t" << serve.list()[v_n[i]].getBirthYear() << "\t";
-                        if (serve.list()[v_n[i]].getAlive())
-                        {
-                                    cout << "Alive\n";
-                        }
-                        else
-                        {
-                            cout << serve.list()[v_n[i]].getDeathYear() << endl;
-                        }
+                    for (unsigned int i = 0; i < v_n.size(); i++) {
+                        cout << serve.list()[v_n[i]];
                     }
                 }
                 error = false;
@@ -147,17 +140,8 @@ void ConsoleUI::searchData()
                 }
                 else {
                     printLine();
-                    for (unsigned int i = 0; i < v_y.size(); i++)
-                    {
-                        cout << serve.list()[v_y[i]].getName() << "\t " << serve.list()[v_y[i]].getGender() << "\t" << serve.list()[v_y[i]].getBirthYear() << "\t";
-                        if (serve.list()[v_y[i]].getAlive())
-                        {
-                                    cout << "Alive\n";
-                        }
-                        else
-                        {
-                            cout << serve.list()[v_y[i]].getDeathYear() << endl;
-                        }
+                    for (unsigned int i = 0; i < v_y.size(); i++) {
+                        cout << serve.list()[v_y[i]];
                     }
                 }
                 error = false;
@@ -231,7 +215,7 @@ void ConsoleUI::sortData()
 void ConsoleUI::printLine()
 {
     cout.width(16);
-    cout << left << "Name\t";
+    cout << left << "Name";
     cout <<  "\tGender" << "\t" << "Born" << "\t" << "Died" << endl;
     cout << "_____________________________________________________" << endl;
 }
