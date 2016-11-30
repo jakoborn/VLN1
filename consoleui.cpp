@@ -102,7 +102,7 @@ void ConsoleUI::searchData()
         cout << " Press 1 to search by name" << endl;
         cout << " Press 2 to search by birth year" << endl;
         cout << " Press 3 to cancel" << endl;
-        cout << "====================================="  << endl;
+        cout << "======================================"  << endl;
 
         char input = '0';
         cin >> input;
