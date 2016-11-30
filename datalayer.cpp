@@ -18,6 +18,7 @@ DataLayer::DataLayer()
 }
 vector<Persons> DataLayer::getVector()
 {
+    saveToFile();
     return people;
 }
 
@@ -60,11 +61,6 @@ void DataLayer::saveToFile()
 
 void DataLayer::addPerson(const Persons& p) {
     people.push_back(p);
-}
-
-void DataLayer::listPersons()
-{
-
 }
 
 bool sortByName2(const Persons &lhs, const Persons &rhs) { return lhs.getName() < rhs.getName(); } //reyndi að nota klasaföll, en það vill þýðandinn ekki.
