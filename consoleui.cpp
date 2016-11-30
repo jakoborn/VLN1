@@ -172,5 +172,5 @@ void ConsoleUI::sortData()
              error = true;
          }
     }
-    while (error == true);
+    while (error);
 }
