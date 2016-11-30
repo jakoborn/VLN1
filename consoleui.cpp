@@ -81,7 +81,7 @@ void ConsoleUI::showData()
     printLine();
     for(size_t i = 0; i < serve.list().size();i++)
     {
-        cout << serve.list()[i].getName() << "\t" << serve.list()[i].getGender() << "\t" << serve.list()[i].getBirthYear() << "\t";
+        cout << serve.list()[i].getName() << "\t " << serve.list()[i].getGender() << "\t" << serve.list()[i].getBirthYear() << "\t";
         if (serve.list()[i].getAlive()) {
             cout << "Alive\n";
         }
@@ -213,8 +213,8 @@ void ConsoleUI::sortData()
 
 void ConsoleUI::printLine()
 {
-    cout.width(15);
+    cout.width(16);
     cout << left << "Name";
-    cout <<  "Gender" << "\t" << "Born" << "\t" << "Died" << endl;
+    cout <<  "\tGender" << "\t" << "Born" << "\t" << "Died" << endl;
     cout << "_____________________________________________________" << endl;
 }

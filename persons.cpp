@@ -46,13 +46,13 @@ bool Persons::getAlive() const{
 }
 
 ostream& operator << (ostream& out, const Persons& p) {
-    out.width(15);
+    out.width(16);
     out << left << p.getName() << ";\t" <<  p.getGender() << "\t" << p.getBirthYear() << "\t";
     if (!p.getAlive()) {
-        out << "\t" << "Died " << p.getDeathYear() << endl;
+        out << "\t" << "Died " << p.getDeathYear();
     }
     else {
-        out << "\t" << "Alive" << endl;
+        out << "\t" << "Alive ";
     }
     return out;
 }
