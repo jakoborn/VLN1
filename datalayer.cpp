@@ -21,7 +21,7 @@ vector<Persons> DataLayer::getVector()
 
     for(size_t i = 0; i < people.size();i++)
     {
-       // vector<Persons> myV = people;
+       /// vector<Persons> myV = people;
         myV.push_back(people[i]);
 
     }
@@ -34,8 +34,14 @@ void DataLayer::loadFromFile()
     Persons p;
     ifstream inStream;
 
-    inStream.open("textFile.txt");
+    inStream.open("science.txt");
 
+    if(!inStream.is_open())
+    {
+        cout << "We could not find the text file!." << endl;
+    }
+    if(inStream.is_open())
+        cout << "Right" << endl;
     while(inStream >> p)
     {
 
@@ -46,8 +52,7 @@ void DataLayer::loadFromFile()
 
     }
     inStream.close();
-
-    }
+ }
 
 void DataLayer::saveToFile()
 {
