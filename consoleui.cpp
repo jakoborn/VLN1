@@ -133,6 +133,12 @@ void ConsoleUI::searchData()
 
 void ConsoleUI::sortData()
 {
+
+    bool error = false;
+
+    do
+    {
+
     cout << "How would you like to sort the list?" << endl;
     cout << " ================================" << endl;
     cout << "Press 1 for Name" << endl;
@@ -140,11 +146,6 @@ void ConsoleUI::sortData()
     cout << "Press 3 for Death Year " << endl;
     cout << "Press 4 for Gender" << endl;
     cout << " ================================" << endl;
-
-    bool error = false;
-
-    do
-    {
 
     int choice = 0;
     cin >> choice;
