@@ -241,6 +241,7 @@ void ConsoleUI::searchData()
 
         char input = '0';
         cin >> input;
+        OnlyTakeOneInput();
         int choice = input - '0';
 
         switch(choice)
@@ -368,6 +369,7 @@ void ConsoleUI::sortData()
         cout << " ================================" << endl;
 
         cin >> input;
+        OnlyTakeOneInput();
         choice = input - '0';
         choice2 = 0;
         input = '1';
