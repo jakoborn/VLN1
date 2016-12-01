@@ -119,7 +119,7 @@ bool ConsoleUI::genderCheck(char& gender)
 bool ConsoleUI::check()
 {
     char continuel;
-    cout << "Do you want to try again? (Y for yes and N for No)" ;
+    cout << "Do you want to try again? (Y for yes and N for No) " ;
     cin  >> continuel;
     if(continuel == 'Y' || continuel == 'y')
     {
