@@ -28,11 +28,11 @@ void DataLayer::loadFromFile()
     ifstream in;
 
     in.open(FILENAME);
-    in.seekg(89);
+    in.seekg(90);
 
     while(in >> p)
     {
-        addPerson(p);
+        people.push_back(p);
     }
     in.close();
  }
@@ -48,6 +48,7 @@ void DataLayer::saveToFile()
     out <<  "\tGender\tBorn\tDied" << endl;
     out << "_____________________________________________________" << endl;
 
+    out.seekp(90);
     for (size_t i = 0; i < people.size(); i++)
     {
         out << people[i].getName() << ";\t" << people[i].getGender() << "\t" << people[i].getBirthYear() << "\t";
@@ -68,3 +69,23 @@ void DataLayer::addPerson(const Persons& p)
     saveToFile();
 }
 
+void DataLayer::deletePerson(int n) {
+    vector<Persons> v;
+    Persons p;
+    ifstream in;
+
+    in.open(FILENAME);
+    in.seekg(90);
+
+    while(in >> p)
+    {
+        v.push_back(p);
+    }
+    in.close();
+    v.erase(v.begin()+n);
+    people.resize(v.size());
+    for (unsigned int i = 0; i < v.size(); i++) {
+        people[i] = v[i];
+    }
+    saveToFile();
+}

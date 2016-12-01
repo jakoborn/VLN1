@@ -42,7 +42,8 @@ void ConsoleUI::run()
                 searchData();
                 break;
             case 5:
-                removeData();
+                deleteData();
+                break;
             case 6:
                 run = false;
                 break;
@@ -63,7 +64,6 @@ void ConsoleUI::addData()
     cout << "Enter Name: ";
     cin >> ws;
     getline(cin,name);
-
     if(!isupper(name[0]))
     {
         name[0] = toupper(name[0]);
@@ -132,6 +132,21 @@ bool ConsoleUI::check()
     }
 }
 
+void ConsoleUI::deleteData()
+{
+    cout << "Enter name of person you would like to delete: ";
+    string n = " ";
+    cin >> ws;
+    getline(cin, n);
+    int a = 0;
+    for (unsigned int i = 0; i < serve.list().size(); i++) {
+        if(n == serve.list()[i].getName()) {
+            a = i;
+            break;
+        }
+    }
+    serve.erase(a);
+}
 bool ConsoleUI::birthChecks(int birthYear, int deathYear)
 {
 
@@ -202,15 +217,15 @@ void ConsoleUI::searchData()
                 cout << "Enter name: ";
                 cin >> ws;
                 getline(cin, n);
-                vector<int> v_n = serve.searchByName(n);
-                if (v_n.size() == 0) {
+                vector<int> vN = serve.searchByName(n);
+                if (vN.size() == 0) {
                     cout << "No results found\n";
                 }
                 else {
                     printLine();
-                    for (unsigned int i = 0; i < v_n.size(); i++)
+                    for (unsigned int i = 0; i < vN.size(); i++)
                     {
-                        cout << serve.list()[v_n[i]];
+                        cout << serve.list()[vN[i]];
                     }
                 }
                 error = false;
@@ -221,15 +236,15 @@ void ConsoleUI::searchData()
                 int y = 0;
                 cout << "Enter year: ";
                 cin >> y;
-                vector<int> v_y = serve.searchByYear(y);
-                if (v_y.size() == 0) {
+                vector<int> vY = serve.searchByYear(y);
+                if (vY.size() == 0) {
                     cout << "No results found\n";
                 }
                 else {
                     printLine();
-                    for (unsigned int i = 0; i < v_y.size(); i++)
+                    for (unsigned int i = 0; i < vY.size(); i++)
                     {
-                        cout << serve.list()[v_y[i]];
+                        cout << serve.list()[vY[i]];
                     }
                 }
                 error = false;
@@ -240,6 +255,10 @@ void ConsoleUI::searchData()
                 char gender;
                 cout << "Enter gender (M/F): ";
                 cin >> gender;
+                if(genderCheck(gender) == false)
+                {
+                    searchData();
+                }
                 vector<int> v_g = serve.searchByGender(gender);
                 if (v_g.size() == 0)
                 {
@@ -458,8 +477,4 @@ void ConsoleUI::printLine()
     cout <<  "\tGender\tBorn\tDied" << endl;
     cout << "_____________________________________________________" << endl;
 }
-void ConsoleUI::removeData()
-{
-    string str;
-    cout << "Enter the name of the scientist you want to remove: " << endl;
-}
+

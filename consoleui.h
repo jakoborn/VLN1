@@ -8,11 +8,11 @@ class ConsoleUI
 private:
     ServiceLayer serve;
     void addData();
+    void deleteData();
     void showData();
     void sortData();
     void searchData();
     void printLine();
-    void removeData();
     bool birthChecks(int birthYear, int deathYear);
     bool check();
     bool genderCheck(char &gender);

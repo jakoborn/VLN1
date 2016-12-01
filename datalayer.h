@@ -20,6 +20,7 @@ public:
    void setVector(vector <Persons> p);
 
    void addPerson(const Persons& p);
+   void deletePerson(int n);
 };
 
 #endif // DATALAYER_H
