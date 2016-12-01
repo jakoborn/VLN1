@@ -1,0 +1,7 @@
+Name            	Gender	Born	Died
+_____________________________________________________
+Ingvar helga;	M	1876	1925
+Sibba Gunn;	F	1990	2000
+Steinar Ë;	M	1990	Alive
+Helga Gu–r£n;	F	1993	Alive
+Steinar Einar;	M	1993	Alive

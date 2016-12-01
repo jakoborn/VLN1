@@ -13,6 +13,10 @@ private:
     void addPersonManually();
     void addPeopleFromFile();
     void searchData();
+    void searchByName();
+    void searchByGender();
+    void searchByBirthYear();
+    void searchByYearRange();
     void deleteData();
     bool validYear(const string& s, int& year);
     bool birthChecks(int birthYear, int deathYear);
