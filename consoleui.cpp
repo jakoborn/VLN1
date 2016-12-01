@@ -57,10 +57,17 @@ void ConsoleUI::run()
     }
 }
 
+bool isNumber(const string& s)
+{
+    string::const_iterator it = s.begin();
+    while (it != s.end() && isdigit(*it)) ++it;
+    return !s.empty() && it == s.end();
+}
+
 void ConsoleUI::addData()
 {
 
-    string name;
+    string name, year;
     char gender;
     int birthYear;
     int deathYear;
@@ -82,12 +89,29 @@ void ConsoleUI::addData()
             return;
         }
     }
-    cout << "Enter birth year: ";
-    cin >> birthYear;
-    OnlyTakeOneInput();
-    cout << "Enter death year (0 for living person): ";
-    cin >> deathYear;
-    OnlyTakeOneInput();
+    while(!isNumber(year)) {
+        cout << "Enter birth year: ";
+        cin >> year;
+        OnlyTakeOneInput();
+        if (isNumber(year)){
+            birthYear = atoi(year.c_str());
+        }
+        else {
+            cout << "Invalid input!\n";
+        }
+    }
+    year = " ";
+    while(!isNumber(year)) {
+        cout << "Enter death year (0 for living person): ";
+        cin >> year;
+        OnlyTakeOneInput();
+        if (isNumber(year)){
+            deathYear = atoi(year.c_str());
+        }
+        else {
+            cout << "Invalid input!\n";
+        }
+    }
     if(birthChecks(birthYear, deathYear) == false)
     {
         check();    // Checks if you want to try to input again.
