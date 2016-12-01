@@ -36,6 +36,20 @@ vector<int> ServiceLayer::searchByName(const string name) {
     return v;
 }
 
+vector<int> ServiceLayer::searchByGender(const char gender)
+{
+    vector<int> v;
+
+    for(unsigned int i = 0; i < list().size(); i++)
+    {
+        if(list()[i].getGender() == gender)
+        {
+            v.push_back(i);
+        }
+    }
+    return v;
+}
+
 void ServiceLayer::add(const Persons& p)
 {
     dl.addPerson(p);

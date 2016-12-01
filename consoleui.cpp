@@ -96,6 +96,7 @@ void ConsoleUI::searchData()
         cout << " =====================================" << endl;
         cout << " Press 1 to search by name" << endl;
         cout << " Press 2 to search by birth year" << endl;
+        cout << " Press 3 to search for gender" << endl;
         cout << " Press 3 to cancel" << endl;
         cout << " ======================================"  << endl;
 
@@ -145,6 +146,26 @@ void ConsoleUI::searchData()
                 break;
             }
             case 3:
+            {
+                char gender;
+                cout << "Enter gender (M/F): ";
+                cin >> gender;
+                vector<int> v_g = serve.searchByGender(gender);
+                if (v_g.size() == 0)
+                {
+                    cout << "No results found" << endl;
+                }
+                else
+                {
+                    printLine();
+                    for (unsigned int i = 0; i < v_g.size(); i++)
+                    {
+                        cout << serve.list()[v_g[i]];
+                    }
+                }
+            }
+
+            case 4:
                 error = false;
                 break;
             default:
