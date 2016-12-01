@@ -170,6 +170,7 @@ void ConsoleUI::searchData()
         cout << " =====================================" << endl;
         cout << " Press 1 to search by name" << endl;
         cout << " Press 2 to search by birth year" << endl;
+        cout << " Press 3 to search for gender" << endl;
         cout << " Press 3 to cancel" << endl;
         cout << " ======================================"  << endl;
 
@@ -219,6 +220,26 @@ void ConsoleUI::searchData()
                 break;
             }
             case 3:
+            {
+                char gender;
+                cout << "Enter gender (M/F): ";
+                cin >> gender;
+                vector<int> v_g = serve.searchByGender(gender);
+                if (v_g.size() == 0)
+                {
+                    cout << "No results found" << endl;
+                }
+                else
+                {
+                    printLine();
+                    for (unsigned int i = 0; i < v_g.size(); i++)
+                    {
+                        cout << serve.list()[v_g[i]];
+                    }
+                }
+            }
+
+            case 4:
                 error = false;
                 break;
             default:
@@ -232,55 +253,162 @@ void ConsoleUI::searchData()
 
 void ConsoleUI::sortData()
 {
-
+    char input = '0';
+    int choice = 0;
+    int choice2 = 0;
     bool error = false;
 
     do
     {
 
-    cout << "How would you like to sort the list?" << endl;
-    cout << " ================================" << endl;
-    cout << " Press 1 for Name" << endl;
-    cout << " Press 2 for Birth Year" << endl;
-    cout << " Press 3 for Death Year " << endl;
-    cout << " Press 4 for Gender" << endl;
-    cout << " Press 5 to cancel" << endl;
-    cout << " ================================" << endl;
+        cout << "How would you like to sort the list?" << endl;
+        cout << " ================================" << endl;
+        cout << " Press 1 for Name" << endl;
+        cout << " Press 2 for Birth Year" << endl;
+        cout << " Press 3 for Death Year " << endl;
+        cout << " Press 4 for Gender" << endl;
+        cout << " Press 5 to cancel" << endl;
+        cout << " ================================" << endl;
 
-    char input = '0';
-    cin >> input;
-    int choice = input - '0';
+        cin >> input;
+        choice = input - '0';
+        choice2 = 0;
+        input = '1';
 
-    switch (choice)
-         {
-         case 1:
-            serve.sort(choice);
-            error = false;
-            break;
-         case 2:
-            serve.sort(choice);
-            error = false;
-            break;
-         case 3:
-            serve.sort(choice);
-            error = false;
-            break;
-         case 4:
-            serve.sort(choice);
-            error = false;
-            break;
-         case 5:
-            error = false;
-            break;
-         default:
-             cout << "Error! Invalid input!" << endl;
-             error = true;
-         }
+
+
+            switch (choice)
+                 {
+                 case 1:
+                    do
+                    {
+                        if (input != '1' && input != '2' && input != '3')
+                        {
+                            cout << "Error! Invalid input" << endl;
+                        }
+                        cout << "Regular or Reversed sorting?" << endl;
+                        cout << " ================================" << endl;
+                        cout << "Press 1 for regular sorting" << endl;
+                        cout << "Press 2 for reversed sorting" << endl;
+                        cout << "Press 3 to cancel" << endl;
+                        cout << " ================================" << endl;
+
+                        cin >> input;
+                    }
+                    while (input != '1' && input != '2' && input != '3');
+                    choice2 = input - '0';
+
+                    if (choice2 == 1 || choice2 == 2)
+                    {
+                        serve.sorting(choice, choice2);
+                        error = false;
+                    }
+                    else
+                    {
+                        error = true;
+                    }
+                    break;
+                 case 2:
+                    do
+                    {
+                        if (input != '1' && input != '2' && input != '3')
+                        {
+                            cout << "Error! Invalid input" << endl;
+                        }
+                        cout << "Regular or Reversed sorting?" << endl;
+                        cout << " ================================" << endl;
+                        cout << "Press 1 for regular sorting" << endl;
+                        cout << "Press 2 for reversed sorting" << endl;
+                        cout << "Press 3 to cancel" << endl;
+                        cout << " ================================" << endl;
+
+                        cin >> input;
+                    }
+                    while (input != '1' && input != '2' && input != '3');
+                    choice2 = input - '0';
+
+                    if (choice2 == 1 || choice2 == 2)
+                    {
+                        serve.sorting(choice, choice2);
+                        error = false;
+                    }
+                    else
+                    {
+                        error = true;
+                    }
+                    break;
+                 case 3:
+                    do
+                    {
+                        if (input != '1' && input != '2' && input != '3')
+                        {
+                            cout << "Error! Invalid input" << endl;
+                        }
+                        cout << "Regular or Reversed sorting?" << endl;
+                        cout << " ================================" << endl;
+                        cout << "Press 1 for regular sorting" << endl;
+                        cout << "Press 2 for reversed sorting" << endl;
+                        cout << "Press 3 to cancel" << endl;
+                        cout << " ================================" << endl;
+
+                        cin >> input;
+                    }
+                    while (input != '1' && input != '2' && input != '3');
+                    choice2 = input - '0';
+
+                    if (choice2 == 1 || choice2 == 2)
+                    {
+                        serve.sorting(choice, choice2);
+                        error = false;
+                    }
+                    else
+                    {
+                        error = true;
+                    }
+                    break;
+                 case 4:
+                    do
+                    {
+                        if (input != '1' && input != '2' && input != '3')
+                        {
+                            cout << "Error! Invalid input" << endl;
+                        }
+                        cout << "Sort by Males or Females?" << endl;
+                        cout << " ================================" << endl;
+                        cout << "Press 1 for sorting by Females first" << endl;
+                        cout << "Press 2 for sorting by Males first" << endl;
+                        cout << "Press 3 to cancel" << endl;
+                        cout << " ================================" << endl;
+
+                        cin >> input;
+                    }
+                    while (input != '1' && input != '2' && input != '3');
+                    choice2 = input - '0';
+
+                    if (choice2 == 1 || choice2 == 2)
+                    {
+                        serve.sorting(choice, choice2);
+                        error = false;
+                    }
+                    else
+                    {
+                        error = true;
+                    }
+                    break;
+                 case 5:
+                    error = false;
+                    break;
+                 default:
+                     cout << "Error! Invalid input!" << endl;
+                     error = true;
+                 }
     }
-
     while (error);
 
-    showData();
+    if (choice != 5) //if you press cancel, you don't want to see the list, do you?
+    {
+        showData();
+    }
 }
 
 void ConsoleUI::printLine()
