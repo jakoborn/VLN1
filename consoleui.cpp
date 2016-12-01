@@ -138,13 +138,13 @@ bool ConsoleUI::birthChecks(int birthYear, int deathYear)
         return false;
 
     }
-    if(deathYear < birthYear)
+    if(deathYear < birthYear && !'0')
     {
         cout << "You cannot die before you are born!" << endl;
         return false;
 
     }
-    if(deathYear > 2016 && !'0')
+    if(deathYear > 2016 )
     {
 
         cout << "You are Still alive.";
