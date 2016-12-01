@@ -6,6 +6,11 @@ ConsoleUI::ConsoleUI()
 {
 
 }
+void ConsoleUI::OnlyTakeOneInput()
+{
+    cin.clear();
+    fflush(stdin);
+}
 
 void ConsoleUI::run()
 {
@@ -23,8 +28,7 @@ void ConsoleUI::run()
 
        char input = '0';
        cin >> input;
-       cin.clear();
-       fflush(stdin);
+       OnlyTakeOneInput();
        int choice = input - '0';
 
             switch (choice)
@@ -70,8 +74,7 @@ void ConsoleUI::addData()
     }
     cout << "Enter gender (M/F): ";
     cin >> gender;
-    cin.clear();
-    fflush(stdin);
+    OnlyTakeOneInput();
     if(genderCheck(gender) == false)
     {
         if(check() == false)
@@ -81,8 +84,10 @@ void ConsoleUI::addData()
     }
     cout << "Enter birth year: ";
     cin >> birthYear;
+    OnlyTakeOneInput();
     cout << "Enter death year (0 for living person): ";
     cin >> deathYear;
+    OnlyTakeOneInput();
     if(birthChecks(birthYear, deathYear) == false)
     {
         check();    // Checks if you want to try to input again.
@@ -175,6 +180,12 @@ bool ConsoleUI::birthChecks(int birthYear, int deathYear)
         cout << "You are Still alive.";
         return false;
     }
+    if(deathYear - birthYear > 123)
+    {
+        cout << "That is to old, the oldest man was 122 years old!" << endl;
+        return false;
+    }
+
 
     return true;
 }

@@ -16,6 +16,7 @@ private:
     bool birthChecks(int birthYear, int deathYear);
     bool check();
     bool genderCheck(char &gender);
+    void OnlyTakeOneInput();
 
 
 public:
