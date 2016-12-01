@@ -57,6 +57,13 @@ void ConsoleUI::run()
     }
 }
 
+bool isNumber(const string& s)
+{
+    string::const_iterator it = s.begin();
+    while (it != s.end() && isdigit(*it)) ++it;
+    return !s.empty() && it == s.end();
+}
+
 void ConsoleUI::addData()
 {
     bool error = false;
@@ -81,7 +88,7 @@ void ConsoleUI::addData()
             error = false;
             break;
         case 2:
-            while (fileOpenFail)
+            do
             {
                 cout << "Enter the full path of the file, or the name of the file, if the file is in the same directory: " << endl;
                 cin >> fileName;
@@ -102,7 +109,7 @@ void ConsoleUI::addData()
                         fileOpenFail = true;
                     }
                 }
-            }
+            } while (fileOpenFail);
             break;
         case 3:
             error = false;
@@ -119,7 +126,7 @@ void ConsoleUI::addData()
 
 void ConsoleUI::addPersonManually()
 {
-    string name;
+    string name, year;
     char gender;
     int birthYear;
     int deathYear;
@@ -141,12 +148,29 @@ void ConsoleUI::addPersonManually()
             return;
         }
     }
-    cout << "Enter birth year: ";
-    cin >> birthYear;
-    OnlyTakeOneInput();
-    cout << "Enter death year (0 for living person): ";
-    cin >> deathYear;
-    OnlyTakeOneInput();
+    while(!isNumber(year)) {
+        cout << "Enter birth year: ";
+        cin >> year;
+        OnlyTakeOneInput();
+        if (isNumber(year)){
+            birthYear = atoi(year.c_str());
+        }
+        else {
+            cout << "Invalid input!\n";
+        }
+    }
+    year = " ";
+    while(!isNumber(year)) {
+        cout << "Enter death year (0 for living person): ";
+        cin >> year;
+        OnlyTakeOneInput();
+        if (isNumber(year)){
+            deathYear = atoi(year.c_str());
+        }
+        else {
+            cout << "Invalid input!\n";
+        }
+    }
     if(birthChecks(birthYear, deathYear) == false)
     {
         check();    // Checks if you want to try to input again.
