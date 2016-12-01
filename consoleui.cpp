@@ -23,6 +23,8 @@ void ConsoleUI::run()
 
        char input = '0';
        cin >> input;
+       cin.clear();
+       fflush(stdin);
        int choice = input - '0';
 
             switch (choice)
