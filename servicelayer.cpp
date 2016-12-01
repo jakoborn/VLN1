@@ -26,10 +26,18 @@ vector<int> ServiceLayer::searchByYear(const int year) {
 vector<int> ServiceLayer::searchByName(const string name) {
     vector<int> v;
     for (unsigned int i = 0; i < list().size(); i++) {
-        for (size_t p = 0; p <= (list()[i].getName().length() - name.length()); p++) {
-            if(list()[i].getName().substr(p, name.length()) == name) {
+        if (name.length() <= list()[i].getName().length()) {
+            if (list()[i].getName() == name) {
                 v.push_back(i);
                 break;
+            }
+            else {
+                for (unsigned int p = 0; p <=(list()[i].getName().length() - name.length()); p++) {
+                    if(name == list()[i].getName().substr(p, name.length())) {
+                        v.push_back(i);
+                        break;
+                    }
+                }
             }
         }
     }
@@ -69,6 +77,12 @@ void ServiceLayer::add(const Persons& p)
     dl.addPerson(p);
 }
 
+<<<<<<< HEAD
+void ServiceLayer::erase(int n)
+{
+    dl.deletePerson(n);
+}
+
 void ServiceLayer::sorting(int type, int order)
 {    
     switch (type) {
@@ -88,8 +102,6 @@ void ServiceLayer::sorting(int type, int order)
     default:
         break;
     }
-
-
 }
 
 //regular sorting
