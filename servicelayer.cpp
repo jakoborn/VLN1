@@ -92,17 +92,25 @@ void ServiceLayer::sorting(int type, int order)
 
 }
 
-//regular sorting
-bool sortByName2(const Persons &lhs, const Persons &rhs) { return lhs.getName() < rhs.getName(); } //reyndi að nota klasaföll, en það vill þýðandinn ekki.
-bool sortByGender2(const Persons &lhs, const Persons &rhs) { return lhs.getGender() < rhs.getGender(); }
-bool sortByBirthYear2(const Persons &lhs, const Persons &rhs) { return lhs.getBirthYear() < rhs.getBirthYear(); }
-bool sortByDeathYear2(const Persons &lhs, const Persons &rhs) { return lhs.getDeathYear() < rhs.getDeathYear(); }
+//regular sorting. Reyndi að nota klasaföll, en það vill þýðandinn ekki.
+bool sortByName2(const Persons &lhs, const Persons &rhs)
+{ return lhs.getName() < rhs.getName(); }
+bool sortByGender2(const Persons &lhs, const Persons &rhs)
+{ return lhs.getGender() < rhs.getGender(); }
+bool sortByBirthYear2(const Persons &lhs, const Persons &rhs)
+{ return lhs.getBirthYear() < rhs.getBirthYear(); }
+bool sortByDeathYear2(const Persons &lhs, const Persons &rhs)
+{ return lhs.getDeathYear() < rhs.getDeathYear(); }
 
-//reverse sorting
-bool rSortByName2(const Persons &lhs, const Persons &rhs) { return lhs.getName() > rhs.getName(); } //reyndi að nota klasaföll, en það vill þýðandinn ekki.
-bool rSortByGender2(const Persons &lhs, const Persons &rhs) { return lhs.getGender() > rhs.getGender(); }
-bool rSortByBirthYear2(const Persons &lhs, const Persons &rhs) { return lhs.getBirthYear() > rhs.getBirthYear(); }
-bool rSortByDeathYear2(const Persons &lhs, const Persons &rhs) { return lhs.getDeathYear() > rhs.getDeathYear(); }
+//reverse sorting. Reyndi að nota klasaföll, en það vill þýðandinn ekki.
+bool rSortByName2(const Persons &lhs, const Persons &rhs)
+{ return lhs.getName() > rhs.getName(); }
+bool rSortByGender2(const Persons &lhs, const Persons &rhs)
+{ return lhs.getGender() > rhs.getGender(); }
+bool rSortByBirthYear2(const Persons &lhs, const Persons &rhs)
+{ return lhs.getBirthYear() > rhs.getBirthYear(); }
+bool rSortByDeathYear2(const Persons &lhs, const Persons &rhs)
+{ return lhs.getDeathYear() > rhs.getDeathYear(); }
 
 void ServiceLayer::sortByName(int order)
 {
