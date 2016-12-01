@@ -1,3 +1,4 @@
+#include <ctime>
 #include "consoleui.h"
 
 using namespace std;
@@ -57,13 +58,6 @@ void ConsoleUI::run()
     }
 }
 
-bool isNumber(const string& s)
-{
-    string::const_iterator it = s.begin();
-    while (it != s.end() && isdigit(*it)) ++it;
-    return !s.empty() && it == s.end();
-}
-
 void ConsoleUI::addData()
 {
     bool error = false;
@@ -76,8 +70,6 @@ void ConsoleUI::addData()
         cout << " ================================" << endl;
 
         char input = '0';
-        string fileName = "";
-        bool fileOpenFail = false;
         cin >> input;
         OnlyTakeOneInput();
         int choice = input - '0';
@@ -88,28 +80,8 @@ void ConsoleUI::addData()
             error = false;
             break;
         case 2:
-            do
-            {
-                cout << "Enter the full path of the file, or the name of the file, if the file is in the same directory: " << endl;
-                cin >> fileName;
-                if(!serve.addFromFile(fileName))
-                {
-                    cout << "Success!";
-                    error = false;
-
-                }
-                else
-                {
-                    cout << "Error! Failed to open file" << endl;
-                    char continuel;
-                    cout << "Do you want to try again? (Y for yes and N for no) " ;
-                    cin  >> continuel;
-                    if(continuel != 'Y' && continuel != 'y')
-                    {
-                        fileOpenFail = true;
-                    }
-                }
-            } while (fileOpenFail);
+            addPeopleFromFile();
+            error = false;
             break;
         case 3:
             error = false;
@@ -148,30 +120,24 @@ void ConsoleUI::addPersonManually()
             return;
         }
     }
-    while(!isNumber(year)) {
+    while(!validYear(year, birthYear)) {
         cout << "Enter birth year: ";
         cin >> year;
         OnlyTakeOneInput();
-        if (isNumber(year)){
-            birthYear = atoi(year.c_str());
-        }
-        else {
+        if (!validYear(year, birthYear)){
             cout << "Invalid input!\n";
         }
     }
     year = " ";
-    while(!isNumber(year)) {
+    while(!validYear(year, deathYear)) {
         cout << "Enter death year (0 for living person): ";
         cin >> year;
         OnlyTakeOneInput();
-        if (isNumber(year)){
-            deathYear = atoi(year.c_str());
-        }
-        else {
+        if (!validYear(year, deathYear)){
             cout << "Invalid input!\n";
         }
     }
-    if(birthChecks(birthYear, deathYear) == false)
+    if(!birthChecks(birthYear, deathYear))
     {
         check();    // Checks if you want to try to input again.
     }
@@ -193,6 +159,36 @@ void ConsoleUI::addPersonManually()
     }
 
 }
+
+void ConsoleUI::addPeopleFromFile()
+{
+    string fileName = "";
+    bool fileOpenFail = false;
+
+    do
+    {
+        cout << "Enter the full path of the file, or the name of the file, if the file is in the same directory: " << endl;
+        cin >> fileName;
+        if(!serve.addFromFile(fileName))
+        {
+            cout << "Success!";
+            fileOpenFail = false;
+
+        }
+        else
+        {
+            cout << "Error! Failed to open file" << endl;
+            char continuel;
+            cout << "Do you want to try again? (Y for yes and N for no) " ;
+            cin  >> continuel;
+            if(continuel != 'Y' && continuel != 'y')
+            {
+                fileOpenFail = true;
+            }
+        }
+    } while (fileOpenFail);
+}
+
 
 bool ConsoleUI::genderCheck(char& gender)
 {
@@ -275,46 +271,31 @@ void ConsoleUI::deleteData()
         cout << "No match for " << n << endl;
     }
 }
+
+bool ConsoleUI::validYear(const string& s, int& year)
+{
+    string::const_iterator it = s.begin();
+    while (it != s.end() && isdigit(*it)) ++it;
+    if (s.empty() || it != s.end()) return false;
+    year = atoi(s.c_str());
+    time_t t = time(NULL);
+    tm* TimePtr = localtime(&t);
+    int currentYear = TimePtr->tm_year + 1900;
+    return year >= 0 && year <= currentYear;
+}
+
 bool ConsoleUI::birthChecks(int birthYear, int deathYear)
 {
-    if(!isdigit(birthYear) && !isdigit(deathYear) && deathYear != 0)
-    {
-
-        cout << "Please do not input letter" << endl;
-        return false;
-    }
-    if(birthYear < 0 )
-    {
-        cout << "The scientist can not be born before the year zero." << endl;
-        return false;
-
-    }
-    if(birthYear > 2016)
-    {
-        cout << "The scientist can not be born after the year 2016" << endl;
-
-        return false;
-
-    }
     if(deathYear < birthYear && deathYear != 0)
     {
         cout << "The scientist cannot die before they are born!" << endl;
-        return false;
-
-    }
-    if(deathYear > 2016 )
-    {
-
-        cout << "The scientist is still alive.";
         return false;
     }
     if(deathYear - birthYear > 123)
     {
         cout << "That is too old, the oldest woman was 122 years old!" << endl;
         return false;
-
     }
-
     return true;
 }
 
