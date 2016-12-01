@@ -43,14 +43,16 @@ bool DataLayer::loadFromOtherFile(string input)
     Persons p;
     ifstream in;
 
+    in.open(input);
+
     if (in.fail( ))
     {
+        in.close();
         return false;
     }
     else
     {
-        in.open(input);
-
+        in.seekg(90);
 
         while(in >> p)
         {
