@@ -140,7 +140,7 @@ bool ConsoleUI::birthChecks(int birthYear, int deathYear)
         return false;
 
     }
-    if(deathYear > 2016)
+    if(deathYear > 2016 && !'0')
     {
 
         cout << "You are Still alive.";
@@ -171,7 +171,7 @@ void ConsoleUI::searchData()
         cout << " Press 1 to search by name" << endl;
         cout << " Press 2 to search by birth year" << endl;
         cout << " Press 3 to search for gender" << endl;
-        cout << " Press 3 to cancel" << endl;
+        cout << " Press 4 to cancel" << endl;
         cout << " ======================================"  << endl;
 
         char input = '0';
