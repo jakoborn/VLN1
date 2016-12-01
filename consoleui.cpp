@@ -290,17 +290,6 @@ bool ConsoleUI::validYear(const string& s, int& year)
 
 bool ConsoleUI::birthChecks(int birthYear, int deathYear)
 {
-    if(!isdigit(birthYear) && !isdigit(deathYear) && deathYear != 0)
-    {
-
-        cout << "Please do not input letter" << endl;
-        return false;
-    }
-    if(birthYear < 0 )
-    {
-        cout << "The scientist can not be born before the year zero." << endl;
-        return false;
-    }
     if(deathYear < birthYear && deathYear != 0)
     {
         cout << "The scientist cannot die before they are born!" << endl;
