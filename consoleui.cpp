@@ -66,6 +66,8 @@ void ConsoleUI::addData()
     getline(cin,name);
     cout << "Enter gender (M/F): ";
     cin >> gender;
+    cin.clear();
+    fflush(stdin);
     if(genderCheck(gender) == false)
     {
         if(check() == false)
