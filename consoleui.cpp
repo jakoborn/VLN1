@@ -116,6 +116,7 @@ bool ConsoleUI::check()
     if(continuel == 'Y' || continuel == 'y')
     {
         addData();
+        return true;
     }
     else
     {
