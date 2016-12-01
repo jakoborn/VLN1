@@ -45,7 +45,7 @@ bool DataLayer::loadFromOtherFile(string input)
 
     in.open(input);
 
-    if (in.fail( ))
+    if (in.fail())
     {
         in.close();
         return false;
