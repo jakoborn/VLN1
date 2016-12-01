@@ -7,24 +7,21 @@ class ConsoleUI
 {
 private:
     ServiceLayer serve;
+    void showData();
+    void sortData();
     void addData();
     void addPersonManually();
     void addPeopleFromFile();
-    void deleteData();
-    void showData();
-    void sortData();
     void searchData();
-    void printLine();
+    void deleteData();
     bool validYear(const string& s, int& year);
     bool birthChecks(int birthYear, int deathYear);
     bool check();
     bool genderCheck(char &gender);
     void OnlyTakeOneInput();
-
-
+    void printLine();
 public:
     ConsoleUI();
-
     void run();
 };
 
