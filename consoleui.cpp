@@ -255,6 +255,10 @@ void ConsoleUI::searchData()
                 char gender;
                 cout << "Enter gender (M/F): ";
                 cin >> gender;
+                if(genderCheck(gender) == false)
+                {
+                    searchData();
+                }
                 vector<int> v_g = serve.searchByGender(gender);
                 if (v_g.size() == 0)
                 {
