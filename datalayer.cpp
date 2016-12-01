@@ -62,27 +62,3 @@ void DataLayer::addPerson(const Persons& p) {
     saveToFile();
 }
 
-bool sortByName2(const Persons &lhs, const Persons &rhs) { return lhs.getName() < rhs.getName(); } //reyndi að nota klasaföll, en það vill þýðandinn ekki.
-bool sortByGender2(const Persons &lhs, const Persons &rhs) { return lhs.getGender() < rhs.getGender(); }
-bool sortByBirthYear2(const Persons &lhs, const Persons &rhs) { return lhs.getBirthYear() < rhs.getBirthYear(); }
-bool sortByDeathYear2(const Persons &lhs, const Persons &rhs) { return lhs.getDeathYear() < rhs.getDeathYear(); }
-
-void DataLayer::sortByName()
-{
-    sort(people.begin(), people.end(), sortByName2);
-}
-
-void DataLayer::sortByBirthYear()
-{
-    sort(people.begin(), people.end(), sortByBirthYear2);
-}
-
-void DataLayer::sortByDeathYear()
-{
-    sort(people.begin(), people.end(), sortByDeathYear2);
-}
-
-void DataLayer::sortByGender()
-{
-    sort(people.begin(), people.end(), sortByGender2);
-}

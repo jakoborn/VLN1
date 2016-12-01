@@ -1,4 +1,7 @@
+#include <algorithm>
 #include "servicelayer.h"
+#include "sortings.h"
+
 
 ServiceLayer::ServiceLayer()
 {
@@ -38,20 +41,20 @@ void ServiceLayer::add(const Persons& p)
     dl.addPerson(p);
 }
 
-void ServiceLayer::sort(int type)
-{
+void ServiceLayer::sorting(int type, int order)
+{    
     switch (type) {
     case 1:
-        dl.sortByName();
+        sortByName(order);
         break;
     case 2:
-        dl.sortByBirthYear();
+        sortByBirthYear(order);
         break;
     case 3:
-        dl.sortByDeathYear();
+        sortByDeathYear(order);
         break;
     case 4:
-        dl.sortByGender();
+        sortByGender(order);
         break;
 
     default:
@@ -61,3 +64,62 @@ void ServiceLayer::sort(int type)
 
 }
 
+bool sortByName2(const Persons &lhs, const Persons &rhs) { return lhs.getName() < rhs.getName(); } //reyndi að nota klasaföll, en það vill þýðandinn ekki.
+bool sortByGender2(const Persons &lhs, const Persons &rhs) { return lhs.getGender() < rhs.getGender(); }
+bool sortByBirthYear2(const Persons &lhs, const Persons &rhs) { return lhs.getBirthYear() < rhs.getBirthYear(); }
+bool sortByDeathYear2(const Persons &lhs, const Persons &rhs) { return lhs.getDeathYear() < rhs.getDeathYear(); }
+
+void ServiceLayer::sortByName(int order)
+{
+    vector <Persons> people = dl.getVector();
+    if (order == 1)
+    {
+        //sort(people.begin(), people.end(), sorter.sortByName);
+        sort(people.begin(), people.end(), sortByName2);
+    }
+    else
+    {
+        //sort(people.begin(), people.end(), sorter.sortByName);
+    }
+
+}
+
+void ServiceLayer::sortByBirthYear(int order)
+{
+
+    vector <Persons> people = dl.getVector();
+    if (order == 1)
+    {
+        //sort(people.begin(), people.end(), sorter.sortByBirthYear);
+    }
+    else
+    {
+        //sort(people.begin(), people.end(), sorter.sortByBirthYear);
+    }
+}
+
+void ServiceLayer::sortByDeathYear(int order)
+{
+    vector <Persons> people = dl.getVector();
+    if (order == 1)
+    {
+        //sort(people.begin(), people.end(), sorter.sortByDeathYear);
+    }
+    else
+    {
+        //sort(people.begin(), people.end(), sorter.sortByDeathYear);
+    }
+}
+
+void ServiceLayer::sortByGender(int order)
+{
+    vector <Persons> people = dl.getVector();
+    if (order == 1)
+    {
+        //sort(people.begin(), people.end(), sorter.sortByGender);
+    }
+    else
+    {
+        //sort(people.begin(), people.end(), sorter.sortByGender);
+    }
+}

@@ -2,6 +2,7 @@
 #define SERVICELAYER_H
 
 #include "datalayer.h"
+#include "sortings.h"
 
 using namespace std;
 
@@ -11,11 +12,16 @@ class ServiceLayer
 public:
     ServiceLayer();
     vector<Persons> list();
+    Sortings sorter;
 
     vector<int> searchByYear(const int year);
     vector<int> searchByName(const string name);
     void add(const Persons& p);
-    void sort(int type);
+    void sorting(int type, int order);
+    void sortByName(int order);
+    void sortByBirthYear(int order);
+    void sortByDeathYear(int order);
+    void sortByGender(int order);
 };
 
 #endif // SERVICELAYER_H
