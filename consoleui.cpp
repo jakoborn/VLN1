@@ -171,7 +171,8 @@ void ConsoleUI::searchData()
         cout << " Press 1 to search by name" << endl;
         cout << " Press 2 to search by birth year" << endl;
         cout << " Press 3 to search for gender" << endl;
-        cout << " Press 4 to cancel" << endl;
+        cout << " Press 4 to search by birth year range" << endl;
+        cout << " Press 5 to cancel" << endl;
         cout << " ======================================"  << endl;
 
         char input = '0';
@@ -238,8 +239,30 @@ void ConsoleUI::searchData()
                     }
                 }
             }
-
             case 4:
+            {
+                int f = 0, l = 0;
+                cout << "Enter first year in range: ";
+                cin >> f;
+                cout << "Enter last yar in range: ";
+                cin >> l;
+
+                vector<int> v_r = serve.searchByRange(f,l);
+                if (v_r.size() == 0)
+                {
+                    cout << "No results found" << endl;
+                }
+                else
+                {
+                    printLine();
+                    for (unsigned int i = 0; i < v_r.size(); i++)
+                    {
+                        cout << serve.list()[v_r[i]];
+                    }
+                }
+            }
+
+            case 5:
                 error = false;
                 break;
             default:

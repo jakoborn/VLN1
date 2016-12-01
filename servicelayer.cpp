@@ -50,6 +50,20 @@ vector<int> ServiceLayer::searchByGender(const char gender)
     return v;
 }
 
+vector<int> ServiceLayer::searchByRange(const int f, const int l)
+{
+    vector<int> v;
+
+    for(unsigned int i = 0; i < list().size(); i++)
+    {
+        if(list()[i].getBirthYear() >= f && list()[i].getBirthYear() <= l)
+        {
+            v.push_back(i);
+        }
+    }
+    return v;
+}
+
 void ServiceLayer::add(const Persons& p)
 {
     dl.addPerson(p);

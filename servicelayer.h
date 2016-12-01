@@ -18,6 +18,7 @@ public:
     vector<int> searchByYear(const int year);
     vector<int> searchByName(const string name);
     vector<int> searchByGender(const char gender);
+    vector<int> searchByRange(const int f, const int l);
     void add(const Persons& p);
     void sorting(int type, int order);
     void sortByName(int order);
