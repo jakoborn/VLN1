@@ -52,7 +52,7 @@ void ConsoleUI::run()
                 run = false;
                 break;
             default:
-                cout << "Error! Invalid Input" << endl;
+                cout << "Error! Invalid input" << endl;
             }
     }
 }
@@ -125,7 +125,7 @@ bool ConsoleUI::genderCheck(char& gender)
 bool ConsoleUI::check()
 {
     char continuel;
-    cout << "Do you want to try again? (Y for yes and N for No) " ;
+    cout << "Do you want to try again? (Y for yes and N for no) " ;
     cin  >> continuel;
     if(continuel == 'Y' || continuel == 'y')
     {
@@ -205,7 +205,7 @@ bool ConsoleUI::birthChecks(int birthYear, int deathYear)
     }
     if(deathYear - birthYear > 123)
     {
-        cout << "That is to old, the oldest woman was 122 years old!" << endl;
+        cout << "That is too old, the oldest woman was 122 years old!" << endl;
         return false;
 
     }
@@ -234,7 +234,7 @@ void ConsoleUI::searchData()
         cout << " =====================================" << endl;
         cout << " Press 1 to search by name" << endl;
         cout << " Press 2 to search by birth year" << endl;
-        cout << " Press 3 to search for gender" << endl;
+        cout << " Press 3 to search by gender" << endl;
         cout << " Press 4 to search by birth year range" << endl;
         cout << " Press 5 to cancel" << endl;
         cout << " ======================================"  << endl;
@@ -361,10 +361,10 @@ void ConsoleUI::sortData()
 
         cout << "How would you like to sort the list?" << endl;
         cout << " ================================" << endl;
-        cout << " Press 1 for Name" << endl;
-        cout << " Press 2 for Birth Year" << endl;
-        cout << " Press 3 for Death Year " << endl;
-        cout << " Press 4 for Gender" << endl;
+        cout << " Press 1 to sort by name" << endl;
+        cout << " Press 2 to sort by birth year" << endl;
+        cout << " Press 3 to sort by death year " << endl;
+        cout << " Press 4 to sort by gender" << endl;
         cout << " Press 5 to Cancel" << endl;
         cout << " ================================" << endl;
 
@@ -414,10 +414,10 @@ void ConsoleUI::sortData()
                         {
                             cout << "Error! Invalid input" << endl;
                         }
-                        cout << "Regular or Reversed sorting?" << endl;
+                        cout << "Ascended or Descended sorting?" << endl;
                         cout << " ================================" << endl;
-                        cout << "Press 1 for regular sorting" << endl;
-                        cout << "Press 2 for reversed sorting" << endl;
+                        cout << "Press 1 to sort by ascending order" << endl;
+                        cout << "Press 2 to sort by descending order" << endl;
                         cout << "Press 3 to cancel" << endl;
                         cout << " ================================" << endl;
 
@@ -443,10 +443,10 @@ void ConsoleUI::sortData()
                         {
                             cout << "Error! Invalid input" << endl;
                         }
-                        cout << "Regular or Reversed sorting?" << endl;
+                        cout << "Ascended or Descended sorting?" << endl;
                         cout << " ================================" << endl;
-                        cout << "Press 1 for regular sorting" << endl;
-                        cout << "Press 2 for reversed sorting" << endl;
+                        cout << "Press 1 to sort by ascending order" << endl;
+                        cout << "Press 2 to sort by descending order" << endl;
                         cout << "Press 3 to cancel" << endl;
                         cout << " ================================" << endl;
 
@@ -474,8 +474,8 @@ void ConsoleUI::sortData()
                         }
                         cout << "Sort by Males or Females?" << endl;
                         cout << " ================================" << endl;
-                        cout << "Press 1 for sorting by females first" << endl;
-                        cout << "Press 2 for sorting by males first" << endl;
+                        cout << "Press 1 to sort by females first" << endl;
+                        cout << "Press 2 to sort by males first" << endl;
                         cout << "Press 3 to cancel" << endl;
                         cout << " ================================" << endl;
 
