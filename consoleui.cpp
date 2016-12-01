@@ -121,6 +121,7 @@ bool ConsoleUI::genderCheck(char& gender)
    }
 }
 
+
 bool ConsoleUI::check()
 {
     char continuel;
@@ -154,7 +155,12 @@ void ConsoleUI::deleteData()
 }
 bool ConsoleUI::birthChecks(int birthYear, int deathYear)
 {
+    if(!isdigit(birthYear) && !isdigit(deathYear))
+    {
 
+        cout << "Please do not input letter" << endl;
+        return false;
+    }
     if(birthYear < 0 )
     {
         cout << "The scientist can not be born before the year zero." << endl;
@@ -184,8 +190,8 @@ bool ConsoleUI::birthChecks(int birthYear, int deathYear)
     {
         cout << "That is to old, the oldest man was 122 years old!" << endl;
         return false;
-    }
 
+    }
 
     return true;
 }
