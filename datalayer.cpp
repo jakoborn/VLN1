@@ -83,7 +83,7 @@ void DataLayer::deletePerson(int n) {
     v.erase(v.begin()+n);
     people.resize(v.size());
     for (unsigned int i = 0; i < v.size(); i++) {
-        people[i] = v[i];
+        people[i] = v [i];
     }
     saveToFile();
 }
