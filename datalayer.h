@@ -14,6 +14,7 @@ public:
    DataLayer();
 
    void loadFromFile();
+   bool loadFromOtherFile(string input);
    void saveToFile();
    vector<Persons> getVector();
    void removeData(int &x);

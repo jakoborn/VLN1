@@ -187,3 +187,9 @@ void ServiceLayer::sortByGender(int order)
     }
     dl.setVector(people);
 }
+
+bool ServiceLayer::addFromFile(string input)
+{
+    return dl.loadFromOtherFile(input);
+
+}
