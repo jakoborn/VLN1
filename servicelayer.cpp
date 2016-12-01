@@ -69,6 +69,11 @@ bool sortByGender2(const Persons &lhs, const Persons &rhs) { return lhs.getGende
 bool sortByBirthYear2(const Persons &lhs, const Persons &rhs) { return lhs.getBirthYear() < rhs.getBirthYear(); }
 bool sortByDeathYear2(const Persons &lhs, const Persons &rhs) { return lhs.getDeathYear() < rhs.getDeathYear(); }
 
+bool rSortByName2(const Persons &lhs, const Persons &rhs) { return lhs.getName() > rhs.getName(); } //reyndi að nota klasaföll, en það vill þýðandinn ekki.
+bool rSortByGender2(const Persons &lhs, const Persons &rhs) { return lhs.getGender() > rhs.getGender(); }
+bool rSortByBirthYear2(const Persons &lhs, const Persons &rhs) { return lhs.getBirthYear() > rhs.getBirthYear(); }
+bool rSortByDeathYear2(const Persons &lhs, const Persons &rhs) { return lhs.getDeathYear() > rhs.getDeathYear(); }
+
 void ServiceLayer::sortByName(int order)
 {
     vector <Persons> people = dl.getVector();
@@ -79,7 +84,8 @@ void ServiceLayer::sortByName(int order)
     }
     else
     {
-        //sort(people.begin(), people.end(), sorter.sortByName);
+        //sort(people.begin(), people.end(), sorter.rSortByName);
+        sort(people.begin(), people.end(), rSortByName2);
     }
 
 }
@@ -91,10 +97,12 @@ void ServiceLayer::sortByBirthYear(int order)
     if (order == 1)
     {
         //sort(people.begin(), people.end(), sorter.sortByBirthYear);
+        sort(people.begin(), people.end(), sortByBirthYear2);
     }
     else
     {
-        //sort(people.begin(), people.end(), sorter.sortByBirthYear);
+        //sort(people.begin(), people.end(), sorter.rSortByBirthYear);
+        sort(people.begin(), people.end(), rSortByBirthYear2);
     }
 }
 
@@ -104,10 +112,12 @@ void ServiceLayer::sortByDeathYear(int order)
     if (order == 1)
     {
         //sort(people.begin(), people.end(), sorter.sortByDeathYear);
+        sort(people.begin(), people.end(), sortByDeathYear2);
     }
     else
     {
-        //sort(people.begin(), people.end(), sorter.sortByDeathYear);
+        //sort(people.begin(), people.end(), sorter.rSortByDeathYear);
+        sort(people.begin(), people.end(), rSortByDeathYear2);
     }
 }
 
@@ -117,9 +127,11 @@ void ServiceLayer::sortByGender(int order)
     if (order == 1)
     {
         //sort(people.begin(), people.end(), sorter.sortByGender);
+        sort(people.begin(), people.end(), sortByGender2);
     }
     else
     {
-        //sort(people.begin(), people.end(), sorter.sortByGender);
+        //sort(people.begin(), people.end(), sorter.rSortByGender);
+        sort(people.begin(), people.end(), rSortByGender2);
     }
 }
