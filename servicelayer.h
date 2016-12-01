@@ -15,6 +15,7 @@ public:
     vector<int> searchByYear(const int year);
     vector<int> searchByName(const string name);
     void add(const Persons& p);
+    void erase(int n);
     void sort(int type);
 };
 

@@ -17,7 +17,8 @@ void ConsoleUI::run()
        cout << " Press 2 to sort" << endl;
        cout << " Press 3 to list" << endl;
        cout << " Press 4 to search"  << endl;
-       cout << " Press 5 to exit"     << endl;
+       cout << " Press 5 to delete" << endl;
+       cout << " Press 6 to exit"     << endl;
        cout << " ================================" << endl;
 
        char input = '0';
@@ -39,6 +40,9 @@ void ConsoleUI::run()
                 searchData();
                 break;
             case 5:
+                deleteData();
+                break;
+            case 6:
                 run = false;
                 break;
             default:
@@ -60,7 +64,7 @@ void ConsoleUI::addData()
     cout << "Enter Name: ";
     cin >> ws;
     getline(cin,name);
-    cout << "Enter gender (M/F): ";
+    cout << "Enter gender: ";
     cin >> gender;
     cout << "Enter birth year: ";
     cin >> birthYear;
@@ -71,6 +75,21 @@ void ConsoleUI::addData()
     serve.add(newPerson);
 }
 
+void ConsoleUI::deleteData()
+{
+    cout << "Enter name of person you would like to delete: ";
+    string n = " ";
+    cin >> ws;
+    getline(cin, n);
+    int a = 0;
+    for (unsigned int i = 0; i < serve.list().size(); i++) {
+        if(n == serve.list()[i].getName()) {
+            a = i;
+            break;
+        }
+    }
+    serve.erase(a);
+}
 
 void ConsoleUI::showData()
 {
@@ -106,15 +125,15 @@ void ConsoleUI::searchData()
                 cout << "Enter name: ";
                 cin >> ws;
                 getline(cin, n);
-                vector<int> v_n = serve.searchByName(n);
-                if (v_n.size() == 0) {
+                vector<int> vN = serve.searchByName(n);
+                if (vN.size() == 0) {
                     cout << "No results found\n";
                 }
                 else {
                     printLine();
-                    for (unsigned int i = 0; i < v_n.size(); i++)
+                    for (unsigned int i = 0; i < vN.size(); i++)
                     {
-                        cout << serve.list()[v_n[i]];
+                        cout << serve.list()[vN[i]];
                     }
                 }
                 error = false;
@@ -125,15 +144,15 @@ void ConsoleUI::searchData()
                 int y = 0;
                 cout << "Enter year: ";
                 cin >> y;
-                vector<int> v_y = serve.searchByYear(y);
-                if (v_y.size() == 0) {
+                vector<int> vY = serve.searchByYear(y);
+                if (vY.size() == 0) {
                     cout << "No results found\n";
                 }
                 else {
                     printLine();
-                    for (unsigned int i = 0; i < v_y.size(); i++)
+                    for (unsigned int i = 0; i < vY.size(); i++)
                     {
-                        cout << serve.list()[v_y[i]];
+                        cout << serve.list()[vY[i]];
                     }
                 }
                 error = false;

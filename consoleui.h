@@ -8,6 +8,7 @@ class ConsoleUI
 private:
     ServiceLayer serve;
     void addData();
+    void deleteData();
     void showData();
     void sortData();
     void searchData();
