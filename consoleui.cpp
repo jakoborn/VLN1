@@ -251,6 +251,10 @@ void ConsoleUI::searchData()
                 cout << "Enter name: ";
                 cin >> ws;
                 getline(cin, n);
+                if(!isupper(n[0]))
+                {
+                    n[0] = toupper(n[0]);
+                }
                 vector<int> vN = serve.searchByName(n);
                 if (vN.size() == 0) {
                     cout << "No results found\n";
