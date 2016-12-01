@@ -205,7 +205,7 @@ bool ConsoleUI::birthChecks(int birthYear, int deathYear)
     }
     if(deathYear - birthYear > 123)
     {
-        cout << "That is to old, the oldest man was 122 years old!" << endl;
+        cout << "That is to old, the oldest woman was 122 years old!" << endl;
         return false;
 
     }
