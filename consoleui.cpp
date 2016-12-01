@@ -139,7 +139,7 @@ bool ConsoleUI::birthChecks(int birthYear, int deathYear)
         return false;
 
     }
-    if(deathYear < birthYear && !'0')
+    if(deathYear < birthYear && deathYear != 0)
     {
         cout << "You cannot die before you are born!" << endl;
         return false;
@@ -452,5 +452,4 @@ void ConsoleUI::removeData()
 {
     string str;
     cout << "Enter the name of the scientist you want to remove: " << endl;
-
 }
