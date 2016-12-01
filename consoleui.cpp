@@ -156,8 +156,9 @@ bool ConsoleUI::birthChecks(int birthYear, int deathYear)
         cout << "You are Still alive.";
         return false;
     }
-        return true;
-    }
+
+    return true;
+}
 
 void ConsoleUI::showData()
 {
