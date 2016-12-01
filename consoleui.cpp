@@ -49,11 +49,8 @@ void ConsoleUI::run()
             default:
                 cout << "Error! Invalid Input" << endl;
             }
-
     }
-
 }
-
 
 void ConsoleUI::addData()
 {
@@ -95,13 +92,20 @@ void ConsoleUI::addData()
         Persons newPerson(name, gender, birthYear, deathYear);
         serve.add(newPerson);
     }
-
 }
-bool ConsoleUI::genderCheck(char gender)
+bool ConsoleUI::genderCheck(char& gender)
 {
 
    if(gender == 'm' || gender == 'M' || gender == 'f' || gender == 'F')
    {
+        if(gender == 'm')
+        {
+            gender = 'M';
+        }
+        if(gender == 'f')
+        {
+            gender = 'F';
+        }
 
        return true;
    }
@@ -110,7 +114,6 @@ bool ConsoleUI::genderCheck(char gender)
        cout << "Wrong input for gender!" << endl;
        return false;
    }
-
 }
 
 bool ConsoleUI::check()
@@ -141,6 +144,7 @@ bool ConsoleUI::birthChecks(int birthYear, int deathYear)
     if(birthYear > 2016)
     {
         cout << "You can not be born after the year 2016" << endl;
+
         return false;
 
     }
