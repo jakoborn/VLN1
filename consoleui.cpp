@@ -121,6 +121,7 @@ bool ConsoleUI::check()
     if(continuel == 'Y' || continuel == 'y')
     {
         addData();
+        return true;
     }
     else
     {
@@ -143,13 +144,13 @@ bool ConsoleUI::birthChecks(int birthYear, int deathYear)
         return false;
 
     }
-    if(deathYear < birthYear)
+    if(deathYear < birthYear && !'0')
     {
         cout << "You cannot die before you are born!" << endl;
         return false;
 
     }
-    if(deathYear > 2016 && !'0')
+    if(deathYear > 2016 )
     {
 
         cout << "You are Still alive.";
@@ -247,6 +248,7 @@ void ConsoleUI::searchData()
                         cout << serve.list()[v_g[i]];
                     }
                 }
+                break;
             }
             case 4:
             {
@@ -269,6 +271,7 @@ void ConsoleUI::searchData()
                         cout << serve.list()[v_r[i]];
                     }
                 }
+                break;
             }
 
             case 5:

@@ -109,13 +109,13 @@ void ServiceLayer::sortByName(int order)
     vector <Persons> people = dl.getVector();
     if (order == 1)
     {
-        //sort(people.begin(), people.end(), sorter.sortByName);
-        sort(people.begin(), people.end(), sortByName2);
+        //stable_sort(people.begin(), people.end(), sorter.sortByName);
+        stable_sort(people.begin(), people.end(), sortByName2);
     }
-    else
+    else //order == 2
     {
-        //sort(people.begin(), people.end(), sorter.rSortByName);
-        sort(people.begin(), people.end(), rSortByName2);
+        //stable_sort(people.begin(), people.end(), sorter.rSortByName);
+        stable_sort(people.begin(), people.end(), rSortByName2);
     }
     dl.setVector(people);
 }
@@ -126,13 +126,13 @@ void ServiceLayer::sortByBirthYear(int order)
     vector <Persons> people = dl.getVector();
     if (order == 1)
     {
-        //sort(people.begin(), people.end(), sorter.sortByBirthYear);
-        sort(people.begin(), people.end(), sortByBirthYear2);
+        //stable_sort(people.begin(), people.end(), sorter.sortByBirthYear);
+        stable_sort(people.begin(), people.end(), sortByBirthYear2);
     }
-    else
+    else //order == 2
     {
-        //sort(people.begin(), people.end(), sorter.rSortByBirthYear);
-        sort(people.begin(), people.end(), rSortByBirthYear2);
+        //stable_sort(people.begin(), people.end(), sorter.rSortByBirthYear);
+        stable_sort(people.begin(), people.end(), rSortByBirthYear2);
     }
     dl.setVector(people);
 }
@@ -142,13 +142,13 @@ void ServiceLayer::sortByDeathYear(int order)
     vector <Persons> people = dl.getVector();
     if (order == 1)
     {
-        //sort(people.begin(), people.end(), sorter.sortByDeathYear);
-        sort(people.begin(), people.end(), sortByDeathYear2);
+        //stable_sort(people.begin(), people.end(), sorter.sortByDeathYear);
+        stable_sort(people.begin(), people.end(), sortByDeathYear2);
     }
-    else
+    else //order == 2
     {
-        //sort(people.begin(), people.end(), sorter.rSortByDeathYear);
-        sort(people.begin(), people.end(), rSortByDeathYear2);
+        //stable_sort(people.begin(), people.end(), sorter.rSortByDeathYear);
+        stable_sort(people.begin(), people.end(), rSortByDeathYear2);
     }
     dl.setVector(people);
 }
@@ -158,13 +158,13 @@ void ServiceLayer::sortByGender(int order)
     vector <Persons> people = dl.getVector();
     if (order == 1)
     {
-        //sort(people.begin(), people.end(), sorter.sortByGender);
-        sort(people.begin(), people.end(), sortByGender2);
+        //stable_sort(people.begin(), people.end(), sorter.sortByGender);
+        stable_sort(people.begin(), people.end(), sortByGender2);
     }
-    else
+    else //order == 2
     {
-        //sort(people.begin(), people.end(), sorter.rSortByGender);
-        sort(people.begin(), people.end(), rSortByGender2);
+        //stable_sort(people.begin(), people.end(), sorter.rSortByGender);
+        stable_sort(people.begin(), people.end(), rSortByGender2);
     }
     dl.setVector(people);
 }
