@@ -55,6 +55,7 @@ void ConsoleUI::run()
 
 void ConsoleUI::addData()
 {
+
     string name;
     char gender;
     int birthYear;
@@ -65,15 +66,88 @@ void ConsoleUI::addData()
     getline(cin,name);
     cout << "Enter gender (M/F): ";
     cin >> gender;
+    if(genderCheck(gender) == false)
+    {
+        if(check() == false)
+        {
+            return;
+        }
+    }
     cout << "Enter birth year: ";
     cin >> birthYear;
     cout << "Enter death year (0 for living person): ";
     cin >> deathYear;
+    if(birthChecks(birthYear, deathYear) == false)
+    {
+        check();    // Checks if you want to try to input again.
+    }
+    else
+    {
+        Persons newPerson(name, gender, birthYear, deathYear);
+        serve.add(newPerson);
+    }
 
-    Persons newPerson(name, gender, birthYear, deathYear);
-    serve.add(newPerson);
+}
+bool ConsoleUI::genderCheck(char gender)
+{
+
+   if(gender == 'm' || gender == 'M' || gender == 'f' || gender == 'F')
+   {
+
+       return true;
+   }
+   else
+   {
+       cout << "Wrong input for gender!" << endl;
+       return false;
+   }
+
 }
 
+bool ConsoleUI::check()
+{
+    char continuel;
+    cout << "Do you want to try again? (Y for yes and N for No)" ;
+    cin  >> continuel;
+    if(continuel == 'Y' || continuel == 'y')
+    {
+        addData();
+    }
+    else
+    {
+       return false;
+    }
+}
+
+bool ConsoleUI::birthChecks(int birthYear, int deathYear)
+{
+
+    if(birthYear < 0 )
+    {
+        cout << "You can not be born before the year zero." << endl;
+        return false;
+
+    }
+    if(birthYear > 2016)
+    {
+        cout << "You can not be born after the year 2016" << endl;
+        return false;
+
+    }
+    if(deathYear < birthYear)
+    {
+        cout << "You cannot die before you are born!" << endl;
+        return false;
+
+    }
+    if(deathYear > 2016)
+    {
+
+        cout << "You are Still alive.";
+        return false;
+    }
+        return true;
+    }
 
 void ConsoleUI::showData()
 {
@@ -219,8 +293,6 @@ void ConsoleUI::printLine()
 void ConsoleUI::removeData()
 {
     string str;
-    cout << "Enter the name of the scientist you want to remove: ";
-    cin  >> str;
-
+    cout << "Enter the name of the scientist you want to remove: " << endl;
 
 }

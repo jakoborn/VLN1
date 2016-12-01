@@ -17,6 +17,7 @@ public:
    void loadFromFile();
    void saveToFile();
    vector<Persons> getVector();
+   void removeData(int &x);
 
    void addPerson(const Persons& p);
    void sortByName();
