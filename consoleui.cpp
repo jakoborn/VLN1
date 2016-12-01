@@ -155,6 +155,10 @@ void ConsoleUI::deleteData()
     string n = " ";
     cin >> ws;
     getline(cin, n);
+    if(!isupper(n[0]))
+    {
+        n[0] = toupper(n[0]);
+    }
     vector<int> v = serve.searchByName(n);
     int s = v.size();
     if (s > 0) {
