@@ -10,13 +10,13 @@ using namespace std;
 class DataLayer
 {
     vector<Persons> people;
-    Sortings sorter;
 public:
    DataLayer();
 
    void loadFromFile();
    void saveToFile();
    vector<Persons> getVector();
+   void removeData(int &x);
    void setVector(vector <Persons> p);
 
    void addPerson(const Persons& p);

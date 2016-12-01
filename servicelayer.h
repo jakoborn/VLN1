@@ -9,10 +9,11 @@ using namespace std;
 class ServiceLayer
 {
     DataLayer dl;
+    Sortings sorter;
 public:
     ServiceLayer();
     vector<Persons> list();
-    Sortings sorter;
+    vector<int> removeByName();
 
     vector<int> searchByYear(const int year);
     vector<int> searchByName(const string name);
