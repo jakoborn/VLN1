@@ -242,6 +242,7 @@ void ConsoleUI::searchData()
                         cout << serve.list()[v_g[i]];
                     }
                 }
+                break;
             }
             case 4:
             {
@@ -264,6 +265,7 @@ void ConsoleUI::searchData()
                         cout << serve.list()[v_r[i]];
                     }
                 }
+                break;
             }
 
             case 5:
