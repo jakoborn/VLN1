@@ -134,7 +134,7 @@ bool ConsoleUI::check()
 
 void ConsoleUI::deleteData()
 {
-    cout << "Enter name of person you would like to delete: ";
+    cout << "Enter name of scientist you would like to delete: ";
     string n = " ";
     cin >> ws;
     getline(cin, n);
@@ -476,9 +476,4 @@ void ConsoleUI::printLine()
     cout << left << "Name";
     cout <<  "\tGender\tBorn\tDied" << endl;
     cout << "_____________________________________________________" << endl;
-}
-void ConsoleUI::removeData()
-{
-    string str;
-    cout << "Enter the name of the scientist you want to remove: " << endl;
 }

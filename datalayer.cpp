@@ -39,9 +39,7 @@ void DataLayer::loadFromFile()
 
 void DataLayer::saveToFile()
 {
-    fstream out;
-
-    out.open(FILENAME);
+    ofstream out(FILENAME);
 
     out.width(16);
     out << left << "Name";
