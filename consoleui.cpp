@@ -18,12 +18,12 @@ void ConsoleUI::run()
     while (run)
     {
        cout << " ================================" << endl;
-       cout << " Press 1 to add" << endl;
-       cout << " Press 2 to sort" << endl;
-       cout << " Press 3 to list" << endl;
-       cout << " Press 4 to search"  << endl;
-       cout << " Press 5 to remove scientist"     << endl;
-       cout << " Press 6 to exit"     << endl;
+       cout << " Press 1 to list the scientists"   << endl;
+       cout << " Press 2 to sort the scientists"   << endl;
+       cout << " Press 3 to add a scientist"       << endl;
+       cout << " Press 4 to search the list"       << endl;
+       cout << " Press 5 to remove a scientist"    << endl;
+       cout << " Press 6 to exit"                  << endl;
        cout << " ================================" << endl;
 
        char input = '0';
@@ -34,13 +34,13 @@ void ConsoleUI::run()
             switch (choice)
             {
             case 1:
-                addData();
+                showData();
                 break;
             case 2:
                 sortData();
                 break;
             case 3:
-                showData();
+                addData();
                 break;
             case 4:
                 searchData();
