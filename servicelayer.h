@@ -24,6 +24,7 @@ public:
     void sortByBirthYear(int order);
     void sortByDeathYear(int order);
     void sortByGender(int order);
+    bool addFromFile(string input);
 };
 
 #endif // SERVICELAYER_H

@@ -66,7 +66,66 @@ bool isNumber(const string& s)
 
 void ConsoleUI::addData()
 {
+    bool error = false;
+    do
+    {
+        cout << " ================================" << endl;
+        cout << " Press 1 to add manually"   << endl;
+        cout << " Press 2 to add from file"   << endl;
+        cout << " Press 3 to cancel"   << endl;
+        cout << " ================================" << endl;
 
+        char input = '0';
+        string fileName = "";
+        bool fileOpenFail = false;
+        cin >> input;
+        OnlyTakeOneInput();
+        int choice = input - '0';
+
+        switch (choice) {
+        case 1:
+            addPersonManually();
+            error = false;
+            break;
+        case 2:
+            do
+            {
+                cout << "Enter the full path of the file, or the name of the file, if the file is in the same directory: " << endl;
+                cin >> fileName;
+                if(!serve.addFromFile(fileName))
+                {
+                    cout << "Success!";
+                    error = false;
+
+                }
+                else
+                {
+                    cout << "Error! Failed to open file" << endl;
+                    char continuel;
+                    cout << "Do you want to try again? (Y for yes and N for no) " ;
+                    cin  >> continuel;
+                    if(continuel != 'Y' && continuel != 'y')
+                    {
+                        fileOpenFail = true;
+                    }
+                }
+            } while (fileOpenFail);
+            break;
+        case 3:
+            error = false;
+            break;
+        default:
+            cout << "Error! Invalid input" << endl;
+            error = true;
+            break;
+        }
+    } while (error == true);
+
+
+}
+
+void ConsoleUI::addPersonManually()
+{
     string name, year;
     char gender;
     int birthYear;
@@ -132,7 +191,9 @@ void ConsoleUI::addData()
             cout << "Scientist added\n";
         }
     }
+
 }
+
 bool ConsoleUI::genderCheck(char& gender)
 {
 

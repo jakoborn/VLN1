@@ -4,7 +4,7 @@
 
 using namespace std;
 
-const string FILENAME = "science.txt";
+const string DEFAULT_FILENAME = "science.txt";
 
 DataLayer::DataLayer()
 {
@@ -27,7 +27,7 @@ void DataLayer::loadFromFile()
     Persons p;
     ifstream in;
 
-    in.open(FILENAME);
+    in.open(DEFAULT_FILENAME);
     in.seekg(90);
 
     while(in >> p)
@@ -37,9 +37,36 @@ void DataLayer::loadFromFile()
     in.close();
  }
 
+bool DataLayer::loadFromOtherFile(string input)
+{
+
+    Persons p;
+    ifstream in;
+
+    if (in.fail( ))
+    {
+        return false;
+    }
+    else
+    {
+        in.open(input);
+
+
+        while(in >> p)
+        {
+            people.push_back(p);
+        }
+        in.close();
+
+        saveToFile();
+
+        return true;
+    }
+ }
+
 void DataLayer::saveToFile()
 {
-    ofstream out(FILENAME);
+    ofstream out(DEFAULT_FILENAME);
 
     out.width(16);
     out << left << "Name";
@@ -72,7 +99,7 @@ void DataLayer::deletePerson(int n) {
     Persons p;
     ifstream in;
 
-    in.open(FILENAME);
+    in.open(DEFAULT_FILENAME);
     in.seekg(90);
 
     while(in >> p)
