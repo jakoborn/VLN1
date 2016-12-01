@@ -23,6 +23,7 @@ public:
     char getGender() const;
     bool getAlive() const;
     void operator = (const Persons& p);
+    bool operator == (const Persons& p);
     friend ostream& operator << (ostream& out, const Persons& p);
     friend istream& operator >> (istream& in, Persons& p);
 };

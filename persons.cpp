@@ -53,6 +53,10 @@ void Persons::operator = (const Persons& p) {
     alive = p.alive;
 }
 
+bool Persons::operator == (const Persons& p) {
+    return name == p.name && gender == p.gender && birthYear == p.birthYear && deathYear == p.deathYear;
+}
+
 ostream& operator << (ostream& out, const Persons& p) {
     out.width(16);
     out << left << p.getName() << "\t" <<  p.getGender() << "\t" << p.getBirthYear() << "\t";

@@ -95,7 +95,18 @@ void ConsoleUI::addData()
     else
     {
         Persons newPerson(name, gender, birthYear, deathYear);
-        serve.add(newPerson);
+        int a = 0;
+        for (unsigned int i = 0; i < serve.list().size(); i++) {
+            if (newPerson == serve.list()[i]) {
+                cout << "Scientist already on list!\n";
+                a++;
+                break;
+            }
+        }
+        if (a ==0) {
+            serve.add(newPerson);
+            cout << "Scientist added\n";
+        }
     }
 }
 bool ConsoleUI::genderCheck(char& gender)
@@ -144,30 +155,35 @@ void ConsoleUI::deleteData()
     string n = " ";
     cin >> ws;
     getline(cin, n);
-    bool d = false;
-    while (!d) {
-        cout << "Are you sure you would like to delete the following scientist(s)? (y/n)\n";
-        vector<int> v = serve.searchByName(n);
-        int s = v.size();
-        for (int i = 0; i < s; i++) {
-            cout << serve.list()[v[i]];
-        }
-        char a = ' ';
-        cin >> a;
-        if (a == 'y' || a == 'Y') {
-        for (int i = s-1; i >= 0; i--) {
-            serve.erase(v[i]);
-        }
-        cout << "Scientist(s) deleted\n";
-         d = true;
-        }
-        else if (a == 'n' || a == 'N') {
-            cout << "Delete cancelled\n";
+    vector<int> v = serve.searchByName(n);
+    int s = v.size();
+    if (s > 0) {
+        bool d = false;
+        while (!d) {
+            cout << "Are you sure you would like to delete the following scientist(s)? (y/n)\n";
+            for (int i = 0; i < s; i++) {
+                cout << serve.list()[v[i]];
+            }
+            char a = ' ';
+            cin >> a;
+            if (a == 'y' || a == 'Y') {
+            for (int i = s-1; i >= 0; i--) {
+                serve.erase(v[i]);
+            }
+            cout << "Scientist(s) deleted\n";
             d = true;
+            }
+            else if (a == 'n' || a == 'N') {
+                cout << "Delete cancelled\n";
+                d = true;
+            }
+            else {
+                cout << "Invalid input!\n";
+            }
         }
-        else {
-            cout << "Invalid input!\n";
-        }
+    }
+    else {
+        cout << "No match for " << n << endl;
     }
 }
 bool ConsoleUI::birthChecks(int birthYear, int deathYear)
