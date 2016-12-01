@@ -93,7 +93,6 @@ void ConsoleUI::addData()
         }
     } while (error == true);
 
-
 }
 
 void ConsoleUI::addPersonManually()
@@ -314,6 +313,111 @@ void ConsoleUI::showData()
      cout << "_____________________________________________________" << endl;
 
 }
+void ConsoleUI::searchByName()
+{
+    string n = " ";
+    cout << "Enter name: ";
+    cin >> ws;
+    getline(cin, n);
+    if(!isupper(n[0]))
+    {
+        n[0] = toupper(n[0]);
+    }
+    vector<int> vN = serve.searchByName(n);
+    if (vN.size() == 0) {
+        cout << "No results found\n";
+    }
+    else {
+        printLine();
+        for (unsigned int i = 0; i < vN.size(); i++)
+        {
+            cout << serve.list()[vN[i]];
+        }
+    }
+
+}
+void ConsoleUI::searchByBirthYear()
+{
+    int y = 0;
+    string s = " ";
+    while (!validYear(s, y)) {
+        cout << "Enter year: ";
+        cin >> s;
+        if (!validYear(s, y)) {
+            cout << "Invalid input!\n";
+        }
+    }
+    vector<int> vY = serve.searchByYear(y);
+    if (vY.size() == 0) {
+        cout << "No results found\n";
+    }
+    else {
+        printLine();
+        for (unsigned int i = 0; i < vY.size(); i++)
+        {
+            cout << serve.list()[vY[i]];
+        }
+    }
+
+}
+void ConsoleUI::searchByGender()
+{
+    char gender;
+    cout << "Enter gender (M/F): ";
+    cin >> gender;
+    if(genderCheck(gender) == false)
+    {
+        searchData();
+    }
+    vector<int> v_g = serve.searchByGender(gender);
+    if (v_g.size() == 0)
+    {
+        cout << "No results found" << endl;
+    }
+    else
+    {
+        printLine();
+        for (unsigned int i = 0; i < v_g.size(); i++)
+        {
+            cout << serve.list()[v_g[i]];
+        }
+    }
+}
+
+void ConsoleUI::searchByYearRange()
+{
+    int f = 0, l = 0;
+    string s = " ";
+    while(!validYear(s, f)) {
+        cout << "Enter first year in range: ";
+        cin >> s;
+        if(!validYear(s, f)) {
+            cout << "Invalid input!\n";
+        }
+    }
+    s = " ";
+    while(!validYear(s, l) || l < f) {
+        cout << "Enter last year in range: ";
+        cin >> s;
+        if(!validYear(s, l) || l < f) {
+            cout << "Invalid input!\n";
+        }
+    }
+    vector<int> v_r = serve.searchByRange(f,l);
+    if (v_r.size() == 0)
+    {
+        cout << "No results found" << endl;
+    }
+    else
+    {
+        printLine();
+        for (unsigned int i = 0; i < v_r.size(); i++)
+        {
+            cout << serve.list()[v_r[i]];
+        }
+    }
+
+}
 
 void ConsoleUI::searchData()
 {
@@ -338,109 +442,24 @@ void ConsoleUI::searchData()
         {
             case 1:
             {
-                string n = " ";
-                cout << "Enter name: ";
-                cin >> ws;
-                getline(cin, n);
-                if(!isupper(n[0]))
-                {
-                    n[0] = toupper(n[0]);
-                }
-                vector<int> vN = serve.searchByName(n);
-                if (vN.size() == 0) {
-                    cout << "No results found\n";
-                }
-                else {
-                    printLine();
-                    for (unsigned int i = 0; i < vN.size(); i++)
-                    {
-                        cout << serve.list()[vN[i]];
-                    }
-                }
+                searchByName();
                 error = false;
                 break;
             }
             case 2:
             {
-                int y = 0;
-                string s = " ";
-                while (!validYear(s, y)) {
-                    cout << "Enter year: ";
-                    cin >> s;
-                    if (!validYear(s, y)) {
-                        cout << "Invalid input!\n";
-                    }
-                }
-                vector<int> vY = serve.searchByYear(y);
-                if (vY.size() == 0) {
-                    cout << "No results found\n";
-                }
-                else {
-                    printLine();
-                    for (unsigned int i = 0; i < vY.size(); i++)
-                    {
-                        cout << serve.list()[vY[i]];
-                    }
-                }
+                searchByBirthYear();
                 error = false;
                 break;
             }
             case 3:
             {
-                char gender;
-                cout << "Enter gender (M/F): ";
-                cin >> gender;
-                if(genderCheck(gender) == false)
-                {
-                    searchData();
-                }
-                vector<int> v_g = serve.searchByGender(gender);
-                if (v_g.size() == 0)
-                {
-                    cout << "No results found" << endl;
-                }
-                else
-                {
-                    printLine();
-                    for (unsigned int i = 0; i < v_g.size(); i++)
-                    {
-                        cout << serve.list()[v_g[i]];
-                    }
-                }
+                searchByGender();
                 break;
             }
             case 4:
             {
-                int f = 0, l = 0;
-                string s = " ";
-                while(!validYear(s, f)) {
-                    cout << "Enter first year in range: ";
-                    cin >> s;
-                    if(!validYear(s, f)) {
-                        cout << "Invalid input!\n";
-                    }
-                }
-                s = " ";
-                while(!validYear(s, l) || l < f) {
-                    cout << "Enter last year in range: ";
-                    cin >> s;
-                    if(!validYear(s, l) || l < f) {
-                        cout << "Invalid input!\n";
-                    }
-                }
-                vector<int> v_r = serve.searchByRange(f,l);
-                if (v_r.size() == 0)
-                {
-                    cout << "No results found" << endl;
-                }
-                else
-                {
-                    printLine();
-                    for (unsigned int i = 0; i < v_r.size(); i++)
-                    {
-                        cout << serve.list()[v_r[i]];
-                    }
-                }
+                searchByYearRange();
                 break;
             }
 

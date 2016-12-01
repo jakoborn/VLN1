@@ -20,6 +20,10 @@ private:
     bool check();
     bool genderCheck(char &gender);
     void OnlyTakeOneInput();
+    void searchByName();
+    void searchByBirthYear();
+    void searchByGender();
+    void searchByYearRange();
 
 
 public:
