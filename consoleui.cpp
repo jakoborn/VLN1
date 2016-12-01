@@ -477,8 +477,4 @@ void ConsoleUI::printLine()
     cout <<  "\tGender\tBorn\tDied" << endl;
     cout << "_____________________________________________________" << endl;
 }
-void ConsoleUI::removeData()
-{
-    string str;
-    cout << "Enter the name of the scientist you want to remove: " << endl;
-}
+
