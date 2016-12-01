@@ -62,7 +62,8 @@ void DataLayer::saveToFile()
     out.close();
 }
 
-void DataLayer::addPerson(const Persons& p) {
+void DataLayer::addPerson(const Persons& p)
+{
     people.push_back(p);
     saveToFile();
 }
