@@ -13,6 +13,7 @@ private:
     void sortData();
     void searchData();
     void printLine();
+    bool validYear(const string& s, int& year);
     bool birthChecks(int birthYear, int deathYear);
     bool check();
     bool genderCheck(char &gender);
