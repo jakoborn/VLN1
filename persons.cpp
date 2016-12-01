@@ -3,7 +3,6 @@
 
 Persons::Persons()
 {
-
     name = " ";
     gender = ' ';
     birthYear = 1980;
@@ -17,35 +16,43 @@ Persons::Persons(string n, char g, int bY, int dY)
     birthYear = bY;
     deathYear = dY;
     gender = g;
-    if (dY == 0) {
+    if (dY == 0)
+    {
         alive = true;
     }
-    else {
+    else
+    {
         alive = false;
     }
 }
 
-string Persons::getName() const{
+string Persons::getName() const
+{
     return name;
 }
 
-int Persons::getBirthYear() const{
+int Persons::getBirthYear() const
+{
     return birthYear;
 }
 
-int Persons::getDeathYear() const{
+int Persons::getDeathYear() const
+{
     return deathYear;
 }
 
-char Persons::getGender() const{
+char Persons::getGender() const
+{
     return gender;
 }
 
-bool Persons::getAlive() const{
+bool Persons::getAlive() const
+{
     return alive;
 }
 
-void Persons::operator = (const Persons& p) {
+void Persons::operator = (const Persons& p)
+{
     name = p.name;
     gender = p.gender;
     birthYear = p.birthYear;
@@ -53,31 +60,38 @@ void Persons::operator = (const Persons& p) {
     alive = p.alive;
 }
 
-bool Persons::operator == (const Persons& p) {
+bool Persons::operator == (const Persons& p)
+{
     return name == p.name && gender == p.gender && birthYear == p.birthYear && deathYear == p.deathYear;
 }
 
-ostream& operator << (ostream& out, const Persons& p) {
+ostream& operator << (ostream& out, const Persons& p)
+{
     out.width(16);
     out << left << p.getName() << "\t" <<  p.getGender() << "\t" << p.getBirthYear() << "\t";
-    if (!p.getAlive()) {
+    if (!p.getAlive())
+    {
         out << p.getDeathYear() << endl;
     }
-    else {
+    else
+    {
         out << "Alive " << endl;
     }
     return out;
 }
 
-istream& operator >> (istream& in, Persons& p) {
+istream& operator >> (istream& in, Persons& p)
+{
     string a = " ";
     in >> ws;
     getline(in, p.name, ';');
     in >> p.gender >> p.birthYear >> a;
-    if (a == "Alive") {
+    if (a == "Alive")
+    {
         p.alive = true;
     }
-    else {
+    else
+    {
         p.alive = false;
         p.deathYear = atoi(a.c_str());
     }
