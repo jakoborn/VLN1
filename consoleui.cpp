@@ -6,6 +6,11 @@ ConsoleUI::ConsoleUI()
 {
 
 }
+void ConsoleUI::OnlyTakeOneInput()
+{
+    cin.clear();
+    fflush(stdin);
+}
 
 void ConsoleUI::run()
 {
@@ -23,8 +28,7 @@ void ConsoleUI::run()
 
        char input = '0';
        cin >> input;
-       cin.clear();
-       fflush(stdin);
+       OnlyTakeOneInput();
        int choice = input - '0';
 
             switch (choice)
@@ -61,7 +65,7 @@ void ConsoleUI::addData()
     int birthYear;
     int deathYear;
 
-    cout << "Enter Name: ";
+    cout << "Enter name: ";
     cin >> ws;
     getline(cin,name);
     if(!isupper(name[0]))
@@ -70,8 +74,7 @@ void ConsoleUI::addData()
     }
     cout << "Enter gender (M/F): ";
     cin >> gender;
-    cin.clear();
-    fflush(stdin);
+    OnlyTakeOneInput();
     if(genderCheck(gender) == false)
     {
         if(check() == false)
@@ -81,8 +84,10 @@ void ConsoleUI::addData()
     }
     cout << "Enter birth year: ";
     cin >> birthYear;
+    OnlyTakeOneInput();
     cout << "Enter death year (0 for living person): ";
     cin >> deathYear;
+    OnlyTakeOneInput();
     if(birthChecks(birthYear, deathYear) == false)
     {
         check();    // Checks if you want to try to input again.
@@ -116,10 +121,11 @@ bool ConsoleUI::genderCheck(char& gender)
    }
 }
 
+
 bool ConsoleUI::check()
 {
     char continuel;
-    cout << "Do you want to try again? (Y for yes and N for No)" ;
+    cout << "Do you want to try again? (Y for yes and N for No) " ;
     cin  >> continuel;
     if(continuel == 'Y' || continuel == 'y')
     {
@@ -166,31 +172,42 @@ void ConsoleUI::deleteData()
 }
 bool ConsoleUI::birthChecks(int birthYear, int deathYear)
 {
+    if(!isdigit(birthYear) && !isdigit(deathYear) && deathYear != 0)
+    {
 
+        cout << "Please do not input letter" << endl;
+        return false;
+    }
     if(birthYear < 0 )
     {
-        cout << "You can not be born before the year zero." << endl;
+        cout << "The scientist can not be born before the year zero." << endl;
         return false;
 
     }
     if(birthYear > 2016)
     {
-        cout << "You can not be born after the year 2016" << endl;
+        cout << "The scientist can not be born after the year 2016" << endl;
 
         return false;
 
     }
     if(deathYear < birthYear && deathYear != 0)
     {
-        cout << "You cannot die before you are born!" << endl;
+        cout << "The scientist cannot die before they are born!" << endl;
         return false;
 
     }
     if(deathYear > 2016 )
     {
 
-        cout << "You are Still alive.";
+        cout << "The scientist is still alive.";
         return false;
+    }
+    if(deathYear - birthYear > 123)
+    {
+        cout << "That is to old, the oldest man was 122 years old!" << endl;
+        return false;
+
     }
 
     return true;
@@ -296,7 +313,7 @@ void ConsoleUI::searchData()
                 int f = 0, l = 0;
                 cout << "Enter first year in range: ";
                 cin >> f;
-                cout << "Enter last yar in range: ";
+                cout << "Enter last year in range: ";
                 cin >> l;
 
                 vector<int> v_r = serve.searchByRange(f,l);
@@ -320,7 +337,7 @@ void ConsoleUI::searchData()
                 break;
             default:
             {
-                cout << "Error! invalid input" << endl;
+                cout << "Error! Invalid input" << endl;
                 error = true;
             }
         }
@@ -343,7 +360,7 @@ void ConsoleUI::sortData()
         cout << " Press 2 for Birth Year" << endl;
         cout << " Press 3 for Death Year " << endl;
         cout << " Press 4 for Gender" << endl;
-        cout << " Press 5 to cancel" << endl;
+        cout << " Press 5 to Cancel" << endl;
         cout << " ================================" << endl;
 
         cin >> input;
@@ -451,8 +468,8 @@ void ConsoleUI::sortData()
                         }
                         cout << "Sort by Males or Females?" << endl;
                         cout << " ================================" << endl;
-                        cout << "Press 1 for sorting by Females first" << endl;
-                        cout << "Press 2 for sorting by Males first" << endl;
+                        cout << "Press 1 for sorting by females first" << endl;
+                        cout << "Press 2 for sorting by males first" << endl;
                         cout << "Press 3 to cancel" << endl;
                         cout << " ================================" << endl;
 
