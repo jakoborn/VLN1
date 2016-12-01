@@ -374,8 +374,14 @@ void ConsoleUI::searchData()
             case 2:
             {
                 int y = 0;
-                cout << "Enter year: ";
-                cin >> y;
+                string s = " ";
+                while (!validYear(s, y)) {
+                    cout << "Enter year: ";
+                    cin >> s;
+                    if (!validYear(s, y)) {
+                        cout << "Invalid input!\n";
+                    }
+                }
                 vector<int> vY = serve.searchByYear(y);
                 if (vY.size() == 0) {
                     cout << "No results found\n";
@@ -417,11 +423,22 @@ void ConsoleUI::searchData()
             case 4:
             {
                 int f = 0, l = 0;
-                cout << "Enter first year in range: ";
-                cin >> f;
-                cout << "Enter last year in range: ";
-                cin >> l;
-
+                string s = " ";
+                while(!validYear(s, f)) {
+                    cout << "Enter first year in range: ";
+                    cin >> s;
+                    if(!validYear(s, f)) {
+                        cout << "Invalid input!\n";
+                    }
+                }
+                s = " ";
+                while(!validYear(s, l) || l < f) {
+                    cout << "Enter last year in range: ";
+                    cin >> s;
+                    if(!validYear(s, l) || l < f) {
+                        cout << "Invalid input!\n";
+                    }
+                }
                 vector<int> v_r = serve.searchByRange(f,l);
                 if (v_r.size() == 0)
                 {
@@ -515,7 +532,7 @@ void ConsoleUI::sortData()
                         {
                             cout << "Error! Invalid input" << endl;
                         }
-                        cout << "Ascended or Descended sorting?" << endl;
+                        cout << "Ascending or Descending sorting?" << endl;
                         cout << " ================================" << endl;
                         cout << "Press 1 to sort by ascending order" << endl;
                         cout << "Press 2 to sort by descending order" << endl;
