@@ -155,7 +155,7 @@ void ConsoleUI::deleteData()
 }
 bool ConsoleUI::birthChecks(int birthYear, int deathYear)
 {
-    if(!isdigit(birthYear) && !isdigit(deathYear))
+    if(!isdigit(birthYear) && !isdigit(deathYear) && deathYear != 0)
     {
 
         cout << "Please do not input letter" << endl;
