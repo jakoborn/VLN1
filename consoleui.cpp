@@ -66,6 +66,11 @@ void ConsoleUI::addData()
     cout << "Enter Name: ";
     cin >> ws;
     getline(cin,name);
+
+    if(!isupper(name[0]))
+    {
+        name[0] = toupper(name[0]);
+    }
     cout << "Enter gender (M/F): ";
     cin >> gender;
     cin.clear();
