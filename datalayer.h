@@ -17,6 +17,7 @@ public:
    void loadFromFile();
    void saveToFile();
    vector<Persons> getVector();
+   void setVector(vector <Persons> p);
 
    void addPerson(const Persons& p);
 };

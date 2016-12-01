@@ -278,10 +278,10 @@ void ConsoleUI::sortData()
                         {
                             cout << "Error! Invalid input" << endl;
                         }
-                        cout << "Regular or Reversed sorting?" << endl;
+                        cout << "Sort by Males or Females?" << endl;
                         cout << " ================================" << endl;
-                        cout << "Press 1 for regular sorting" << endl;
-                        cout << "Press 2 for reversed sorting" << endl;
+                        cout << "Press 1 for sorting by Females first" << endl;
+                        cout << "Press 2 for sorting by Males first" << endl;
                         cout << "Press 3 to cancel" << endl;
                         cout << " ================================" << endl;
 

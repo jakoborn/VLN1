@@ -16,6 +16,12 @@ vector<Persons> DataLayer::getVector()
     return people;
 }
 
+void DataLayer::setVector(vector <Persons> p)
+{
+    people = p;
+}
+
+
 void DataLayer::loadFromFile()
 {
 

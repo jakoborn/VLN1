@@ -89,7 +89,7 @@ void ServiceLayer::sortByName(int order)
         //sort(people.begin(), people.end(), sorter.rSortByName);
         sort(people.begin(), people.end(), rSortByName2);
     }
-
+    dl.setVector(people);
 }
 
 void ServiceLayer::sortByBirthYear(int order)
@@ -106,6 +106,7 @@ void ServiceLayer::sortByBirthYear(int order)
         //sort(people.begin(), people.end(), sorter.rSortByBirthYear);
         sort(people.begin(), people.end(), rSortByBirthYear2);
     }
+    dl.setVector(people);
 }
 
 void ServiceLayer::sortByDeathYear(int order)
@@ -121,6 +122,7 @@ void ServiceLayer::sortByDeathYear(int order)
         //sort(people.begin(), people.end(), sorter.rSortByDeathYear);
         sort(people.begin(), people.end(), rSortByDeathYear2);
     }
+    dl.setVector(people);
 }
 
 void ServiceLayer::sortByGender(int order)
@@ -136,4 +138,5 @@ void ServiceLayer::sortByGender(int order)
         //sort(people.begin(), people.end(), sorter.rSortByGender);
         sort(people.begin(), people.end(), rSortByGender2);
     }
+    dl.setVector(people);
 }
