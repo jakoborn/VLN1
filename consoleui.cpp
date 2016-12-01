@@ -17,11 +17,7 @@ void ConsoleUI::run()
        cout << " Press 2 to sort" << endl;
        cout << " Press 3 to list" << endl;
        cout << " Press 4 to search"  << endl;
-<<<<<<< HEAD
-       cout << " Press 5 to delete" << endl;
-=======
        cout << " Press 5 to remove scientist"     << endl;
->>>>>>> 565ed0e61fe078db5c6ee0a97989b705cfe677b5
        cout << " Press 6 to exit"     << endl;
        cout << " ================================" << endl;
 
@@ -46,12 +42,8 @@ void ConsoleUI::run()
                 searchData();
                 break;
             case 5:
-<<<<<<< HEAD
                 deleteData();
                 break;
-=======
-                removeData();
->>>>>>> 565ed0e61fe078db5c6ee0a97989b705cfe677b5
             case 6:
                 run = false;
                 break;
@@ -140,7 +132,6 @@ bool ConsoleUI::check()
     }
 }
 
-<<<<<<< HEAD
 void ConsoleUI::deleteData()
 {
     cout << "Enter name of person you would like to delete: ";
@@ -155,7 +146,7 @@ void ConsoleUI::deleteData()
         }
     }
     serve.erase(a);
-=======
+}
 bool ConsoleUI::birthChecks(int birthYear, int deathYear)
 {
 
@@ -186,7 +177,6 @@ bool ConsoleUI::birthChecks(int birthYear, int deathYear)
     }
 
     return true;
->>>>>>> 565ed0e61fe078db5c6ee0a97989b705cfe677b5
 }
 
 void ConsoleUI::showData()

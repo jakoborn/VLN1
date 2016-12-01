@@ -77,7 +77,6 @@ void ServiceLayer::add(const Persons& p)
     dl.addPerson(p);
 }
 
-<<<<<<< HEAD
 void ServiceLayer::erase(int n)
 {
     dl.deletePerson(n);
