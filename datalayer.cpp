@@ -12,7 +12,6 @@ DataLayer::DataLayer()
 }
 vector<Persons> DataLayer::getVector()
 {
-    saveToFile();
     return people;
 }
 
