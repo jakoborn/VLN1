@@ -95,7 +95,7 @@ bool Persons::birthChecks(int birthYear, int deathYear)
     time_t t = time(NULL);
     tm* TimePtr = localtime(&t);
     int currentYear = TimePtr->tm_year + 1900;
-    return ((deathYear - birthYear) >= 0 && (((deathYear -birthYear) < 123) ||(deathYear == 0 && (currentYear - birthYear) < 123)));
+    return ((deathYear - birthYear) >= 0 && (deathYear -birthYear) < 123) ||(deathYear == 0 && (currentYear - birthYear) < 123);
 }
 
 
