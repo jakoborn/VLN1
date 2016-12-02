@@ -3,6 +3,8 @@
 
 
 //Default Constructor.
+//If a person is ever read in as this, it will be skipped.
+//(see readFromFile() and readFromOtherFile(string input) in datalayer.cpp)
 Persons::Persons()
 {
     name = "John Doe";
@@ -96,9 +98,10 @@ ostream& operator << (ostream& out, const Persons& p)
     return out;
 }
 
+//Checks for a valid name by whether the string 's' is empty
+//or contains characters other than letters and spaces
 bool validName(const string& s)
 {
-    //Checks if 's' is empty or contains characters other than letters and spaces
     string::const_iterator it = s.begin();
     while (it != s.end() && (isalpha(*it) || *it == ' '))
     {
@@ -107,6 +110,8 @@ bool validName(const string& s)
 
     return !s.empty() && it == s.end();
 }
+
+//Checks whether the gender is valid.
 bool genderCheck(char& gender)
 {
 
@@ -127,6 +132,9 @@ bool genderCheck(char& gender)
         return false;
     }
 }
+
+//makes sure that the given year is a number and not letters
+//and that the year is positive and equal to or lower than the current year.
 bool validYear(const string& s, int& year)
 {
     string::const_iterator it = s.begin();
@@ -136,7 +144,7 @@ bool validYear(const string& s, int& year)
     {
         return false;
     }
-    //Checks if 'year' is positive and lower than current year
+    //Checks whether 'year' is positive and lower or equal to the current year
     year = atoi(s.c_str());
     time_t t = time(NULL);
     tm* TimePtr = localtime(&t);
@@ -144,12 +152,16 @@ bool validYear(const string& s, int& year)
 
     return year >= 0 && year <= currentYear;
 }
+
+//We compare the birth year and death year and make sure that the person is not too old
+//as in that he/she died before he/she was born and that the person's death year is not before
+//its birth year.
 bool birthChecks(int birthYear, int deathYear)
 {
     time_t t = time(NULL);
     tm* TimePtr = localtime(&t);
     int currentYear = TimePtr->tm_year + 1900;
-    return ((deathYear - birthYear) >= 0 && (deathYear -birthYear) < 123) ||(deathYear == 0 && (currentYear - birthYear) < 123);
+    return ((deathYear - birthYear) >= 0 && (((deathYear -birthYear) < 123) ||(deathYear == 0 && (currentYear - birthYear) < 123)));
 }
 
 //Overloads the >> (input) operator.
@@ -163,14 +175,18 @@ istream& operator >> (istream& in, Persons& p)
     int bY = 0, dY =0;
     Persons def;
     in >> ws;
-    getline(in, n, ';');
-    in >> gdr >> b >> d;
-    if (validName(n)) {
-        if (gdr.length() == 1) {
+    getline(in, n, ';'); //The Name is read in, and we stop at the ';'.
+    in >> gdr >> b >> d; //The Gender, birthYear, and either deathYear or "Alive" is read in.
+    if (validName(n))
+    {
+        if (gdr.length() == 1) //checks the length of the gender
+        {
             g = gdr.at(0);
-            if (genderCheck(g)) {
-                if (validYear(b, bY)) {
-                    if (d == "Alive" && birthChecks(bY, dY))
+            if (genderCheck(g)) //Makes sure that the gender is valid.
+            {
+                if (validYear(b, bY)) //checks for a valid birth year.
+                {
+                    if ((d == "Alive" || d == "alive") && birthChecks(bY, dY)) //checks whether the person is alive, and whether his age is consistent with human age.
                     {
                         p.name = n;
                         p.gender = g;
@@ -178,13 +194,16 @@ istream& operator >> (istream& in, Persons& p)
                         p.alive = true;
                         p.deathYear = 0;
                     }
-                    else if(validYear(d, dY) && birthChecks(bY, dY)) {
+                    else if(validYear(d, dY) && birthChecks(bY, dY)) //Checks whether the death year is valid, and whether it's consistent with the birth year.
+                    {
                         p.name = n;
                         p.gender = g;
                         p.birthYear = bY;
                         p.deathYear = dY;
                         p.alive = false;
                     }
+                    //Each of these, if it fails the validity checks, will make p a person equal to a person with
+                    //the default constructor, which, when being loaded, will be skipped.
                     else p = def;
                 }
                 else p = def;
@@ -194,5 +213,6 @@ istream& operator >> (istream& in, Persons& p)
         else p = def;
     }
     else p = def;
+
     return in;
 }
