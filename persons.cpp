@@ -66,12 +66,16 @@ void Persons::operator = (const Persons& p)
     alive = p.alive;
 }
 
-//Overloads the == operator.
+//Overloads the == and != operators.
 //Two persons are equal if and only if each
 //Parameter is equal.
 bool Persons::operator == (const Persons& p)
 {
     return name == p.name && gender == p.gender && birthYear == p.birthYear && deathYear == p.deathYear;
+}
+bool Persons::operator != (const Persons& p)
+{
+    return name != p.name || gender != p.gender || birthYear != p.birthYear || deathYear != p.deathYear;
 }
 
 //Overloads the << (output) operator.
