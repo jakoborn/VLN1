@@ -1,6 +1,10 @@
 #include <ctime>
 #include "consoleui.h"
+#ifdef __cplusplus_
+#include <cstdlib>
+#else
 #include <stdlib.h>
+#endif
 using namespace std;
 
 //Default Constructor
@@ -29,7 +33,7 @@ void ConsoleUI::run()
 
        char input = '0';
        cin >> input;
-       system("cls");
+      if (system("CLS")) system("clear");
        onlyTakeOneInput();  // Takes only one letter and flushes the rest.
        int choice = input - '0';
 
