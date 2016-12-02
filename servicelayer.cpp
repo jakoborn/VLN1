@@ -13,27 +13,37 @@ vector<Persons> ServiceLayer::list()
    return dl.getVector();
 }
 
-vector<int> ServiceLayer::searchByYear(const int year) {
+vector<int> ServiceLayer::searchByYear(const int year)
+{
     vector<int> v;
-    for (unsigned int i = 0; i < list().size(); i++) {
-        if (list()[i].getBirthYear() == year) {
+    for (unsigned int i = 0; i < list().size(); i++)
+    {
+        if (list()[i].getBirthYear() == year)
+        {
             v.push_back(i);
         }
     }
     return v;
 }
 
-vector<int> ServiceLayer::searchByName(const string name) {
+vector<int> ServiceLayer::searchByName(const string name)
+{
     vector<int> v;
-    for (unsigned int i = 0; i < list().size(); i++) {
-        if (name.length() <= list()[i].getName().length()) {
-            if (list()[i].getName() == name) {
+    for (unsigned int i = 0; i < list().size(); i++)
+    {
+        if (name.length() <= list()[i].getName().length())
+        {
+            if (list()[i].getName() == name)
+            {
                 v.push_back(i);
                 break;
             }
-            else {
-                for (unsigned int p = 0; p <=(list()[i].getName().length() - name.length()); p++) {
-                    if(name == list()[i].getName().substr(p, name.length())) {
+            else
+            {
+                for (unsigned int p = 0; p <=(list()[i].getName().length() - name.length()); p++)
+                {
+                    if(name == list()[i].getName().substr(p, name.length()))
+                    {
                         v.push_back(i);
                         break;
                     }
@@ -84,22 +94,33 @@ void ServiceLayer::erase(int n)
 
 void ServiceLayer::sorting(int type, int order)
 {    
-    switch (type) {
+    switch (type)
+    {
     case 1:
+    {
         sortByName(order);
         break;
+    }
     case 2:
+    {
         sortByBirthYear(order);
         break;
+    }
     case 3:
+    {
         sortByDeathYear(order);
         break;
+    }
     case 4:
+    {
         sortByGender(order);
         break;
+    }
 
     default:
+    {
         break;
+    }
     }
 }
 

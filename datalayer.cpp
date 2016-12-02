@@ -79,10 +79,12 @@ void DataLayer::saveToFile()
     for (size_t i = 0; i < people.size(); i++)
     {
         out << people[i].getName() << ";\t" << people[i].getGender() << "\t" << people[i].getBirthYear() << "\t";
-        if(people[i].getAlive()) {
+        if(people[i].getAlive())
+        {
             out << "Alive\n";
         }
-        else {
+        else
+        {
             out << people[i].getDeathYear() << endl;
         }
     }
@@ -96,7 +98,8 @@ void DataLayer::addPerson(const Persons& p)
     saveToFile();
 }
 
-void DataLayer::deletePerson(int n) {
+void DataLayer::deletePerson(int n)
+{
     vector<Persons> v;
     Persons p;
     ifstream in;
@@ -111,7 +114,8 @@ void DataLayer::deletePerson(int n) {
     in.close();
     v.erase(v.begin()+n);
     people.resize(v.size());
-    for (unsigned int i = 0; i < v.size(); i++) {
+    for (unsigned int i = 0; i < v.size(); i++)
+    {
         people[i] = v [i];
     }
     saveToFile();

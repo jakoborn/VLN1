@@ -10,6 +10,7 @@ using namespace std;
 class DataLayer
 {
     vector<Persons> people;
+
 public:
    DataLayer();
 
