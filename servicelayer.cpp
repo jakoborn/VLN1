@@ -15,7 +15,7 @@ vector<Persons> ServiceLayer::list()
 }
 
 //regular sorting. For some unknown reason, these functions
-// gave strange errors when we tried to put them in the class
+// gave strange errors when we tried to put them in a class
 //(both a separate class and this class). It was only okay if
 // we used these global functions.
 bool sortByName2(const Persons &lhs, const Persons &rhs)

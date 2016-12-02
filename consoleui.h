@@ -26,7 +26,7 @@ class ConsoleUI
     bool validName(const string& s);
     bool check();
     bool genderCheck(char &gender);
-    void OnlyTakeOneInput();
+    void onlyTakeOneInput();
     void printLine();
     void saveToCustomFile();
 public:
