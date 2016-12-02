@@ -335,12 +335,11 @@ void ConsoleUI::addPersonManually()
     cout << "Enter gender (M/F): ";
     cin >> gender;
     OnlyTakeOneInput();
-    if(!genderCheck(gender))
+    while(genderCheck(gender) == false)
     {
-        if(!check())
-        {
-            return;
-        }
+        cout << "Enter gender (M/F): ";
+        cin  >> gender;
+        OnlyTakeOneInput();
     }
     while(!validYear(year, birthYear))
     {
