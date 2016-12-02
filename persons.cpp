@@ -97,6 +97,37 @@ ostream& operator << (ostream& out, const Persons& p)
     return out;
 }
 
+bool validName(const string& s)
+{
+    //Checks if 's' is empty or contains characters other than letters and spaces
+    string::const_iterator it = s.begin();
+    while (it != s.end() && (isalpha(*it) || *it == ' '))
+    {
+        ++it;
+    }
+
+    return !s.empty() && it == s.end();
+}
+bool genderCheck(char& gender)
+{
+
+    if (gender == 'm' || gender == 'M' || gender == 'f' || gender == 'F')
+    {
+        if(gender == 'm')
+        {
+            gender = 'M';
+        }
+        if(gender == 'f')
+        {
+            gender = 'F';
+        }
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 bool validYear(const string& s, int& year)
 {
     string::const_iterator it = s.begin();
@@ -114,6 +145,13 @@ bool validYear(const string& s, int& year)
 
     return year >= 0 && year <= currentYear;
 }
+bool birthChecks(int birthYear, int deathYear)
+{
+    time_t t = time(NULL);
+    tm* TimePtr = localtime(&t);
+    int currentYear = TimePtr->tm_year + 1900;
+    return ((deathYear - birthYear) >= 0 && (deathYear -birthYear) < 123) ||(deathYear == 0 && (currentYear - birthYear) < 123);
+}
 
 //Overloads the >> (input) operator.
 //Reads the name which we know ends at a ;
@@ -121,29 +159,41 @@ bool validYear(const string& s, int& year)
 //Reads either "Alive" or the deathyear.
 istream& operator >> (istream& in, Persons& p)
 {
-    string n = " ", b = " ", d = " ";
+    string n = " ", gdr = " ", b = " ", d = " ";
     char g = ' ';
     int bY = 0, dY =0;
+    Persons def;
     in >> ws;
     getline(in, n, ';');
-    in >> g >> b;
-    if (validYear(b, bY)) {
-        in >> d;
-        if (d == "Alive")
-        {
-            p.name = n;
-            p.gender = g;
-            p.birthYear = bY;
-            p.alive = true;
-            p.deathYear = 0;
+    in >> gdr >> b >> d;
+    if (validName(n)) {
+        if (gdr.length() == 1) {
+            g = gdr.at(0);
+            if (genderCheck(g)) {
+                if (validYear(b, bY)) {
+                    if (d == "Alive")
+                    {
+                        p.name = n;
+                        p.gender = g;
+                        p.birthYear = bY;
+                        p.alive = true;
+                        p.deathYear = 0;
+                    }
+                    else if(validYear(d, dY)) {
+                        p.name = n;
+                        p.gender = g;
+                        p.birthYear = bY;
+                        p.deathYear = dY;
+                        p.alive = false;
+                    }
+                    else p = def;
+                }
+                else p = def;
+            }
+            else p = def;
         }
-        else if(validYear(d, dY)) {
-            p.name = n;
-            p.gender = g;
-            p.birthYear = bY;
-            p.deathYear = dY;
-            p.alive = false;
-        }
+        else p = def;
     }
+    else p = def;
     return in;
 }

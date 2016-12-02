@@ -567,24 +567,24 @@ void ConsoleUI::searchByGender()
     if (gender.length() == 1)
     {
         char g = gender.at(0);
-        if (genderCheck(g) == false)
+        if (!genderCheck(g))
         {
             cout << "Invalid gender input!" << endl;
             searchByGender();
         }
         else
         {
-            vector<int> v_g = serve.searchByGender(g);
-            if (v_g.size() == 0)
+            vector<int> vG = serve.searchByGender(g);
+            if (vG.size() == 0)
             {
                 cout << "No results found" << endl;
             }
             else
             {
                 printLine();
-                for (unsigned int i = 0; i < v_g.size(); i++)
+                for (unsigned int i = 0; i < vG.size(); i++)
                 {
-                    cout << serve.list()[v_g[i]];
+                    cout << serve.list()[vG[i]];
                 }
             }
         }
