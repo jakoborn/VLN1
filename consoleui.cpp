@@ -84,7 +84,7 @@ void ConsoleUI::sortData()
 {
     char input = '0';
     int choice = 0;
-    int choice2 = 0;
+    int order = 0;
     bool error = false;
 
     do
@@ -102,29 +102,29 @@ void ConsoleUI::sortData()
         cin >> input;
         OnlyTakeOneInput();
         choice = input - '0';
-        choice2 = 0;
+        order = 0;
         input = '1';
 
             switch (choice)
             {
             case 1:
             {
-                sortByName(input, choice, choice2, error);
+                sortByName(input, order, error);
                 break;
             }
              case 2:
             {
-                    sortByBirthYear(input, choice, choice2, error);
+                    sortByBirthYear(input, order, error);
                     break;
             }
              case 3:
-            {
-                    sortByDeathYear(input, choice, choice2, error);
+                {
+                    sortByDeathYear(input, order, error);
                     break;
             }
              case 4:
             {
-                    sortByGender(input, choice, choice2, error);
+                    sortByGender(input, order, error);
                     break;
             }
              case 5:
@@ -146,7 +146,7 @@ void ConsoleUI::sortData()
         listData();
     }
 }
-void ConsoleUI::sortByName(char input, int choice, int choice2, bool& error)
+void ConsoleUI::sortByName(char input, int order, bool& error)
 {
     do
     {
@@ -165,41 +165,11 @@ void ConsoleUI::sortByName(char input, int choice, int choice2, bool& error)
         OnlyTakeOneInput();
     }
     while (input != '1' && input != '2' && input != '3');
-    choice2 = input - '0';
+    order = input - '0';
 
-    if (choice2 == 1 || choice2 == 2)
+    if (order == 1 || order == 2)
     {
-        serve.sorting(choice, choice2);
-        error = false;
-    }
-    else
-    {
-        error = true;
-    }
-}
-void ConsoleUI::sortByBirthYear(char input, int choice, int choice2, bool& error)
-{
-    do
-    {
-        if (input != '1' && input != '2' && input != '3')
-        {
-            cout << "Error! Invalid input" << endl;
-        }
-        cout << "Ascending or Descending sorting?"    << endl;
-        cout << " ================================"   << endl;
-        cout << "Press 1 to sort by ascending order"  << endl;
-        cout << "Press 2 to sort by descending order" << endl;
-        cout << "Press 3 to cancel"                   << endl;
-        cout << " ================================"   << endl;
-        cin >> input;
-        OnlyTakeOneInput();
-    }
-    while (input != '1' && input != '2' && input != '3');
-    choice2 = input - '0';
-
-    if (choice2 == 1 || choice2 == 2)
-    {
-        serve.sorting(choice, choice2);
+        serve.sortByName(order);
         error = false;
     }
     else
@@ -208,39 +178,7 @@ void ConsoleUI::sortByBirthYear(char input, int choice, int choice2, bool& error
     }
 }
 
-void ConsoleUI::sortByDeathYear(char input, int choice, int choice2, bool& error)
-{
-    do
-    {
-        if (input != '1' && input != '2' && input != '3')
-        {
-            cout << "Error! Invalid input" << endl;
-        }
-        cout << "Ascended or Descended sorting?"      << endl;
-        cout << " ================================"   << endl;
-        cout << "Press 1 to sort by ascending order"  << endl;
-        cout << "Press 2 to sort by descending order" << endl;
-        cout << "Press 3 to cancel"                   << endl;
-        cout << " ================================"   << endl;
-
-        cin >> input;
-        OnlyTakeOneInput();
-    }
-    while (input != '1' && input != '2' && input != '3');
-    choice2 = input - '0';
-
-    if (choice2 == 1 || choice2 == 2)
-    {
-        serve.sorting(choice, choice2);
-        error = false;
-    }
-    else
-    {
-        error = true;
-    }
-}
-
-void ConsoleUI::sortByGender(char input, int choice, int choice2, bool& error)
+void ConsoleUI::sortByGender(char input, int order, bool& error)
 {
     do
     {
@@ -259,11 +197,74 @@ void ConsoleUI::sortByGender(char input, int choice, int choice2, bool& error)
         OnlyTakeOneInput();
     }
     while (input != '1' && input != '2' && input != '3');
-    choice2 = input - '0';
+    order = input - '0';
 
-    if (choice2 == 1 || choice2 == 2)
+    if (order == 1 || order == 2)
     {
-        serve.sorting(choice, choice2);
+        serve.sortByGender(order);
+        error = false;
+    }
+    else
+    {
+        error = true;
+    }
+}
+
+void ConsoleUI::sortByBirthYear(char input, int order, bool& error)
+{
+    do
+    {
+        if (input != '1' && input != '2' && input != '3')
+        {
+            cout << "Error! Invalid input" << endl;
+        }
+        cout << "Ascending or Descending sorting?"    << endl;
+        cout << " ================================"   << endl;
+        cout << "Press 1 to sort by ascending order"  << endl;
+        cout << "Press 2 to sort by descending order" << endl;
+        cout << "Press 3 to cancel"                   << endl;
+        cout << " ================================"   << endl;
+        cin >> input;
+        OnlyTakeOneInput();
+    }
+    while (input != '1' && input != '2' && input != '3');
+    order = input - '0';
+
+    if (order == 1 || order == 2)
+    {
+        serve.sortByBirthYear(order);
+        error = false;
+    }
+    else
+    {
+        error = true;
+    }
+}
+
+void ConsoleUI::sortByDeathYear(char input, int order, bool& error)
+{
+    do
+    {
+        if (input != '1' && input != '2' && input != '3')
+        {
+            cout << "Error! Invalid input" << endl;
+        }
+        cout << "Ascending or Descending sorting?"      << endl;
+        cout << " ================================"   << endl;
+        cout << "Press 1 to sort by ascending order"  << endl;
+        cout << "Press 2 to sort by descending order" << endl;
+        cout << "Press 3 to cancel"                   << endl;
+        cout << " ================================"   << endl;
+
+        cin >> input;
+        OnlyTakeOneInput();
+    }
+    while (input != '1' && input != '2' && input != '3');
+    order = input - '0';
+
+    if (order == 1 || order == 2)
+    {
+        serve.sortByDeathYear(order);
         error = false;
     }
     else

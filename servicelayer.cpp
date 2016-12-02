@@ -13,38 +13,6 @@ vector<Persons> ServiceLayer::list()
    return dl.getVector();
 }
 
-void ServiceLayer::sorting(int type, int order)
-{
-    switch (type)
-    {
-    case 1:
-    {
-        sortByName(order);
-        break;
-    }
-    case 2:
-    {
-        sortByBirthYear(order);
-        break;
-    }
-    case 3:
-    {
-        sortByDeathYear(order);
-        break;
-    }
-    case 4:
-    {
-        sortByGender(order);
-        break;
-    }
-
-    default:
-    {
-        break;
-    }
-    }
-}
-
 //regular sorting. Reyndi að nota klasaföll, en það vill þýðandinn ekki.
 bool sortByName2(const Persons &lhs, const Persons &rhs)
 { return lhs.getName() < rhs.getName(); }

@@ -10,7 +10,6 @@ using namespace std;
 class DataLayer
 {
     vector<Persons> people; //A vector which holds the People on the list.
-
 public:
    DataLayer(); //Default Constructor, which runs the function loadFromFile().
 
