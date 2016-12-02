@@ -460,7 +460,7 @@ void ConsoleUI::addPeopleFromFile()
                 else
                 {
                     cout << "Error! Invalid input" << endl;
-                    cont = false;
+                    cont = true;
                 }
             }
         }
