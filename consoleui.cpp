@@ -8,6 +8,7 @@ ConsoleUI::ConsoleUI()
 
 }
 
+// Run shows the table for all options.
 void ConsoleUI::run()
 {
     bool run = true;
@@ -25,7 +26,7 @@ void ConsoleUI::run()
 
        char input = '0';
        cin >> input;
-       OnlyTakeOneInput();
+       onlyTakeOneInput();              // Takes only one letter and flushes the rest.
        int choice = input - '0';
 
             switch (choice)
@@ -70,7 +71,7 @@ void ConsoleUI::run()
         }
     }
 }
-
+// lists all the data from the vector.
 void ConsoleUI::listData()
 {
     cout << endl;
@@ -93,7 +94,6 @@ void ConsoleUI::sortData()
 
     do
     {
-
         cout << "How would you like to sort the list?" << endl;
         cout << " ================================"    << endl;
         cout << " Press 1 to sort by name"             << endl;
@@ -104,7 +104,7 @@ void ConsoleUI::sortData()
         cout << " ================================"    << endl;
 
         cin >> input;
-        OnlyTakeOneInput();
+        onlyTakeOneInput();
         choice = input - '0';
         order = 0;
         input = '1';
@@ -150,6 +150,7 @@ void ConsoleUI::sortData()
         listData();
     }
 }
+
 void ConsoleUI::sortByName(char input, int order, bool& error)
 {
     do
@@ -166,7 +167,7 @@ void ConsoleUI::sortByName(char input, int order, bool& error)
         cout << " ================================" << endl;
 
         cin >> input;
-        OnlyTakeOneInput();
+        onlyTakeOneInput();
     }
     while (input != '1' && input != '2' && input != '3');
     order = input - '0';
@@ -198,7 +199,7 @@ void ConsoleUI::sortByGender(char input, int order, bool& error)
         cout << " ================================" << endl;
 
         cin >> input;
-        OnlyTakeOneInput();
+        onlyTakeOneInput();
     }
     while (input != '1' && input != '2' && input != '3');
     order = input - '0';
@@ -229,7 +230,7 @@ void ConsoleUI::sortByBirthYear(char input, int order, bool& error)
         cout << "Press 3 to cancel"                   << endl;
         cout << " ================================"   << endl;
         cin >> input;
-        OnlyTakeOneInput();
+        onlyTakeOneInput();
     }
     while (input != '1' && input != '2' && input != '3');
     order = input - '0';
@@ -261,7 +262,7 @@ void ConsoleUI::sortByDeathYear(char input, int order, bool& error)
         cout << " ================================"   << endl;
 
         cin >> input;
-        OnlyTakeOneInput();
+        onlyTakeOneInput();
     }
     while (input != '1' && input != '2' && input != '3');
     order = input - '0';
@@ -276,7 +277,7 @@ void ConsoleUI::sortByDeathYear(char input, int order, bool& error)
         error = true;
     }
 }
-
+// Asks you to enter which you want to add data manually or from a file.
 void ConsoleUI::addData()
 {
     bool error = false;
@@ -290,7 +291,7 @@ void ConsoleUI::addData()
 
         char input = '0';
         cin >> input;
-        OnlyTakeOneInput();
+        onlyTakeOneInput();
         int choice = input - '0';
 
         switch (choice)
@@ -322,7 +323,10 @@ void ConsoleUI::addData()
     }
     while (error == true);
 }
-
+// if user does not enter a string with names he gets an error message,and first letter becomes uppercase.
+// if user enters anything other than 'M' and 'F' he gets an error
+// and error checks for birth Year and death Year.
+// and adds him to the file.
 void ConsoleUI::addPersonManually()
 {
     string name, year;
@@ -346,19 +350,19 @@ void ConsoleUI::addPersonManually()
     }
     cout << "Enter gender (M/F): ";
     cin >> gender;
-    OnlyTakeOneInput();
+    onlyTakeOneInput();
     while(genderCheck(gender) == false)
     {
         cout << "Wrong input for gender!" << endl;
         cout << "Enter gender (M/F): ";
         cin  >> gender;
-        OnlyTakeOneInput();
+        onlyTakeOneInput();
     }
     while(!validYear(year, birthYear))
     {
         cout << "Enter birth year: ";
         cin >> year;
-        OnlyTakeOneInput();
+        onlyTakeOneInput();
         if (!validYear(year, birthYear))
         {
             cout << "Invalid input!\n";
@@ -369,7 +373,7 @@ void ConsoleUI::addPersonManually()
     {
         cout << "Enter death year (0 for living person): ";
         cin >> year;
-        OnlyTakeOneInput();
+        onlyTakeOneInput();
         if (!validYear(year, deathYear))
         {
             cout << "Invalid input!\n";
@@ -400,7 +404,8 @@ void ConsoleUI::addPersonManually()
     }
 
 }
-
+// Asks user to enter path to file, it WILL overwrite the file
+// if only file is added then file will be created.
 void ConsoleUI::addPeopleFromFile()
 {
     string fileName = "";
@@ -444,7 +449,7 @@ void ConsoleUI::addPeopleFromFile()
     }
     while (fileOpenFail);
 }
-
+// Shows the table for search options.
 void ConsoleUI::searchData()
 {
     bool error = false;
@@ -461,7 +466,7 @@ void ConsoleUI::searchData()
 
         char input = '0';
         cin >> input;
-        OnlyTakeOneInput();
+        onlyTakeOneInput();
         int choice = input - '0';
 
         switch(choice)
@@ -698,6 +703,7 @@ bool ConsoleUI::validYear(const string& s, int& year)
     int currentYear = TimePtr->tm_year + 1900;
     return year >= 0 && year <= currentYear;
 }
+
 bool ConsoleUI::validName(const string& s)
 {
     string::const_iterator it = s.begin();
@@ -758,7 +764,7 @@ bool ConsoleUI::genderCheck(char& gender)
 }
 
 
-void ConsoleUI::OnlyTakeOneInput()
+void ConsoleUI::onlyTakeOneInput()
 {
     cin.clear();
     fflush(stdin);
