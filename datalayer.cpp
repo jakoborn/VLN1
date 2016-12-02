@@ -97,6 +97,45 @@ void DataLayer::saveToFile()
     out.close();
 }
 
+//Similar to the saveToFile() function.
+//The difference lies in the input string, which gives the
+//directory in which to save.
+//returns true, if successful, and false, if opening the file fails.
+bool DataLayer::saveToOtherFile(string input)
+{
+    ofstream out;
+    out.open(input);
+
+    if (out.fail())
+    {
+        return false;
+    }
+    else
+    {
+        out.width(16);
+        out << left << "Name";
+        out <<  "\tGender\tBorn\tDied" << endl;
+        out << "_____________________________________________________" << endl;
+
+        out.seekp(90);
+        for (size_t i = 0; i < people.size(); i++)
+        {
+            out << people[i].getName() << ";\t" << people[i].getGender() << "\t" << people[i].getBirthYear() << "\t";
+            if(people[i].getAlive())
+            {
+                out << "Alive\n";
+            }
+            else
+            {
+                out << people[i].getDeathYear() << endl;
+            }
+        }
+
+        out.close();
+        return true;
+    }
+}
+
 //Returns the vector with the people.
 vector<Persons> DataLayer::getVector()
 {
