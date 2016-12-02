@@ -100,7 +100,7 @@ ostream& operator << (ostream& out, const Persons& p)
 bool validYear(const string& s, int& year)
 {
     string::const_iterator it = s.begin();
-    //Checks if the string 'year' is a number
+    //Checks if the string 's' is a number
     while (it != s.end() && isdigit(*it)) ++it;
     if (s.empty() || it != s.end())
     {
@@ -121,22 +121,24 @@ bool validYear(const string& s, int& year)
 //Reads either "Alive" or the deathyear.
 istream& operator >> (istream& in, Persons& p)
 {
-    string n = " ", a = " ";
+    string n = " ", b = " ", d = " ";
     char g = ' ';
     int bY = 0, dY =0;
     in >> ws;
     getline(in, n, ';');
-    in >> g >> a;
-    if (validYear(a, bY)) {
-        in >> a;
-        if (a == "Alive")
+    in >> g >> b;
+    if (validYear(b, bY)) {
+        in >> d;
+        if (d == "Alive")
         {
             p.alive = true;
             p.deathYear = 0;
         }
-        else if(validYear(a, dY)) {
-            Persons m(n, g, bY, dY);
-            p = m;
+        else if(validYear(d, dY)) {
+            p.name = n;
+            p.gender = g;
+            p.birthYear = bY;
+            p.deathYear = dY;
         }
     }
     return in;

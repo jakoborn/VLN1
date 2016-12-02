@@ -769,7 +769,7 @@ void ConsoleUI::saveToCustomFile()
 bool ConsoleUI::validYear(const string& s, int& year)
 {
     string::const_iterator it = s.begin();
-    //Checks if the string 'year' is a number
+    //Checks if the string 's' is a number
     while (it != s.end() && isdigit(*it)) ++it;
     if (s.empty() || it != s.end())
     {
