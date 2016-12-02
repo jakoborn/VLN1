@@ -93,9 +93,9 @@ void ConsoleUI::sortData()
         cout << "How would you like to sort the list?" << endl;
         cout << " ================================"    << endl;
         cout << " Press 1 to sort by name"             << endl;
-        cout << " Press 2 to sort by birth year"       << endl;
-        cout << " Press 3 to sort by death year "      << endl;
-        cout << " Press 4 to sort by gender"           << endl;
+        cout << " Press 2 to sort by gender"       << endl;
+        cout << " Press 3 to sort by birth year "      << endl;
+        cout << " Press 4 to sort by death year"           << endl;
         cout << " Press 5 to Cancel"                   << endl;
         cout << " ================================"    << endl;
 
@@ -114,18 +114,18 @@ void ConsoleUI::sortData()
             }
              case 2:
             {
-                    sortByBirthYear(input, order, error);
-                    break;
+                sortByGender(input, order, error);
+                break;
             }
              case 3:
-                {
-                    sortByDeathYear(input, order, error);
-                    break;
+             {
+                sortByBirthYear(input, order, error);
+                break;
             }
              case 4:
             {
-                    sortByGender(input, order, error);
-                    break;
+                sortByDeathYear(input, order, error);
+                break;
             }
              case 5:
             {
@@ -430,8 +430,8 @@ void ConsoleUI::searchData()
         cout << "How would you like to search the data?"  << endl;
         cout << " ====================================="  << endl;
         cout << " Press 1 to search by name"              << endl;
-        cout << " Press 2 to search by birth year"        << endl;
-        cout << " Press 3 to search by gender"            << endl;
+        cout << " Press 2 to search by gender"        << endl;
+        cout << " Press 3 to search by birth year"            << endl;
         cout << " Press 4 to search by birth year range"  << endl;
         cout << " Press 5 to cancel"                      << endl;
         cout << " ======================================" << endl;
@@ -451,13 +451,13 @@ void ConsoleUI::searchData()
             }
             case 2:
             {
-                searchByBirthYear();
+                searchByGender();
                 error = false;
                 break;
             }
             case 3:
             {
-                searchByGender();
+                searchByBirthYear();
                 break;
             }
             case 4:
