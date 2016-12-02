@@ -19,7 +19,8 @@ void ConsoleUI::run()
        cout << " Press 3 to add a scientist"       << endl;
        cout << " Press 4 to search the list"       << endl;
        cout << " Press 5 to remove a scientist"    << endl;
-       cout << " Press 6 to exit"                  << endl;
+       cout << " Press 6 to save to a custom file" << endl;
+       cout << " Press 7 to exit"                  << endl;
        cout << " ================================" << endl;
 
        char input = '0';
@@ -55,6 +56,9 @@ void ConsoleUI::run()
                 break;
             }
             case 6:
+                saveToCustomFile();
+                break;
+            case 7:
             {
                 run = false;
                 break;
@@ -414,15 +418,26 @@ void ConsoleUI::addPeopleFromFile()
         {
             cout << "Error! Failed to open file" << endl;
             char continuel;
-            cout << "Do you want to try again? (Y for yes and N for no) " ;
-            cin  >> continuel;
-            if(continuel != 'Y' && continuel != 'y')
+            bool cont = true;
+            while (cont)
             {
-                fileOpenFail = false;
-            }
-            else
-            {
-                fileOpenFail = true;
+                cout << "Do you want to try again? (Y for yes and N for no) " ;
+                cin  >> continuel;
+                if(continuel != 'Y' && continuel != 'y')
+                {
+                    fileOpenFail = false;
+                    cont = true;
+                }
+                else if (continuel != 'N' && continuel != 'n')
+                {
+                    fileOpenFail = true;
+                    cont = true;
+                }
+                else
+                {
+                    cout << "Error! Invalid input" << endl;
+                    cont = false;
+                }
             }
         }
     }
@@ -437,8 +452,8 @@ void ConsoleUI::searchData()
         cout << "How would you like to search the data?"  << endl;
         cout << " ====================================="  << endl;
         cout << " Press 1 to search by name"              << endl;
-        cout << " Press 2 to search by gender"        << endl;
-        cout << " Press 3 to search by birth year"            << endl;
+        cout << " Press 2 to search by gender"            << endl;
+        cout << " Press 3 to search by birth year"        << endl;
         cout << " Press 4 to search by birth year range"  << endl;
         cout << " Press 5 to cancel"                      << endl;
         cout << " ======================================" << endl;
@@ -740,3 +755,46 @@ void ConsoleUI::printLine()
     cout <<  "\tGender\tBorn\tDied" << endl;
     cout << "_____________________________________________________" << endl;
 }
+
+void ConsoleUI::saveToCustomFile()
+{
+    bool fileOpenFail = false;
+    string fileName;
+    do
+    {
+        cout << "Enter the full path of the file, or the name of the file, if the file is in the same directory: " << endl;
+        cin >> fileName;
+        if(serve.saveToOtherFile(fileName))
+        {
+            cout << "Success!" << endl;
+            fileOpenFail = false;
+        }
+        else
+        {
+            cout << "Error! Failed to open file" << endl;
+            char continuel;
+            bool cont = true;
+            while (cont)
+            {
+                cout << "Do you want to try again? (Y for yes and N for no) " ;
+                cin  >> continuel;
+                if(continuel != 'Y' && continuel != 'y')
+                {
+                    fileOpenFail = false;
+                    cont = true;
+                }
+                else if (continuel != 'N' && continuel != 'n')
+                {
+                    fileOpenFail = true;
+                    cont = true;
+                }
+                else
+                {
+                    cout << "Error! Invalid input" << endl;
+                    cont = false;
+                }
+            }
+        }
+    } while (fileOpenFail);
+}
+
