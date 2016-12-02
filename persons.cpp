@@ -106,6 +106,7 @@ istream& operator >> (istream& in, Persons& p)
     if (a == "Alive")
     {
         p.alive = true;
+        p.deathYear = 0;
     }
     else
     {
