@@ -349,6 +349,7 @@ void ConsoleUI::addPersonManually()
     OnlyTakeOneInput();
     while(genderCheck(gender) == false)
     {
+        cout << "Wrong input for gender!" << endl;
         cout << "Enter gender (M/F): ";
         cin  >> gender;
         OnlyTakeOneInput();
