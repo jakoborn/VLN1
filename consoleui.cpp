@@ -16,6 +16,10 @@ ConsoleUI::ConsoleUI()
 void ConsoleUI::run()
 {
     bool run = true;
+    if (serve.list().size() == 0)
+    {
+        cout << "Could not load from file or file was empty" << endl;
+    }
     while (run)
     {
        cout << " ================================" << endl;
