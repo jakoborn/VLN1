@@ -681,9 +681,12 @@ void ConsoleUI::deleteData()
         bool d = false;
         while (!d)
         {
-            cout << "Are you sure you would like to delete the following scientist(s)? (y/n)\n";
+            cout << endl;
+            cout << "Are you sure you would like to delete the following scientist(s)? (y/n)\n" << endl;
+            printLine();
             for (int i = 0; i < s; i++)
             {
+
                 cout << serve.list()[v[i]];
             }
             char a = ' ';

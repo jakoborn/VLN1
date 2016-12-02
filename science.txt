@@ -1,0 +1,18 @@
+Name                      	Gender	Born	Died
+_____________________________________________
+Ada Lovelace;		F	1815	1852
+Alan Curtis Key;	M	1940	Alive
+Alan Mathison Turing;	M	1912	1954
+Anita Borg;		F	1949	2003
+Barbara Jane Liskov;	F	1939	Alive
+Charles Babbage;	M	1791	1871
+David Andrew Patterson;	M	1947	Alive
+Donald Ervin Knuth;	M	1938	Alive
+Frances Elizabeth Allen;	F	1932	Alive
+Grace Hopper;		F	1906	1992
+Jean Jennings Bartik;	F	1924	2011
+Judea Pearl;		M	1936	Alive
+Karen Sparck Jones;	F	1935	2007
+Marvin Lee Minsky;	M	1927	2016
+Sergey Mikhaylovich Brin;	M	1973	Alive
+Shafi Goldwasser;	F	1958	Alive
