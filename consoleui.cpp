@@ -802,12 +802,16 @@ bool ConsoleUI::validName(const string& s)
 //sadly, it can't be a 300 year old dude. No vampires.
 bool ConsoleUI::birthChecks(int birthYear, int deathYear)
 {
+    time_t t = time(NULL);
+    tm* TimePtr = localtime(&t);
+    int currentYear = TimePtr->tm_year + 1900;
+
     if(deathYear < birthYear && deathYear != 0)
     {
         cout << "The scientist cannot die before they are born!" << endl;
         return false;
     }
-    if(deathYear - birthYear > 123)
+    if((deathYear - birthYear) > 122 || (currentYear - birthYear) > 122)
     {
         cout << "That is too old, the oldest woman was 122 years old!" << endl;
         return false;
