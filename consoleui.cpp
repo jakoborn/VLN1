@@ -777,6 +777,8 @@ void ConsoleUI::saveToCustomFile()
     string fileName;
     do
     {
+        cout << "WARNING: This will overwrite everything in the file selected!" << endl;
+        cout << "If the File Doesn't exist, it will create a new file." << endl << endl;
         cout << "Enter the full path of the file, or the name of the file, if the file is in the same directory: " << endl;
         cin >> fileName;
         if(serve.saveToOtherFile(fileName))
