@@ -27,7 +27,10 @@ void DataLayer::loadFromFile()
 
     if (in.fail())
     {
-        //ekkert gerist.
+        //If it fails to load, the programme will still run
+        //with a notification that it couldn't load.
+        //The User could still for example load from a certain directory
+        //or add people manually.
     }
     else
     {
