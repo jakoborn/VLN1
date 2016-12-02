@@ -97,20 +97,30 @@ void ServiceLayer::sorting(int type, int order)
     switch (type)
     {
     case 1:
+    {
         sortByName(order);
         break;
+    }
     case 2:
+    {
         sortByBirthYear(order);
         break;
+    }
     case 3:
+    {
         sortByDeathYear(order);
         break;
+    }
     case 4:
+    {
         sortByGender(order);
         break;
+    }
 
     default:
+    {
         break;
+    }
     }
 }
 
