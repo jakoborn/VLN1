@@ -20,7 +20,6 @@ public:
    vector<Persons> getVector();
    void removeData(int &x);
    void setVector(vector <Persons> p);
-
    void addPerson(const Persons& p);
    void deletePerson(int n);
 };

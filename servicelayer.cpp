@@ -13,87 +13,8 @@ vector<Persons> ServiceLayer::list()
    return dl.getVector();
 }
 
-vector<int> ServiceLayer::searchByYear(const int year)
-{
-    vector<int> v;
-    for (unsigned int i = 0; i < list().size(); i++)
-    {
-        if (list()[i].getBirthYear() == year)
-        {
-            v.push_back(i);
-        }
-    }
-    return v;
-}
-
-vector<int> ServiceLayer::searchByName(const string name)
-{
-    vector<int> v;
-    for (unsigned int i = 0; i < list().size(); i++)
-    {
-        if (name.length() <= list()[i].getName().length())
-        {
-            if (list()[i].getName() == name)
-            {
-                v.push_back(i);
-                break;
-            }
-            else
-            {
-                for (unsigned int p = 0; p <=(list()[i].getName().length() - name.length()); p++)
-                {
-                    if(name == list()[i].getName().substr(p, name.length()))
-                    {
-                        v.push_back(i);
-                        break;
-                    }
-                }
-            }
-        }
-    }
-    return v;
-}
-
-vector<int> ServiceLayer::searchByGender(const char gender)
-{
-    vector<int> v;
-
-    for(unsigned int i = 0; i < list().size(); i++)
-    {
-        if(list()[i].getGender() == gender)
-        {
-            v.push_back(i);
-        }
-    }
-    return v;
-}
-
-vector<int> ServiceLayer::searchByRange(const int f, const int l)
-{
-    vector<int> v;
-
-    for(unsigned int i = 0; i < list().size(); i++)
-    {
-        if(list()[i].getBirthYear() >= f && list()[i].getBirthYear() <= l)
-        {
-            v.push_back(i);
-        }
-    }
-    return v;
-}
-
-void ServiceLayer::add(const Persons& p)
-{
-    dl.addPerson(p);
-}
-
-void ServiceLayer::erase(int n)
-{
-    dl.deletePerson(n);
-}
-
 void ServiceLayer::sorting(int type, int order)
-{    
+{
     switch (type)
     {
     case 1:
@@ -160,6 +81,22 @@ void ServiceLayer::sortByName(int order)
     dl.setVector(people);
 }
 
+void ServiceLayer::sortByGender(int order)
+{
+    vector <Persons> people = dl.getVector();
+    if (order == 1)
+    {
+        //stable_sort(people.begin(), people.end(), sorter.sortByGender);
+        stable_sort(people.begin(), people.end(), sortByGender2);
+    }
+    else //order == 2
+    {
+        //stable_sort(people.begin(), people.end(), sorter.rSortByGender);
+        stable_sort(people.begin(), people.end(), rSortByGender2);
+    }
+    dl.setVector(people);
+}
+
 void ServiceLayer::sortByBirthYear(int order)
 {
 
@@ -193,24 +130,87 @@ void ServiceLayer::sortByDeathYear(int order)
     dl.setVector(people);
 }
 
-void ServiceLayer::sortByGender(int order)
+void ServiceLayer::add(const Persons& p)
 {
-    vector <Persons> people = dl.getVector();
-    if (order == 1)
-    {
-        //stable_sort(people.begin(), people.end(), sorter.sortByGender);
-        stable_sort(people.begin(), people.end(), sortByGender2);
-    }
-    else //order == 2
-    {
-        //stable_sort(people.begin(), people.end(), sorter.rSortByGender);
-        stable_sort(people.begin(), people.end(), rSortByGender2);
-    }
-    dl.setVector(people);
+    dl.addPerson(p);
 }
 
 bool ServiceLayer::addFromFile(string input)
 {
     return dl.loadFromOtherFile(input);
 
+}
+
+vector<int> ServiceLayer::searchByName(const string name)
+{
+    vector<int> v;
+    for (unsigned int i = 0; i < list().size(); i++)
+    {
+        if (name.length() <= list()[i].getName().length())
+        {
+            if (list()[i].getName() == name)
+            {
+                v.push_back(i);
+                break;
+            }
+            else
+            {
+                for (unsigned int p = 0; p <=(list()[i].getName().length() - name.length()); p++)
+                {
+                    if(name == list()[i].getName().substr(p, name.length()))
+                    {
+                        v.push_back(i);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    return v;
+}
+
+vector<int> ServiceLayer::searchByGender(const char gender)
+{
+    vector<int> v;
+
+    for(unsigned int i = 0; i < list().size(); i++)
+    {
+        if(list()[i].getGender() == gender)
+        {
+            v.push_back(i);
+        }
+    }
+    return v;
+}
+
+vector<int> ServiceLayer::searchByYear(const int year)
+{
+    vector<int> v;
+    for (unsigned int i = 0; i < list().size(); i++)
+    {
+        if (list()[i].getBirthYear() == year)
+        {
+            v.push_back(i);
+        }
+    }
+    return v;
+}
+
+vector<int> ServiceLayer::searchByRange(const int f, const int l)
+{
+    vector<int> v;
+
+    for(unsigned int i = 0; i < list().size(); i++)
+    {
+        if(list()[i].getBirthYear() >= f && list()[i].getBirthYear() <= l)
+        {
+            v.push_back(i);
+        }
+    }
+    return v;
+}
+
+void ServiceLayer::deletePerson(int n)
+{
+    dl.deletePerson(n);
 }

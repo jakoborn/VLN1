@@ -610,7 +610,7 @@ void ConsoleUI::deleteData()
             {
                 for (int i = s-1; i >= 0; i--)
                 {
-                    serve.erase(v[i]);
+                    serve.deletePerson(v[i]);
                 }
                 cout << "Scientist(s) deleted\n";
                 d = true;
