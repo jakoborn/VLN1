@@ -136,7 +136,7 @@ bool DataLayer::saveToOtherFile(string input)
     }
 }
 
-//Returns the vector with the people.
+//Returns a vector containing the people.
 vector<Persons> DataLayer::getVector()
 {
     return people;

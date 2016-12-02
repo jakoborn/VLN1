@@ -8,6 +8,7 @@ ServiceLayer::ServiceLayer()
     sortByName(1); //Defaults to sorting the list by name.
 }
 
+//Returns a vector containing the people
 vector<Persons> ServiceLayer::list()
 {
    return dl.getVector();
@@ -67,82 +68,97 @@ bool rSortByDeathYear2(const Persons &lhs, const Persons &rhs)
     }
 }
 
+//Orders the people alphabetically
 void ServiceLayer::sortByName(int order)
 {
     vector <Persons> people = dl.getVector();
     if (order == 1)
     {
+        //A-Z
         //stable_sort(people.begin(), people.end(), sorter.sortByName);
         stable_sort(people.begin(), people.end(), sortByName2);
     }
     else //order == 2
     {
+        //Z-A
         //stable_sort(people.begin(), people.end(), sorter.rSortByName);
         stable_sort(people.begin(), people.end(), rSortByName2);
     }
     dl.setVector(people);
 }
 
+//Orders the people by gender
 void ServiceLayer::sortByGender(int order)
 {
     vector <Persons> people = dl.getVector();
     if (order == 1)
     {
+        //Females first
         //stable_sort(people.begin(), people.end(), sorter.sortByGender);
         stable_sort(people.begin(), people.end(), sortByGender2);
     }
     else //order == 2
     {
+        //Males first
         //stable_sort(people.begin(), people.end(), sorter.rSortByGender);
         stable_sort(people.begin(), people.end(), rSortByGender2);
     }
     dl.setVector(people);
 }
 
+//Orders the people by year of birth
 void ServiceLayer::sortByBirthYear(int order)
 {
 
     vector <Persons> people = dl.getVector();
     if (order == 1)
     {
+        //Ascending
         //stable_sort(people.begin(), people.end(), sorter.sortByBirthYear);
         stable_sort(people.begin(), people.end(), sortByBirthYear2);
     }
     else //order == 2
     {
+        //Descending
         //stable_sort(people.begin(), people.end(), sorter.rSortByBirthYear);
         stable_sort(people.begin(), people.end(), rSortByBirthYear2);
     }
     dl.setVector(people);
 }
 
+//Orders the people by year of death
 void ServiceLayer::sortByDeathYear(int order)
 {
     vector <Persons> people = dl.getVector();
     if (order == 1)
     {
+        //Ascending
         //stable_sort(people.begin(), people.end(), sorter.sortByDeathYear);
         stable_sort(people.begin(), people.end(), sortByDeathYear2);
     }
     else //order == 2
     {
+        //Descending
         //stable_sort(people.begin(), people.end(), sorter.rSortByDeathYear);
         stable_sort(people.begin(), people.end(), rSortByDeathYear2);
     }
     dl.setVector(people);
 }
 
+//Adds a new person
 void ServiceLayer::add(const Persons& p)
 {
     dl.addPerson(p);
 }
 
+//Adds people from file
 bool ServiceLayer::addFromFile(string input)
 {
     return dl.loadFromOtherFile(input);
 
 }
 
+//Returns a vector containing places (in vector of people) of the people whose names contain 'name'
 vector<int> ServiceLayer::searchByName(const string name)
 {
     vector<int> v;
@@ -157,6 +173,7 @@ vector<int> ServiceLayer::searchByName(const string name)
             }
             else
             {
+                //Checks if search term 'name' is a substring in name of person in place i
                 for (unsigned int p = 0; p <=(list()[i].getName().length() - name.length()); p++)
                 {
                     if(name == list()[i].getName().substr(p, name.length()))
@@ -171,6 +188,7 @@ vector<int> ServiceLayer::searchByName(const string name)
     return v;
 }
 
+//Returns a vector containing places (in vector of people) of the people of the given gender
 vector<int> ServiceLayer::searchByGender(const char gender)
 {
     vector<int> v;
@@ -185,6 +203,7 @@ vector<int> ServiceLayer::searchByGender(const char gender)
     return v;
 }
 
+//Returns a vector containing places (in vector of people) of the people born in the given year
 vector<int> ServiceLayer::searchByYear(const int year)
 {
     vector<int> v;
@@ -198,6 +217,7 @@ vector<int> ServiceLayer::searchByYear(const int year)
     return v;
 }
 
+//Returns a vector containing places (in vector of people) of the people born in the given year range
 vector<int> ServiceLayer::searchByRange(const int f, const int l)
 {
     vector<int> v;
