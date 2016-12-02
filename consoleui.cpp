@@ -86,6 +86,7 @@ void ConsoleUI::sortData()
         cout << " ================================"    << endl;
 
         cin >> input;
+        OnlyTakeOneInput();
         choice = input - '0';
         choice2 = 0;
         input = '1';
@@ -109,6 +110,7 @@ void ConsoleUI::sortData()
                     cout << " ================================" << endl;
 
                     cin >> input;
+                    OnlyTakeOneInput();
                 }
                 while (input != '1' && input != '2' && input != '3');
                 choice2 = input - '0';
@@ -137,6 +139,7 @@ void ConsoleUI::sortData()
                     cout << "Press 3 to cancel"                   << endl;
                     cout << " ================================"   << endl;
                     cin >> input;
+                    OnlyTakeOneInput();
                 }
                 while (input != '1' && input != '2' && input != '3');
                 choice2 = input - '0';
@@ -166,6 +169,7 @@ void ConsoleUI::sortData()
                     cout << " ================================"   << endl;
 
                     cin >> input;
+                    OnlyTakeOneInput();
                 }
                 while (input != '1' && input != '2' && input != '3');
                 choice2 = input - '0';
@@ -195,6 +199,7 @@ void ConsoleUI::sortData()
                     cout << " ================================" << endl;
 
                     cin >> input;
+                    OnlyTakeOneInput();
                 }
                 while (input != '1' && input != '2' && input != '3');
                 choice2 = input - '0';
