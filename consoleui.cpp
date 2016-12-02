@@ -271,7 +271,7 @@ void ConsoleUI::sortByDeathYear(char input, int order, bool& error)
         {
             cout << "Error! Invalid input" << endl;
         }
-        cout << "Ascending or Descending sorting?"      << endl;
+        cout << "Ascending or Descending sorting?"    << endl;
         cout << " ================================"   << endl;
         cout << "Press 1 to sort by ascending order"  << endl;
         cout << "Press 2 to sort by descending order" << endl;
@@ -855,14 +855,14 @@ bool ConsoleUI::genderCheck(char& gender)
     }
 }
 
-//If the user entered too many commands, the rest will just be flushed. fun stuff.
+//If the user entered too many commands, the rest will just be flushed. Fun stuff.
 void ConsoleUI::onlyTakeOneInput()
 {
     cin.clear();
     fflush(stdin);
 }
 
-//The header used when we lists scientists.
+//The header used when we list scientists.
 void ConsoleUI::printLine()
 {
     cout.width(26);
