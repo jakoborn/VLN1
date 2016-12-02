@@ -30,26 +30,40 @@ void ConsoleUI::run()
             switch (choice)
             {
             case 1:
+            {
                 showData();
                 break;
+            }
             case 2:
+            {
                 sortData();
                 break;
+            }
             case 3:
+            {
                 addData();
                 break;
+            }
             case 4:
+            {
                 searchData();
                 break;
+            }
             case 5:
+            {
                 deleteData();
                 break;
+            }
             case 6:
+            {
                 run = false;
                 break;
+            }
             default:
+            {
                 cout << "Error! Invalid input" << endl;
             }
+        }
     }
 }
 
@@ -91,29 +105,39 @@ void ConsoleUI::sortData()
         choice2 = 0;
         input = '1';
 
-
-
             switch (choice)
             {
             case 1:
+            {
                 sortByName(input, choice, choice2, error);
                 break;
+            }
              case 2:
-                sortByBirthYear(input, choice, choice2, error);
-                break;
+            {
+                    sortByBirthYear(input, choice, choice2, error);
+                    break;
+            }
              case 3:
-                sortByDeathYear(input, choice, choice2, error);
-                break;
+                {
+                    sortByDeathYear(input, choice, choice2, error);
+                    break;
+                }
              case 4:
-                sortByGender(input, choice, choice2, error);
-                break;
+            {
+                    sortByGender(input, choice, choice2, error);
+                    break;
+            }
              case 5:
+            {
                 error = false;
                 break;
+            }
              default:
+            {
                  cout << "Error! Invalid input!" << endl;
                  error = true;
-             }
+            }
+        }
     }
     while (error);
 
@@ -267,20 +291,28 @@ void ConsoleUI::addData()
         switch (choice)
         {
         case 1:
+        {
             addPersonManually();
             error = false;
             break;
+        }
         case 2:
+        {
             addPeopleFromFile();
             error = false;
             break;
+        }
         case 3:
+        {
             error = false;
             break;
+        }
         default:
+        {
             cout << "Error! Invalid input" << endl;
             error = true;
             break;
+        }
         }
     }
     while (error == true);
