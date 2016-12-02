@@ -37,7 +37,11 @@ void DataLayer::loadFromFile()
 
     while(in >> p)
     {
-        people.push_back(p);
+        Persons compare;
+        if (p != compare)
+        {
+            people.push_back(p);
+        }
     }
     in.close();
     }
@@ -68,7 +72,7 @@ bool DataLayer::loadFromOtherFile(string input)
         while(in >> p)
         {
             Persons compare;
-            if (!(p == compare))
+            if (p != compare)
             {
                 people.push_back(p);
             }

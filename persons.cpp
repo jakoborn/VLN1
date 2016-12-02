@@ -131,6 +131,9 @@ istream& operator >> (istream& in, Persons& p)
         in >> d;
         if (d == "Alive")
         {
+            p.name = n;
+            p.gender = g;
+            p.birthYear = bY;
             p.alive = true;
             p.deathYear = 0;
         }
@@ -139,6 +142,7 @@ istream& operator >> (istream& in, Persons& p)
             p.gender = g;
             p.birthYear = bY;
             p.deathYear = dY;
+            p.alive = false;
         }
     }
     return in;
