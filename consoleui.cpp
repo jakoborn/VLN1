@@ -1,6 +1,6 @@
 #include <ctime>
 #include "consoleui.h"
-
+#include <stdlib.h>
 using namespace std;
 
 //Default Constructor
@@ -29,6 +29,7 @@ void ConsoleUI::run()
 
        char input = '0';
        cin >> input;
+       system("cls");
        onlyTakeOneInput();  // Takes only one letter and flushes the rest.
        int choice = input - '0';
 
@@ -157,7 +158,7 @@ void ConsoleUI::sortData()
     }
 }
 
-//We sort by name, and want to know whether we want to sort reversed or not.
+//We sort by name, and want to know whether you want to sort reversed or not.
 void ConsoleUI::sortByName(char input, int order, bool& error)
 {
     do
