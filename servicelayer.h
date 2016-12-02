@@ -13,7 +13,6 @@ class ServiceLayer
 public:
     ServiceLayer();
     vector<Persons> list();
-    void sorting(int type, int order);
     void sortByName(int order);
     void sortByGender(int order);
     void sortByBirthYear(int order);
