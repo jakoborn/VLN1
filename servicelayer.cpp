@@ -21,7 +21,24 @@ bool sortByGender2(const Persons &lhs, const Persons &rhs)
 bool sortByBirthYear2(const Persons &lhs, const Persons &rhs)
 { return lhs.getBirthYear() < rhs.getBirthYear(); }
 bool sortByDeathYear2(const Persons &lhs, const Persons &rhs)
-{ return lhs.getDeathYear() < rhs.getDeathYear(); }
+{
+    if (lhs.getDeathYear() == 0 && rhs.getDeathYear() == 0)
+    {
+        return lhs.getDeathYear() < rhs.getDeathYear();
+    }
+    else if (lhs.getDeathYear() == 0)
+    {
+        return lhs.getDeathYear() > rhs.getDeathYear();
+    }
+    else if (rhs.getDeathYear() == 0)
+    {
+        return lhs.getDeathYear() > rhs.getDeathYear();
+    }
+    else
+    {
+        return lhs.getDeathYear() < rhs.getDeathYear();
+    }
+}
 
 //reverse sorting. Reyndi að nota klasaföll, en það vill þýðandinn ekki.
 bool rSortByName2(const Persons &lhs, const Persons &rhs)
@@ -31,7 +48,24 @@ bool rSortByGender2(const Persons &lhs, const Persons &rhs)
 bool rSortByBirthYear2(const Persons &lhs, const Persons &rhs)
 { return lhs.getBirthYear() > rhs.getBirthYear(); }
 bool rSortByDeathYear2(const Persons &lhs, const Persons &rhs)
-{ return lhs.getDeathYear() > rhs.getDeathYear(); }
+{
+    if (lhs.getDeathYear() == 0 && rhs.getDeathYear() == 0)
+    {
+        return lhs.getDeathYear() > rhs.getDeathYear();
+    }
+    else if (lhs.getDeathYear() == 0)
+    {
+        return lhs.getDeathYear() < rhs.getDeathYear();
+    }
+    else if (rhs.getDeathYear() == 0)
+    {
+        return lhs.getDeathYear() < rhs.getDeathYear();
+    }
+    else
+    {
+        return lhs.getDeathYear() > rhs.getDeathYear();
+    }
+}
 
 void ServiceLayer::sortByName(int order)
 {
