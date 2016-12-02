@@ -329,6 +329,13 @@ void ConsoleUI::addPersonManually()
     cout << "Enter name: ";
     cin >> ws;
     getline(cin,name);
+    while(!validName(name))
+    {
+        cout << "Wrong input for name!" << endl;
+        cout << "Enter name: ";
+        cin  >> ws;
+        getline(cin,name);
+    }
     if(!isupper(name[0]))
     {
         name[0] = toupper(name[0]);
@@ -659,6 +666,12 @@ bool ConsoleUI::validYear(const string& s, int& year)
     tm* TimePtr = localtime(&t);
     int currentYear = TimePtr->tm_year + 1900;
     return year >= 0 && year <= currentYear;
+}
+bool ConsoleUI::validName(const string& s)
+{
+    string::const_iterator it = s.begin();
+    while (it != s.end() && isalpha(*it)) ++it;
+    return !s.empty() && it == s.end();
 }
 
 bool ConsoleUI::birthChecks(int birthYear, int deathYear)
