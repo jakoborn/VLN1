@@ -88,12 +88,9 @@ void ConsoleUI::sortData()
         choice = input - '0';
         choice2 = 0;
         input = '1';
-
-
-
-            switch (choice)
-                 {
-                 case 1:
+        switch (choice)
+        {
+            case 1:
                     do
                     {
                         if (input != '1' && input != '2' && input != '3')
