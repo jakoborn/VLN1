@@ -1,6 +1,9 @@
 #include "persons.h"
 #include <iomanip>
 
+
+//Default Constructor.
+//Not actually used.
 Persons::Persons()
 {
     name = " ";
@@ -10,6 +13,8 @@ Persons::Persons()
     alive = true;
 }
 
+//Constructor.
+//if deathyear == 0, the person will be alive.
 Persons::Persons(string n, char g, int bY, int dY)
 {
     name = n;
@@ -51,6 +56,7 @@ bool Persons::getAlive() const
     return alive;
 }
 
+//Overloads the = operator. Basic stuff.
 void Persons::operator = (const Persons& p)
 {
     name = p.name;
@@ -60,11 +66,18 @@ void Persons::operator = (const Persons& p)
     alive = p.alive;
 }
 
+//Overloads the == operator.
+//Two persons are equal if and only if each
+//Parameter is equal.
 bool Persons::operator == (const Persons& p)
 {
     return name == p.name && gender == p.gender && birthYear == p.birthYear && deathYear == p.deathYear;
 }
 
+//Overloads the << (output) operator.
+//writes out the name, gender, and birthyear.
+//Writes out the deathyear or, if the person is alive
+//writes "Alive".
 ostream& operator << (ostream& out, const Persons& p)
 {
     out.width(16);
@@ -80,6 +93,10 @@ ostream& operator << (ostream& out, const Persons& p)
     return out;
 }
 
+//Overloads the >> (input) operator.
+//Reads the name which we know ends at a ;
+//Then reads the gender and birthyear.
+//Reads either "Alive" or the deathyear.
 istream& operator >> (istream& in, Persons& p)
 {
     string a = " ";

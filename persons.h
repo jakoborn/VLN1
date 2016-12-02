@@ -16,7 +16,7 @@ private:
 
 public:
     Persons();
-    Persons(string n, char g, int bY, int dY);
+    Persons(string n, char g, int bY, int dY); //Constructor which takes in Name, gender, birthyear and deathyear (with 0 for living persons)
     string getName() const;
     int getBirthYear() const;
     int getDeathYear() const;
