@@ -166,13 +166,6 @@ vector<int> ServiceLayer::searchByName(const string name)
     {
         if (name.length() <= list()[i].getName().length())
         {
-            if (list()[i].getName() == name)
-            {
-                v.push_back(i);
-                break;
-            }
-            else
-            {
                 //Checks if search term 'name' is a substring in name of person in place i
                 for (unsigned int p = 0; p <=(list()[i].getName().length() - name.length()); p++)
                 {
@@ -182,7 +175,6 @@ vector<int> ServiceLayer::searchByName(const string name)
                         break;
                     }
                 }
-            }
         }
     }
     return v;
@@ -232,11 +224,13 @@ vector<int> ServiceLayer::searchByRange(const int f, const int l)
     return v;
 }
 
+//Deletes person in place n (in vector of people)
 void ServiceLayer::deletePerson(int n)
 {
     dl.deletePerson(n);
 }
 
+//Saves list of people to file other than default
 bool ServiceLayer::saveToOtherFile(string input)
 {
     return dl.saveToOtherFile(input);
