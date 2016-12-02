@@ -6,8 +6,7 @@
 class ConsoleUI
 {
     ServiceLayer serve;
-    // Lists the data from the vector.
-    void listData();
+    void listData(); // Lists the data from the vector.
     void sortData();
     void sortByName(char input, int order, bool &error);
     void sortByGender(char input, int order, bool& error);

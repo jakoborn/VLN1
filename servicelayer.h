@@ -12,9 +12,9 @@ class ServiceLayer
     Sortings sorter;
 public:
     ServiceLayer();
-    vector<Persons> list();
-    void sortByName(int order);
-    void sortByGender(int order);
+    vector<Persons> list(); //Returns a vector of the scientists in the database
+    void sortByName(int order); //Orders the scientists alphabetically, 'order' determines whether it is A-Z or Z-A
+    void sortByGender(int order); //Orders the scientists by gender, 'order' determines whether females or males are listed first
     void sortByBirthYear(int order);
     void sortByDeathYear(int order);
     void add(const Persons& p);
