@@ -766,7 +766,7 @@ void ConsoleUI::OnlyTakeOneInput()
 
 void ConsoleUI::printLine()
 {
-    cout.width(16);
+    cout.width(26);
     cout << left << "Name";
     cout <<  "\tGender\tBorn\tDied" << endl;
     cout << "_____________________________________________________" << endl;

@@ -80,7 +80,7 @@ bool Persons::operator == (const Persons& p)
 //writes "Alive".
 ostream& operator << (ostream& out, const Persons& p)
 {
-    out.width(16);
+    out.width(26);
     out << left << p.getName() << "\t" <<  p.getGender() << "\t" << p.getBirthYear() << "\t";
     if (!p.getAlive())
     {
