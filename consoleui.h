@@ -21,6 +21,7 @@ class ConsoleUI
     void searchByBirthYear();
     void searchByYearRange();
     void deleteData();
+    void saveToCustomFile();
     bool validYear(const string& s, int& year);
     bool birthChecks(int birthYear, int deathYear);
     bool validName(const string& s);
@@ -28,7 +29,6 @@ class ConsoleUI
     bool genderCheck(char &gender);
     void onlyTakeOneInput();
     void printLine();
-    void saveToCustomFile();
 public:
     ConsoleUI();
     void run();

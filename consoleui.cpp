@@ -717,6 +717,51 @@ void ConsoleUI::deleteData()
     }
 }
 
+//Here, the user puts in a string, where it will be attempted to save the list to.
+void ConsoleUI::saveToCustomFile()
+{
+    bool fileOpenFail = false;
+    string fileName;
+    do
+    {
+        cout << "WARNING: This will overwrite everything in the file selected!" << endl;
+        cout << "If the File Doesn't exist, it will create a new file." << endl << endl;
+        cout << "Enter the full path of the file, or the name of the file, if the file is in the same directory: " << endl;
+        cin >> fileName;
+        if(serve.saveToOtherFile(fileName))
+        {
+            cout << "Success!" << endl;
+            fileOpenFail = false;
+        }
+        else
+        {
+            cout << "Error! Failed to open file" << endl;
+            char continuel;
+            bool cont = true;
+            while (cont)
+            {
+                cout << "Do you want to try again? (Y for yes and N for no) " ;
+                cin  >> continuel;
+                if(continuel != 'Y' && continuel != 'y')
+                {
+                    fileOpenFail = false;
+                    cont = false;
+                }
+                else if (continuel != 'N' && continuel != 'n')
+                {
+                    fileOpenFail = true;
+                    cont = false;
+                }
+                else
+                {
+                    cout << "Error! Invalid input" << endl;
+                    cont = true;
+                }
+            }
+        }
+    } while (fileOpenFail);
+}
+
 //a function which checks whether a certain entered string is a year.
 //And whether it's a valid year (AKA not in the future).
 bool ConsoleUI::validYear(const string& s, int& year)
@@ -819,50 +864,5 @@ void ConsoleUI::printLine()
     cout << left << "Name";
     cout <<  "\tGender\tBorn\tDied" << endl;
     cout << "_____________________________________________________" << endl;
-}
-
-//Here, the user puts in a string, where it will be attempted to save the list to.
-void ConsoleUI::saveToCustomFile()
-{
-    bool fileOpenFail = false;
-    string fileName;
-    do
-    {
-        cout << "WARNING: This will overwrite everything in the file selected!" << endl;
-        cout << "If the File Doesn't exist, it will create a new file." << endl << endl;
-        cout << "Enter the full path of the file, or the name of the file, if the file is in the same directory: " << endl;
-        cin >> fileName;
-        if(serve.saveToOtherFile(fileName))
-        {
-            cout << "Success!" << endl;
-            fileOpenFail = false;
-        }
-        else
-        {
-            cout << "Error! Failed to open file" << endl;
-            char continuel;
-            bool cont = true;
-            while (cont)
-            {
-                cout << "Do you want to try again? (Y for yes and N for no) " ;
-                cin  >> continuel;
-                if(continuel != 'Y' && continuel != 'y')
-                {
-                    fileOpenFail = false;
-                    cont = false;
-                }
-                else if (continuel != 'N' && continuel != 'n')
-                {
-                    fileOpenFail = true;
-                    cont = false;
-                }
-                else
-                {
-                    cout << "Error! Invalid input" << endl;
-                    cont = true;
-                }
-            }
-        }
-    } while (fileOpenFail);
 }
 
