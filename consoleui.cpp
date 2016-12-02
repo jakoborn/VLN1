@@ -531,27 +531,42 @@ void ConsoleUI::searchByName()
 
 void ConsoleUI::searchByGender()
 {
-    char gender;
+    string gender = " ";
     cout << "Enter gender (M/F): ";
     cin >> gender;
-    if(genderCheck(gender) == false)
+
+    if (gender.length() == 1)
     {
-        searchData();
-    }
-    vector<int> v_g = serve.searchByGender(gender);
-    if (v_g.size() == 0)
-    {
-        cout << "No results found" << endl;
+        char g = gender.at(0);
+        if (genderCheck(g) == false)
+        {
+            cout << "Invalid gender input!" << endl;
+            searchByGender();
+        }
+        else
+        {
+            vector<int> v_g = serve.searchByGender(g);
+            if (v_g.size() == 0)
+            {
+                cout << "No results found" << endl;
+            }
+            else
+            {
+                printLine();
+                for (unsigned int i = 0; i < v_g.size(); i++)
+                {
+                    cout << serve.list()[v_g[i]];
+                }
+            }
+        }
     }
     else
     {
-        printLine();
-        for (unsigned int i = 0; i < v_g.size(); i++)
-        {
-            cout << serve.list()[v_g[i]];
-        }
+        cout << "Invalid input" << endl;
+        searchByGender();
     }
 }
+
 
 void ConsoleUI::searchByBirthYear()
 {
@@ -723,8 +738,8 @@ bool ConsoleUI::check()
 bool ConsoleUI::genderCheck(char& gender)
 {
 
-   if(gender == 'm' || gender == 'M' || gender == 'f' || gender == 'F')
-   {
+    if (gender == 'm' || gender == 'M' || gender == 'f' || gender == 'F')
+    {
         if(gender == 'm')
         {
             gender = 'M';
@@ -734,13 +749,13 @@ bool ConsoleUI::genderCheck(char& gender)
             gender = 'F';
         }
         return true;
-   }
-   else
-   {
-        cout << "Wrong input for gender!" << endl;
+    }
+    else
+    {
         return false;
-   }
+    }
 }
+
 
 void ConsoleUI::OnlyTakeOneInput()
 {
