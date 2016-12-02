@@ -448,12 +448,12 @@ void ConsoleUI::addPeopleFromFile()
             {
                 cout << "Do you want to try again? (Y for yes and N for no) " ;
                 cin  >> continuel;
-                if(continuel != 'Y' && continuel != 'y')
+                if(continuel == 'Y' || continuel == 'y')
                 {
                     fileOpen = true;
                     cont = false;
                 }
-                else if (continuel != 'N' && continuel != 'n')
+                else if (continuel == 'N' || continuel == 'n')
                 {
                     fileOpen = false;
                     cont = false;
