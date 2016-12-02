@@ -5,11 +5,13 @@
 
 class ConsoleUI
 {
-private:
     ServiceLayer serve;
     void listData();
-
     void sortData();
+    void sortByName(char input, int order, bool &error);
+    void sortByGender(char input, int order, bool& error);
+    void sortByBirthYear(char input, int order, bool &error);
+    void sortByDeathYear(char input, int order, bool& error);
     void addData();
     void addPersonManually();
     void addPeopleFromFile();
@@ -25,10 +27,6 @@ private:
     bool genderCheck(char &gender);
     void OnlyTakeOneInput();
     void printLine();
-    void sortByName(char input, int choice, int choice2, bool &error);
-    void sortByBirthYear(char input, int choice, int choice2, bool &error);
-    void sortByDeathYear(char input, int choice, int choice2, bool& error);
-    void sortByGender(char input, int choice, int choice2, bool& error);
 public:
     ConsoleUI();
     void run();
