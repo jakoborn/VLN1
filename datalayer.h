@@ -3,16 +3,16 @@
 
 #include <vector>
 #include <string>
-#include "sortings.h"
+#include "persons.h"
 
 using namespace std;
 
 class DataLayer
 {
-    vector<Persons> people;
+    vector<Persons> people; //A vector which holds the People on the list.
 
 public:
-   DataLayer();
+   DataLayer(); //Default Constructor, which runs the function loadFromFile().
 
    void loadFromFile(); //Default loading from the same directory as the programme from the file "science.txt".
    bool loadFromOtherFile(string input); //When you want to load from a different file. If successful, it will return true, add the people from the file, and autosave.

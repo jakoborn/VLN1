@@ -10,16 +10,6 @@ DataLayer::DataLayer()
 {
     loadFromFile();
 }
-vector<Persons> DataLayer::getVector()
-{
-    return people;
-}
-
-void DataLayer::setVector(vector <Persons> p)
-{
-    people = p;
-}
-
 
 void DataLayer::loadFromFile()
 {
@@ -91,6 +81,16 @@ void DataLayer::saveToFile()
     }
 
     out.close();
+}
+
+vector<Persons> DataLayer::getVector()
+{
+    return people;
+}
+
+void DataLayer::setVector(vector <Persons> p)
+{
+    people = p;
 }
 
 void DataLayer::addPerson(const Persons& p)
