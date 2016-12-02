@@ -4,7 +4,7 @@
 
 using namespace std;
 
-//The Default filename which to load from and save to.
+//The Default filename from which to load and save to.
 const string DEFAULT_FILENAME = "science.txt";
 
 //Default constructor.
@@ -24,7 +24,7 @@ void DataLayer::loadFromFile()
     ifstream in;
 
     in.open(DEFAULT_FILENAME);
-    in.seekg(90);
+    in.seekg(100);
 
     while(in >> p)
     {
@@ -53,7 +53,7 @@ bool DataLayer::loadFromOtherFile(string input)
     }
     else
     {
-        in.seekg(90);
+        in.seekg(100);
 
         while(in >> p)
         {
@@ -80,11 +80,11 @@ void DataLayer::saveToFile()
     out <<  "\tGender\tBorn\tDied" << endl;
     out << "_____________________________________________________" << endl;
 
-    out.seekp(90);
+    out.seekp(100);
     for (size_t i = 0; i < people.size(); i++)
     {
         out.width(26);
-        out << people[i].getName() << ";\t" << people[i].getGender() << "\t" << people[i].getBirthYear() << "\t";
+        out << left << people[i].getName() << ";\t" << people[i].getGender() << "\t" << people[i].getBirthYear() << "\t";
         if(people[i].getAlive())
         {
             out << "Alive\n";
@@ -118,11 +118,11 @@ bool DataLayer::saveToOtherFile(string input)
         out <<  "\tGender\tBorn\tDied" << endl;
         out << "_____________________________________________________" << endl;
 
-        out.seekp(90);
+        out.seekp(100);
         for (size_t i = 0; i < people.size(); i++)
         {
             out.width(26);
-            out << people[i].getName() << ";\t" << people[i].getGender() << "\t" << people[i].getBirthYear() << "\t";
+            out << left << people[i].getName() << ";\t" << people[i].getGender() << "\t" << people[i].getBirthYear() << "\t";
             if(people[i].getAlive())
             {
                 out << "Alive\n";
@@ -163,49 +163,5 @@ void DataLayer::addPerson(const Persons& p)
 void DataLayer::deletePerson(int n)
 {
     people.erase(people.begin() + n);
-
-    /*
-    vector<Persons> v;
-    Persons p;
-    ifstream in;
-
-    in.open(DEFAULT_FILENAME);
-    in.seekg(90);
-
-    while(in >> p)
-    {
-        v.push_back(p);
-    }
-    in.close();
-    v.erase(v.begin()+n);
-    people.resize(v.size());
-    for (unsigned int i = 0; i < v.size(); i++)
-    {
-        people[i] = v [i];
-    }*/
-    /*
-    ofstream out(DEFAULT_FILENAME);
-
-    out.width(16);
-    out << left << "Name";
-    out <<  "\tGender\tBorn\tDied" << endl;
-    out << "_____________________________________________________" << endl;
-
-    out.seekp(90);
-    for (size_t i = 0; i < people.size(); i++)
-    {
-        out << people[i].getName() << ";\t" << people[i].getGender() << "\t" << people[i].getBirthYear() << "\t";
-        if(people[i].getAlive())
-        {
-            out << "Alive\n";
-        }
-        else
-        {
-            out << people[i].getDeathYear() << endl;
-        }
-    }
-
-    out.close();
-    */
     saveToFile();
 }
