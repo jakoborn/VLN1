@@ -31,7 +31,7 @@ void ConsoleUI::run()
             {
             case 1:
             {
-                showData();
+                listData();
                 break;
             }
             case 2:
@@ -67,7 +67,7 @@ void ConsoleUI::run()
     }
 }
 
-void ConsoleUI::showData()
+void ConsoleUI::listData()
 {
     cout << endl;
     printLine();
@@ -143,7 +143,7 @@ void ConsoleUI::sortData()
 
     if (choice != 5) //if you press cancel, you don't want to see the list, do you?
     {
-        showData();
+        listData();
     }
 }
 void ConsoleUI::sortByName(char input, int choice, int choice2, bool& error)

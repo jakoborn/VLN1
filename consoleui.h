@@ -7,7 +7,8 @@ class ConsoleUI
 {
 private:
     ServiceLayer serve;
-    void showData();
+    void listData();
+
     void sortData();
     void addData();
     void addPersonManually();
