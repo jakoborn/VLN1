@@ -166,9 +166,11 @@ vector<Persons> DataLayer::getVector()
 }
 
 //Sets the vector to the given value.
+//Note the autosave.
 void DataLayer::setVector(vector <Persons> p)
 {
     people = p;
+    saveToFile();
 }
 
 //Adds the given person to the vector.
