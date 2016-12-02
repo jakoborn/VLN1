@@ -3,25 +3,23 @@
 
 #include <vector>
 #include <string>
-#include "sortings.h"
+#include "persons.h"
 
 using namespace std;
 
 class DataLayer
 {
-    vector<Persons> people;
+    vector<Persons> people; //A vector which holds the People on the list.
 
 public:
-   DataLayer();
-
-   void loadFromFile();
-   bool loadFromOtherFile(string input);
-   void saveToFile();
-   vector<Persons> getVector();
-   void removeData(int &x);
-   void setVector(vector <Persons> p);
-   void addPerson(const Persons& p);
-   void deletePerson(int n);
+   DataLayer(); //Default Constructor, which runs the function loadFromFile().
+   void loadFromFile(); //Default loading from the same directory as the programme from the file "science.txt".
+   bool loadFromOtherFile(string input); //When you want to load from a different file. If successful, it will return true, add the people from the file, and autosave.
+   void saveToFile(); //The Autosave function. Will save the people in the vector to the file "science.txt". This will delete whatever was in it before.
+   vector<Persons> getVector(); //Returns the vector with all the scientists in it.
+   void setVector(vector <Persons> p); //Sets the vector of People to the given. Does not Autosave.
+   void addPerson(const Persons& p); //Adds the given Person to the vector of people. Autosaves afterwards.
+   void deletePerson(int n); //Removes the person in the vector in place n. Autosaves afterwards.
 };
 
 #endif // DATALAYER_H

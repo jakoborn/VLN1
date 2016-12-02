@@ -10,16 +10,6 @@ DataLayer::DataLayer()
 {
     loadFromFile();
 }
-vector<Persons> DataLayer::getVector()
-{
-    return people;
-}
-
-void DataLayer::setVector(vector <Persons> p)
-{
-    people = p;
-}
-
 
 void DataLayer::loadFromFile()
 {
@@ -93,6 +83,16 @@ void DataLayer::saveToFile()
     out.close();
 }
 
+vector<Persons> DataLayer::getVector()
+{
+    return people;
+}
+
+void DataLayer::setVector(vector <Persons> p)
+{
+    people = p;
+}
+
 void DataLayer::addPerson(const Persons& p)
 {
     people.push_back(p);
@@ -101,6 +101,9 @@ void DataLayer::addPerson(const Persons& p)
 
 void DataLayer::deletePerson(int n)
 {
+    people.erase(people.begin() + n);
+
+    /*
     vector<Persons> v;
     Persons p;
     ifstream in;
@@ -118,7 +121,8 @@ void DataLayer::deletePerson(int n)
     for (unsigned int i = 0; i < v.size(); i++)
     {
         people[i] = v [i];
-    }
+    }*/
+    /*
     ofstream out(DEFAULT_FILENAME);
 
     out.width(16);
@@ -141,4 +145,6 @@ void DataLayer::deletePerson(int n)
     }
 
     out.close();
+    */
+    saveToFile();
 }

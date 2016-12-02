@@ -5,7 +5,7 @@
 
 ServiceLayer::ServiceLayer()
 {
-
+    sortByName(1); //Defaults to sorting the list by name.
 }
 
 vector<Persons> ServiceLayer::list()
