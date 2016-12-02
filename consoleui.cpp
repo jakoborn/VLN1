@@ -335,12 +335,11 @@ void ConsoleUI::addPersonManually()
     cout << "Enter gender (M/F): ";
     cin >> gender;
     OnlyTakeOneInput();
-    if(!genderCheck(gender))
+    while(genderCheck(gender) == false)
     {
-        if(!check())
-        {
-            return;
-        }
+        cout << "Enter gender (M/F): ";
+        cin  >> gender;
+        OnlyTakeOneInput();
     }
     while(!validYear(year, birthYear))
     {
@@ -627,7 +626,7 @@ void ConsoleUI::deleteData()
             {
                 for (int i = s-1; i >= 0; i--)
                 {
-                    serve.erase(v[i]);
+                    serve.deletePerson(v[i]);
                 }
                 cout << "Scientist(s) deleted\n";
                 d = true;

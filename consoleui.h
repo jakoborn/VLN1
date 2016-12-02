@@ -7,8 +7,8 @@ class ConsoleUI
 {
 private:
     ServiceLayer serve;
+    // Lists the data from the vector.
     void listData();
-
     void sortData();
     void addData();
     void addPersonManually();
@@ -21,6 +21,7 @@ private:
     void deleteData();
     bool validYear(const string& s, int& year);
     bool birthChecks(int birthYear, int deathYear);
+
     bool check();
     bool genderCheck(char &gender);
     void OnlyTakeOneInput();
