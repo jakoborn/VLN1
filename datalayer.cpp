@@ -68,7 +68,8 @@ bool DataLayer::loadFromOtherFile(string input)
 
 void DataLayer::saveToFile()
 {
-    ofstream out(DEFAULT_FILENAME);
+    ofstream out;
+    out.open(DEFAULT_FILENAME);
 
     out.width(16);
     out << left << "Name";
@@ -118,5 +119,26 @@ void DataLayer::deletePerson(int n)
     {
         people[i] = v [i];
     }
-    saveToFile();
+    ofstream out(DEFAULT_FILENAME);
+
+    out.width(16);
+    out << left << "Name";
+    out <<  "\tGender\tBorn\tDied" << endl;
+    out << "_____________________________________________________" << endl;
+
+    out.seekp(90);
+    for (size_t i = 0; i < people.size(); i++)
+    {
+        out << people[i].getName() << ";\t" << people[i].getGender() << "\t" << people[i].getBirthYear() << "\t";
+        if(people[i].getAlive())
+        {
+            out << "Alive\n";
+        }
+        else
+        {
+            out << people[i].getDeathYear() << endl;
+        }
+    }
+
+    out.close();
 }
