@@ -14,7 +14,10 @@ vector<Persons> ServiceLayer::list()
    return dl.getVector();
 }
 
-//regular sorting. Reyndi að nota klasaföll, en það vill þýðandinn ekki.
+//regular sorting. For some unknown reason, these functions
+// gave strange errors when we tried to put them in the class
+//(both a separate class and this class). It was only okay if
+// we used these global functions.
 bool sortByName2(const Persons &lhs, const Persons &rhs)
 { return lhs.getName() < rhs.getName(); }
 bool sortByGender2(const Persons &lhs, const Persons &rhs)
@@ -41,7 +44,7 @@ bool sortByDeathYear2(const Persons &lhs, const Persons &rhs)
     }
 }
 
-//reverse sorting. Reyndi að nota klasaföll, en það vill þýðandinn ekki.
+//reverse sorting. Same with these as above.
 bool rSortByName2(const Persons &lhs, const Persons &rhs)
 { return lhs.getName() > rhs.getName(); }
 bool rSortByGender2(const Persons &lhs, const Persons &rhs)

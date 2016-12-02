@@ -21,7 +21,22 @@ bool Sortings::sortByBirthYear(const Persons &lhs, const Persons &rhs)
 
 bool Sortings::sortByDeathYear(const Persons &lhs, const Persons &rhs)
 {
-    return lhs.getDeathYear() < rhs.getDeathYear();
+    if (lhs.getDeathYear() == 0 && rhs.getDeathYear() == 0)
+    {
+        return lhs.getDeathYear() < rhs.getDeathYear();
+    }
+    else if (lhs.getDeathYear() == 0)
+    {
+        return lhs.getDeathYear() > rhs.getDeathYear();
+    }
+    else if (rhs.getDeathYear() == 0)
+    {
+        return lhs.getDeathYear() > rhs.getDeathYear();
+    }
+    else
+    {
+        return lhs.getDeathYear() < rhs.getDeathYear();
+    }
 }
 
 //reverse sorting
@@ -41,5 +56,20 @@ bool Sortings::rSortByBirthYear(const Persons &lhs, const Persons &rhs)
 
 bool Sortings::rSortByDeathYear(const Persons &lhs, const Persons &rhs)
 {
-    return lhs.getDeathYear() > rhs.getDeathYear();
+    if (lhs.getDeathYear() == 0 && rhs.getDeathYear() == 0)
+    {
+        return lhs.getDeathYear() > rhs.getDeathYear();
+    }
+    else if (lhs.getDeathYear() == 0)
+    {
+        return lhs.getDeathYear() < rhs.getDeathYear();
+    }
+    else if (rhs.getDeathYear() == 0)
+    {
+        return lhs.getDeathYear() < rhs.getDeathYear();
+    }
+    else
+    {
+        return lhs.getDeathYear() > rhs.getDeathYear();
+    }
 }
