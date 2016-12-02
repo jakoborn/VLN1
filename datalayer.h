@@ -14,7 +14,7 @@ class DataLayer
 public:
    DataLayer(); //Default Constructor, which runs the function loadFromFile().
 
-   void loadFromFile(); //Default loading from the same directory as the programme from the file "science.txt".
+   void loadFromFile(); //Default loading from the same directory as the programme from the default file "science.txt".
    bool loadFromOtherFile(string input); //When you want to load from a different file. If successful, it will return true, add the people from the file, and autosave.
    void saveToFile(); //The Autosave function. Will save the people in the vector to the file "science.txt". This will delete whatever was in it before.
    vector<Persons> getVector(); //Returns the vector with all the scientists in it.

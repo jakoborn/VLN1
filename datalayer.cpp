@@ -4,13 +4,19 @@
 
 using namespace std;
 
+//The Default filename which to load from and save to.
 const string DEFAULT_FILENAME = "science.txt";
 
+//Default constructor.
 DataLayer::DataLayer()
 {
     loadFromFile();
 }
 
+//Loads from the Default file.
+//The File we expect to load from has a header, which will be ignored
+//when reading from it. Then reads in the people by name, gender, birth
+//year, death year (Alive for living persons).
 void DataLayer::loadFromFile()
 {
 
@@ -27,6 +33,11 @@ void DataLayer::loadFromFile()
     in.close();
  }
 
+//Very similar to loadFromFile().
+//The input string is the directory from which the file should be loaded.
+//If it cannot open the selected file, will return false.
+//Else, it will read in the people the same way loadFromFile() does.
+//If you have a list, you may want to check whether it has the header.
 bool DataLayer::loadFromOtherFile(string input)
 {
 
@@ -56,6 +67,9 @@ bool DataLayer::loadFromOtherFile(string input)
     }
  }
 
+//The Default saving function.
+//Writes a header, and then the people by
+//name, gender, birthyear, deathyear (alive for living persons).
 void DataLayer::saveToFile()
 {
     ofstream out;
@@ -83,22 +97,28 @@ void DataLayer::saveToFile()
     out.close();
 }
 
+//Returns the vector with the people.
 vector<Persons> DataLayer::getVector()
 {
     return people;
 }
 
+//Sets teh vector to the given value.
 void DataLayer::setVector(vector <Persons> p)
 {
     people = p;
 }
 
+//Adds the given person to the vector.
+//Note the autosave.
 void DataLayer::addPerson(const Persons& p)
 {
     people.push_back(p);
     saveToFile();
 }
 
+//Deletes the person in the vector, in the given place.
+//Autosaves.
 void DataLayer::deletePerson(int n)
 {
     people.erase(people.begin() + n);
