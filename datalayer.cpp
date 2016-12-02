@@ -37,6 +37,8 @@ void DataLayer::loadFromFile()
 
     while(in >> p)
     {
+        //Checks if person is valid, i.e. has a valid name, gender, birthyear and deathyear.
+        //An invalid person will not be added.
         Persons compare;
         if (p != compare)
         {
@@ -71,8 +73,10 @@ bool DataLayer::loadFromOtherFile(string input)
 
         while(in >> p)
         {
+            //Checks if person is valid, i.e. has a valid name, gender, birthyear and deathyear.
+            //An invalid person will not be added.
             Persons compare;
-            if (!(p == compare))
+            if (p != compare)
             {
                 people.push_back(p);
             }

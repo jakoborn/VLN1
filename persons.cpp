@@ -3,7 +3,6 @@
 
 
 //Default Constructor.
-//Not actually used.
 Persons::Persons()
 {
     name = "John Doe";
