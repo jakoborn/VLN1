@@ -700,7 +700,7 @@ bool ConsoleUI::validYear(const string& s, int& year)
 bool ConsoleUI::validName(const string& s)
 {
     string::const_iterator it = s.begin();
-    while (it != s.end() && isalpha(*it)) ++it;
+    while (it != s.end() && (isalpha(*it) || *it == ' ')) ++it;
     return !s.empty() && it == s.end();
 }
 
