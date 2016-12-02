@@ -23,7 +23,7 @@ class ConsoleUI
     void deleteData();
     bool validYear(const string& s, int& year);
     bool birthChecks(int birthYear, int deathYear);
-
+    bool validName(const string& s);
     bool check();
     bool genderCheck(char &gender);
     void OnlyTakeOneInput();
