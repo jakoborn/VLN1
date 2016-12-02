@@ -3,12 +3,15 @@
 
 using namespace std;
 
+//Default Constructor
 ConsoleUI::ConsoleUI()
 {
 
 }
 
-// Run shows the table for all options.
+// The Function used in the main() function.
+// Displays the main menu, and takes you to the
+// respective function depending on the choice.
 void ConsoleUI::run()
 {
     bool run = true;
@@ -26,7 +29,7 @@ void ConsoleUI::run()
 
        char input = '0';
        cin >> input;
-       onlyTakeOneInput();              // Takes only one letter and flushes the rest.
+       onlyTakeOneInput();  // Takes only one letter and flushes the rest.
        int choice = input - '0';
 
             switch (choice)
@@ -71,7 +74,9 @@ void ConsoleUI::run()
         }
     }
 }
+
 // lists all the data from the vector.
+//uses the printLine() function, which gives us a nice header.
 void ConsoleUI::listData()
 {
     cout << endl;
@@ -85,6 +90,7 @@ void ConsoleUI::listData()
 
 }
 
+//Here we get to pick the parameter by which we want to sort our data.
 void ConsoleUI::sortData()
 {
     char input = '0';
@@ -97,9 +103,9 @@ void ConsoleUI::sortData()
         cout << "How would you like to sort the list?" << endl;
         cout << " ================================"    << endl;
         cout << " Press 1 to sort by name"             << endl;
-        cout << " Press 2 to sort by gender"       << endl;
+        cout << " Press 2 to sort by gender"           << endl;
         cout << " Press 3 to sort by birth year "      << endl;
-        cout << " Press 4 to sort by death year"           << endl;
+        cout << " Press 4 to sort by death year"       << endl;
         cout << " Press 5 to Cancel"                   << endl;
         cout << " ================================"    << endl;
 
@@ -151,6 +157,7 @@ void ConsoleUI::sortData()
     }
 }
 
+//We sort by name, and want to know whether we want to sort reversed or not.
 void ConsoleUI::sortByName(char input, int order, bool& error)
 {
     do
@@ -183,6 +190,8 @@ void ConsoleUI::sortByName(char input, int order, bool& error)
     }
 }
 
+//Do you want to see all the ladies first? Or maybe the men?
+//Then this function is for you!!
 void ConsoleUI::sortByGender(char input, int order, bool& error)
 {
     do
@@ -215,6 +224,7 @@ void ConsoleUI::sortByGender(char input, int order, bool& error)
     }
 }
 
+//We sort by birthyear, and want to know whether we want to sort reversed or not.
 void ConsoleUI::sortByBirthYear(char input, int order, bool& error)
 {
     do
@@ -246,6 +256,8 @@ void ConsoleUI::sortByBirthYear(char input, int order, bool& error)
     }
 }
 
+//We sort by death year, and want to know whether we want to sort reversed or not.
+//Alive people will be listed last (or first for reversed).
 void ConsoleUI::sortByDeathYear(char input, int order, bool& error)
 {
     do
@@ -277,7 +289,8 @@ void ConsoleUI::sortByDeathYear(char input, int order, bool& error)
         error = true;
     }
 }
-// Asks you to enter which you want to add data manually or from a file.
+
+// Asks you to enter whether you want to add data manually or from a file.
 void ConsoleUI::addData()
 {
     bool error = false;
@@ -323,10 +336,12 @@ void ConsoleUI::addData()
     }
     while (error == true);
 }
-// if user does not enter a string with names he gets an error message,and first letter becomes uppercase.
-// if user enters anything other than 'M' and 'F' he gets an error
-// and error checks for birth Year and death Year.
-// and adds him to the file.
+
+//We add a person through the console.
+//If user does not enter a string with names he gets an error message.
+//The first letter becomes uppercase.
+//there are error checks for birth Year and death Year.
+//If no invalid information is entered, the person is added to the file.
 void ConsoleUI::addPersonManually()
 {
     string name, year;
@@ -404,8 +419,8 @@ void ConsoleUI::addPersonManually()
     }
 
 }
-// Asks user to enter path to file, it WILL overwrite the file
-// if only file is added then file will be created.
+
+// Asks user to enter path to file. This WILL overwrite the default file.
 void ConsoleUI::addPeopleFromFile()
 {
     string fileName = "";
@@ -449,6 +464,7 @@ void ConsoleUI::addPeopleFromFile()
     }
     while (fileOpenFail);
 }
+
 // Shows the table for search options.
 void ConsoleUI::searchData()
 {
@@ -509,6 +525,8 @@ void ConsoleUI::searchData()
     while (error);
 }
 
+//searches the vector for the string which the user enters
+//and displays every result.
 void ConsoleUI::searchByName()
 {
     string n = " ";
@@ -535,6 +553,7 @@ void ConsoleUI::searchByName()
 
 }
 
+//We can search by gender. Yay.
 void ConsoleUI::searchByGender()
 {
     string gender = " ";
@@ -573,7 +592,7 @@ void ConsoleUI::searchByGender()
     }
 }
 
-
+//We search for a certain year in which people might be born in.
 void ConsoleUI::searchByBirthYear()
 {
     int y = 0;
@@ -603,6 +622,8 @@ void ConsoleUI::searchByBirthYear()
 
 }
 
+//We get a whole range of years, both included.
+//Note that this is only for birthyear.
 void ConsoleUI::searchByYearRange()
 {
     int f = 0, l = 0;
@@ -642,6 +663,7 @@ void ConsoleUI::searchByYearRange()
 
 }
 
+//This deletes a scientist. RIP. He/she probably didn't belong on the list anyways.
 void ConsoleUI::deleteData()
 {
     cout << "Enter name of scientist(s) you would like to delete: ";
@@ -692,25 +714,39 @@ void ConsoleUI::deleteData()
     }
 }
 
+//a function which checks whether a certain entered string is a year.
+//And whether it's a valid year (AKA not in the future).
 bool ConsoleUI::validYear(const string& s, int& year)
 {
     string::const_iterator it = s.begin();
     while (it != s.end() && isdigit(*it)) ++it;
-    if (s.empty() || it != s.end()) return false;
+    if (s.empty() || it != s.end())
+    {
+        return false;
+    }
     year = atoi(s.c_str());
     time_t t = time(NULL);
     tm* TimePtr = localtime(&t);
     int currentYear = TimePtr->tm_year + 1900;
+
     return year >= 0 && year <= currentYear;
 }
 
+//we check whether a name entered by the user is valid
+// i.e. that it's not empty, no numbers.
 bool ConsoleUI::validName(const string& s)
 {
     string::const_iterator it = s.begin();
-    while (it != s.end() && (isalpha(*it) || *it == ' ')) ++it;
+    while (it != s.end() && (isalpha(*it) || *it == ' '))
+    {
+        ++it;
+    }
+
     return !s.empty() && it == s.end();
 }
 
+//Errorchecks for whether certain years entered by the user are valid.
+//sadly, it can't be a 300 year old dude. No vampires.
 bool ConsoleUI::birthChecks(int birthYear, int deathYear)
 {
     if(deathYear < birthYear && deathYear != 0)
@@ -726,6 +762,8 @@ bool ConsoleUI::birthChecks(int birthYear, int deathYear)
     return true;
 }
 
+//in the addData() function, errors will call upon this function.
+//it then loops back into said function if you want.
 bool ConsoleUI::check()
 {
     char continuel;
@@ -742,6 +780,7 @@ bool ConsoleUI::check()
     }
 }
 
+//Errorcheck for whether the entered char is a recognised gender.
 bool ConsoleUI::genderCheck(char& gender)
 {
 
@@ -763,13 +802,14 @@ bool ConsoleUI::genderCheck(char& gender)
     }
 }
 
-
+//If the user entered too many commands, the rest will just be flushed. fun stuff.
 void ConsoleUI::onlyTakeOneInput()
 {
     cin.clear();
     fflush(stdin);
 }
 
+//The header used when we lists scientists.
 void ConsoleUI::printLine()
 {
     cout.width(26);
@@ -778,6 +818,7 @@ void ConsoleUI::printLine()
     cout << "_____________________________________________________" << endl;
 }
 
+//Here, the user puts in a string, where it will be attempted to save the list to.
 void ConsoleUI::saveToCustomFile()
 {
     bool fileOpenFail = false;
