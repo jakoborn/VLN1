@@ -76,7 +76,7 @@ void ConsoleUI::listData()
     {
         cout << serve.list()[i];
     }
-     cout << "_____________________________________________________" << endl;
+    cout << "_____________________________________________________" << endl;
 
 }
 
@@ -121,7 +121,7 @@ void ConsoleUI::sortData()
                 {
                     sortByDeathYear(input, order, error);
                     break;
-                }
+            }
              case 4:
             {
                     sortByGender(input, order, error);
@@ -336,12 +336,11 @@ void ConsoleUI::addPersonManually()
     cout << "Enter gender (M/F): ";
     cin >> gender;
     OnlyTakeOneInput();
-    if(!genderCheck(gender))
+    while(genderCheck(gender) == false)
     {
-        if(!check())
-        {
-            return;
-        }
+        cout << "Enter gender (M/F): ";
+        cin  >> gender;
+        OnlyTakeOneInput();
     }
     while(!validYear(year, birthYear))
     {

@@ -6,6 +6,7 @@
 class ConsoleUI
 {
     ServiceLayer serve;
+    // Lists the data from the vector.
     void listData();
     void sortData();
     void sortByName(char input, int order, bool &error);
@@ -23,6 +24,7 @@ class ConsoleUI
     void deleteData();
     bool validYear(const string& s, int& year);
     bool birthChecks(int birthYear, int deathYear);
+
     bool check();
     bool genderCheck(char &gender);
     void OnlyTakeOneInput();
