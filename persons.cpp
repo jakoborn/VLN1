@@ -6,8 +6,8 @@
 //Not actually used.
 Persons::Persons()
 {
-    name = " ";
-    gender = ' ';
+    name = "John Doe";
+    gender = 'M';
     birthYear = 1980;
     deathYear = 0;
     alive = true;
@@ -93,25 +93,47 @@ ostream& operator << (ostream& out, const Persons& p)
     return out;
 }
 
+bool validYear(const string& s, int& year)
+{
+    string::const_iterator it = s.begin();
+    //Checks if the string 'year' is a number
+    while (it != s.end() && isdigit(*it)) ++it;
+    if (s.empty() || it != s.end())
+    {
+        return false;
+    }
+    //Checks if 'year' is positive and lower than current year
+    year = atoi(s.c_str());
+    time_t t = time(NULL);
+    tm* TimePtr = localtime(&t);
+    int currentYear = TimePtr->tm_year + 1900;
+
+    return year >= 0 && year <= currentYear;
+}
+
 //Overloads the >> (input) operator.
 //Reads the name which we know ends at a ;
 //Then reads the gender and birthyear.
 //Reads either "Alive" or the deathyear.
 istream& operator >> (istream& in, Persons& p)
 {
-    string a = " ";
+    string n = " ", a = " ";
+    char g = ' ';
+    int bY = 0, dY =0;
     in >> ws;
-    getline(in, p.name, ';');
-    in >> p.gender >> p.birthYear >> a;
-    if (a == "Alive")
-    {
-        p.alive = true;
-        p.deathYear = 0;
-    }
-    else
-    {
-        p.alive = false;
-        p.deathYear = atoi(a.c_str());
+    getline(in, n, ';');
+    in >> g >> a;
+    if (validYear(a, bY)) {
+        in >> a;
+        if (a == "Alive")
+        {
+            p.alive = true;
+            p.deathYear = 0;
+        }
+        else if(validYear(a, dY)) {
+            Persons m(n, g, bY, dY);
+            p = m;
+        }
     }
     return in;
 }
