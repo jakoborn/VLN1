@@ -358,13 +358,12 @@ void ConsoleUI::addPersonManually()
         cin  >> gender;
         onlyTakeOneInput();
     }
-    while(!validYear(year, birthYear))
+    while(!validYear(year, birthYear) || birthYear == 0)
     {
         cout << "Enter birth year: ";
         cin >> year;
         onlyTakeOneInput();
-        if (!validYear(year, birthYear))
-        {
+        if (!validYear(year, birthYear) || birthYear == 0) {
             cout << "Invalid input!\n";
         }
     }
@@ -374,8 +373,7 @@ void ConsoleUI::addPersonManually()
         cout << "Enter death year (0 for living person): ";
         cin >> year;
         onlyTakeOneInput();
-        if (!validYear(year, deathYear))
-        {
+        if(!validYear(year, deathYear)) {
             cout << "Invalid input!\n";
         }
     }
@@ -578,12 +576,11 @@ void ConsoleUI::searchByBirthYear()
 {
     int y = 0;
     string s = " ";
-    while (!validYear(s, y))
+    while (!validYear(s, y) || y == 0)
     {
         cout << "Enter year: ";
         cin >> s;
-        if (!validYear(s, y))
-        {
+        if(!validYear(s, y) || y == 0) {
             cout << "Invalid input!\n";
         }
     }
@@ -611,8 +608,7 @@ void ConsoleUI::searchByYearRange()
     {
         cout << "Enter first year in range: ";
         cin >> s;
-        if(!validYear(s, f))
-        {
+        if (!validYear(s, f)) {
             cout << "Invalid input!\n";
         }
     }
@@ -698,8 +694,12 @@ void ConsoleUI::deleteData()
 bool ConsoleUI::validYear(const string& s, int& year)
 {
     string::const_iterator it = s.begin();
+    //Checks if the string 'year' is a number
     while (it != s.end() && isdigit(*it)) ++it;
-    if (s.empty() || it != s.end()) return false;
+    if (s.empty() || it != s.end()) {
+        return false;
+    }
+    //Checks if 'year' is positive and lower than current year
     year = atoi(s.c_str());
     time_t t = time(NULL);
     tm* TimePtr = localtime(&t);
@@ -709,6 +709,7 @@ bool ConsoleUI::validYear(const string& s, int& year)
 
 bool ConsoleUI::validName(const string& s)
 {
+    //Checks if 's' is empty or contains characters other than letters and spaces
     string::const_iterator it = s.begin();
     while (it != s.end() && (isalpha(*it) || *it == ' ')) ++it;
     return !s.empty() && it == s.end();
