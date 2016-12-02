@@ -2,14 +2,12 @@
 #define SERVICELAYER_H
 
 #include "datalayer.h"
-#include "sortings.h"
 
 using namespace std;
 
 class ServiceLayer
 {
     DataLayer dl;
-    Sortings sorter;
 public:
     ServiceLayer();
     vector<Persons> list();

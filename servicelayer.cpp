@@ -1,7 +1,5 @@
 #include <algorithm>
 #include "servicelayer.h"
-#include "sortings.h"
-
 
 ServiceLayer::ServiceLayer()
 {
@@ -78,13 +76,11 @@ void ServiceLayer::sortByName(int order)
     if (order == 1)
     {
         //A-Z
-        //stable_sort(people.begin(), people.end(), sorter.sortByName);
         stable_sort(people.begin(), people.end(), sortByName2);
     }
     else //order == 2
     {
         //Z-A
-        //stable_sort(people.begin(), people.end(), sorter.rSortByName);
         stable_sort(people.begin(), people.end(), rSortByName2);
     }
     dl.setVector(people);
@@ -97,13 +93,11 @@ void ServiceLayer::sortByGender(int order)
     if (order == 1)
     {
         //Females first
-        //stable_sort(people.begin(), people.end(), sorter.sortByGender);
         stable_sort(people.begin(), people.end(), sortByGender2);
     }
     else //order == 2
     {
         //Males first
-        //stable_sort(people.begin(), people.end(), sorter.rSortByGender);
         stable_sort(people.begin(), people.end(), rSortByGender2);
     }
     dl.setVector(people);
@@ -117,13 +111,11 @@ void ServiceLayer::sortByBirthYear(int order)
     if (order == 1)
     {
         //Ascending
-        //stable_sort(people.begin(), people.end(), sorter.sortByBirthYear);
         stable_sort(people.begin(), people.end(), sortByBirthYear2);
     }
     else //order == 2
     {
         //Descending
-        //stable_sort(people.begin(), people.end(), sorter.rSortByBirthYear);
         stable_sort(people.begin(), people.end(), rSortByBirthYear2);
     }
     dl.setVector(people);
@@ -136,13 +128,11 @@ void ServiceLayer::sortByDeathYear(int order)
     if (order == 1)
     {
         //Ascending
-        //stable_sort(people.begin(), people.end(), sorter.sortByDeathYear);
         stable_sort(people.begin(), people.end(), sortByDeathYear2);
     }
     else //order == 2
     {
         //Descending
-        //stable_sort(people.begin(), people.end(), sorter.rSortByDeathYear);
         stable_sort(people.begin(), people.end(), rSortByDeathYear2);
     }
     dl.setVector(people);
