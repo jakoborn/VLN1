@@ -24,6 +24,10 @@ private:
     bool genderCheck(char &gender);
     void OnlyTakeOneInput();
     void printLine();
+    void sortByName(char input, int choice, int choice2, bool &error);
+    void sortByBirthYear(char input, int choice, int choice2, bool &error);
+    void sortByDeathYear(char input, int choice, int choice2, bool& error);
+    void sortByGender(char input, int choice, int choice2, bool& error);
 public:
     ConsoleUI();
     void run();

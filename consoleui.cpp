@@ -96,123 +96,16 @@ void ConsoleUI::sortData()
             switch (choice)
             {
             case 1:
-                do
-                {
-                    if (input != '1' && input != '2' && input != '3')
-                    {
-                        cout << "Error! Invalid input" << endl;
-                    }
-                    cout << "Regular or Reversed sorting?"      << endl;
-                    cout << " ================================" << endl;
-                    cout << "Press 1 for regular sorting"       << endl;
-                    cout << "Press 2 for reversed sorting"      << endl;
-                    cout << "Press 3 to cancel"                 << endl;
-                    cout << " ================================" << endl;
-
-                    cin >> input;
-                    OnlyTakeOneInput();
-                }
-                while (input != '1' && input != '2' && input != '3');
-                choice2 = input - '0';
-
-                if (choice2 == 1 || choice2 == 2)
-                {
-                    serve.sorting(choice, choice2);
-                    error = false;
-                }
-                else
-                {
-                    error = true;
-                }
+                sortByName(input, choice, choice2, error);
                 break;
              case 2:
-                do
-                {
-                    if (input != '1' && input != '2' && input != '3')
-                    {
-                        cout << "Error! Invalid input" << endl;
-                    }
-                    cout << "Ascending or Descending sorting?"    << endl;
-                    cout << " ================================"   << endl;
-                    cout << "Press 1 to sort by ascending order"  << endl;
-                    cout << "Press 2 to sort by descending order" << endl;
-                    cout << "Press 3 to cancel"                   << endl;
-                    cout << " ================================"   << endl;
-                    cin >> input;
-                    OnlyTakeOneInput();
-                }
-                while (input != '1' && input != '2' && input != '3');
-                choice2 = input - '0';
-
-                if (choice2 == 1 || choice2 == 2)
-                {
-                    serve.sorting(choice, choice2);
-                    error = false;
-                }
-                else
-                {
-                    error = true;
-                }
+                sortByBirthYear(input, choice, choice2, error);
                 break;
              case 3:
-                do
-                {
-                    if (input != '1' && input != '2' && input != '3')
-                    {
-                        cout << "Error! Invalid input" << endl;
-                    }
-                    cout << "Ascended or Descended sorting?"      << endl;
-                    cout << " ================================"   << endl;
-                    cout << "Press 1 to sort by ascending order"  << endl;
-                    cout << "Press 2 to sort by descending order" << endl;
-                    cout << "Press 3 to cancel"                   << endl;
-                    cout << " ================================"   << endl;
-
-                    cin >> input;
-                    OnlyTakeOneInput();
-                }
-                while (input != '1' && input != '2' && input != '3');
-                choice2 = input - '0';
-
-                if (choice2 == 1 || choice2 == 2)
-                {
-                    serve.sorting(choice, choice2);
-                    error = false;
-                }
-                else
-                {
-                    error = true;
-                }
+                sortByDeathYear(input, choice, choice2, error);
                 break;
              case 4:
-                do
-                {
-                    if (input != '1' && input != '2' && input != '3')
-                    {
-                        cout << "Error! Invalid input" << endl;
-                    }
-                    cout << "Sort by Males or Females?"         << endl;
-                    cout << " ================================" << endl;
-                    cout << "Press 1 to sort by females first"  << endl;
-                    cout << "Press 2 to sort by males first"    << endl;
-                    cout << "Press 3 to cancel"                 << endl;
-                    cout << " ================================" << endl;
-
-                    cin >> input;
-                    OnlyTakeOneInput();
-                }
-                while (input != '1' && input != '2' && input != '3');
-                choice2 = input - '0';
-
-                if (choice2 == 1 || choice2 == 2)
-                {
-                    serve.sorting(choice, choice2);
-                    error = false;
-                }
-                else
-                {
-                    error = true;
-                }
+                sortByGender(input, choice, choice2, error);
                 break;
              case 5:
                 error = false;
@@ -229,7 +122,131 @@ void ConsoleUI::sortData()
         showData();
     }
 }
+void ConsoleUI::sortByName(char input, int choice, int choice2, bool& error)
+{
+    do
+    {
+        if (input != '1' && input != '2' && input != '3')
+        {
+            cout << "Error! Invalid input" << endl;
+        }
+        cout << "Regular or Reversed sorting?"      << endl;
+        cout << " ================================" << endl;
+        cout << "Press 1 for regular sorting"       << endl;
+        cout << "Press 2 for reversed sorting"      << endl;
+        cout << "Press 3 to cancel"                 << endl;
+        cout << " ================================" << endl;
 
+        cin >> input;
+        OnlyTakeOneInput();
+    }
+    while (input != '1' && input != '2' && input != '3');
+    choice2 = input - '0';
+
+    if (choice2 == 1 || choice2 == 2)
+    {
+        serve.sorting(choice, choice2);
+        error = false;
+    }
+    else
+    {
+        error = true;
+    }
+}
+void ConsoleUI::sortByBirthYear(char input, int choice, int choice2, bool& error)
+{
+    do
+    {
+        if (input != '1' && input != '2' && input != '3')
+        {
+            cout << "Error! Invalid input" << endl;
+        }
+        cout << "Ascending or Descending sorting?"    << endl;
+        cout << " ================================"   << endl;
+        cout << "Press 1 to sort by ascending order"  << endl;
+        cout << "Press 2 to sort by descending order" << endl;
+        cout << "Press 3 to cancel"                   << endl;
+        cout << " ================================"   << endl;
+        cin >> input;
+        OnlyTakeOneInput();
+    }
+    while (input != '1' && input != '2' && input != '3');
+    choice2 = input - '0';
+
+    if (choice2 == 1 || choice2 == 2)
+    {
+        serve.sorting(choice, choice2);
+        error = false;
+    }
+    else
+    {
+        error = true;
+    }
+}
+
+void ConsoleUI::sortByDeathYear(char input, int choice, int choice2, bool& error)
+{
+    do
+    {
+        if (input != '1' && input != '2' && input != '3')
+        {
+            cout << "Error! Invalid input" << endl;
+        }
+        cout << "Ascended or Descended sorting?"      << endl;
+        cout << " ================================"   << endl;
+        cout << "Press 1 to sort by ascending order"  << endl;
+        cout << "Press 2 to sort by descending order" << endl;
+        cout << "Press 3 to cancel"                   << endl;
+        cout << " ================================"   << endl;
+
+        cin >> input;
+        OnlyTakeOneInput();
+    }
+    while (input != '1' && input != '2' && input != '3');
+    choice2 = input - '0';
+
+    if (choice2 == 1 || choice2 == 2)
+    {
+        serve.sorting(choice, choice2);
+        error = false;
+    }
+    else
+    {
+        error = true;
+    }
+}
+
+void ConsoleUI::sortByGender(char input, int choice, int choice2, bool& error)
+{
+    do
+    {
+        if (input != '1' && input != '2' && input != '3')
+        {
+            cout << "Error! Invalid input" << endl;
+        }
+        cout << "Sort by Males or Females?"         << endl;
+        cout << " ================================" << endl;
+        cout << "Press 1 to sort by females first"  << endl;
+        cout << "Press 2 to sort by males first"    << endl;
+        cout << "Press 3 to cancel"                 << endl;
+        cout << " ================================" << endl;
+
+        cin >> input;
+        OnlyTakeOneInput();
+    }
+    while (input != '1' && input != '2' && input != '3');
+    choice2 = input - '0';
+
+    if (choice2 == 1 || choice2 == 2)
+    {
+        serve.sorting(choice, choice2);
+        error = false;
+    }
+    else
+    {
+        error = true;
+    }
+}
 
 void ConsoleUI::addData()
 {
