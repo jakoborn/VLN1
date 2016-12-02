@@ -450,6 +450,7 @@ void ConsoleUI::addPeopleFromFile()
                 cin  >> continuel;
                 if(continuel != 'Y' && continuel != 'y')
                 {
+                    fileOpen = true;
                     cont = false;
                 }
                 else if (continuel != 'N' && continuel != 'n')
