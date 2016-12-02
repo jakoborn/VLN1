@@ -29,6 +29,7 @@ class ConsoleUI
     bool genderCheck(char &gender);
     void OnlyTakeOneInput();
     void printLine();
+    void saveToCustomFile();
 public:
     ConsoleUI();
     void run();
