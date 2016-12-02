@@ -36,7 +36,7 @@ void DataLayer::loadFromFile()
 //Very similar to loadFromFile().
 //The input string is the directory from which the file should be loaded.
 //If it cannot open the selected file, will return false.
-//Else, it will read in the people the same way loadFromFile() does.
+//Otherwise, it will read in the people the same way loadFromFile() does.
 //If you have a list, you may want to check whether it has the header.
 bool DataLayer::loadFromOtherFile(string input)
 {
@@ -142,7 +142,7 @@ vector<Persons> DataLayer::getVector()
     return people;
 }
 
-//Sets teh vector to the given value.
+//Sets the vector to the given value.
 void DataLayer::setVector(vector <Persons> p)
 {
     people = p;
@@ -156,8 +156,8 @@ void DataLayer::addPerson(const Persons& p)
     saveToFile();
 }
 
-//Deletes the person in the vector, in the given place.
-//Autosaves.
+//Deletes the person in place n in the vector.
+//Note the autosave.
 void DataLayer::deletePerson(int n)
 {
     people.erase(people.begin() + n);
