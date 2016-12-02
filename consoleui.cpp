@@ -799,17 +799,17 @@ void ConsoleUI::saveToCustomFile()
                 if(continuel != 'Y' && continuel != 'y')
                 {
                     fileOpenFail = false;
-                    cont = true;
+                    cont = false;
                 }
                 else if (continuel != 'N' && continuel != 'n')
                 {
                     fileOpenFail = true;
-                    cont = true;
+                    cont = false;
                 }
                 else
                 {
                     cout << "Error! Invalid input" << endl;
-                    cont = false;
+                    cont = true;
                 }
             }
         }
