@@ -171,7 +171,7 @@ istream& operator >> (istream& in, Persons& p)
             g = gdr.at(0);
             if (genderCheck(g)) {
                 if (validYear(b, bY)) {
-                    if (d == "Alive")
+                    if (d == "Alive" && birthChecks(bY, dY))
                     {
                         p.name = n;
                         p.gender = g;
@@ -179,7 +179,7 @@ istream& operator >> (istream& in, Persons& p)
                         p.alive = true;
                         p.deathYear = 0;
                     }
-                    else if(validYear(d, dY)) {
+                    else if(validYear(d, dY) && birthChecks(bY, dY)) {
                         p.name = n;
                         p.gender = g;
                         p.birthYear = bY;
