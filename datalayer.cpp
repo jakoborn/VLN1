@@ -24,6 +24,15 @@ void DataLayer::loadFromFile()
     ifstream in;
 
     in.open(DEFAULT_FILENAME);
+    if (in.fail())
+    {
+        //If it fails to load, the programme will still run
+        //with a notification that it couldn't load.
+        //The User could still for example load from a certain directory
+        //or add people manually.
+    }
+    else
+    {
     in.seekg(100);
 
     while(in >> p)
@@ -31,6 +40,7 @@ void DataLayer::loadFromFile()
         people.push_back(p);
     }
     in.close();
+    }
  }
 
 //Very similar to loadFromFile().

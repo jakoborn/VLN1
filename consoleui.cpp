@@ -16,6 +16,10 @@ ConsoleUI::ConsoleUI()
 void ConsoleUI::run()
 {
     bool run = true;
+    if (serve.list().size() == 0)
+    {
+        cout << "\nCould not load from file or file was empty\n" << endl;
+    }
     while (run)
     {
        cout << " ================================" << endl;
@@ -424,7 +428,7 @@ void ConsoleUI::addPersonManually()
 void ConsoleUI::addPeopleFromFile()
 {
     string fileName = "";
-    bool fileOpenFail = false;
+    bool fileOpen = false;
 
     do
     {
@@ -433,7 +437,7 @@ void ConsoleUI::addPeopleFromFile()
         if(serve.addFromFile(fileName))
         {
             cout << "Success!" << endl;
-            fileOpenFail = false;
+            fileOpen = false;
         }
         else
         {
@@ -444,25 +448,25 @@ void ConsoleUI::addPeopleFromFile()
             {
                 cout << "Do you want to try again? (Y for yes and N for no) " ;
                 cin  >> continuel;
-                if(continuel != 'Y' && continuel != 'y')
+                if(continuel == 'Y' || continuel == 'y')
                 {
-                    fileOpenFail = false;
-                    cont = true;
+                    fileOpen = true;
+                    cont = false;
                 }
-                else if (continuel != 'N' && continuel != 'n')
+                else if (continuel == 'N' || continuel == 'n')
                 {
-                    fileOpenFail = true;
-                    cont = true;
+                    fileOpen = false;
+                    cont = false;
                 }
                 else
                 {
                     cout << "Error! Invalid input" << endl;
-                    cont = false;
+                    cont = true;
                 }
             }
         }
     }
-    while (fileOpenFail);
+    while (fileOpen);
 }
 
 // Shows the table for search options.
@@ -718,7 +722,7 @@ void ConsoleUI::deleteData()
 //Here, the user puts in a string, where it will be attempted to save the list to.
 void ConsoleUI::saveToCustomFile()
 {
-    bool fileOpenFail = false;
+    bool fileOpen = false;
     string fileName;
     do
     {
@@ -729,7 +733,7 @@ void ConsoleUI::saveToCustomFile()
         if(serve.saveToOtherFile(fileName))
         {
             cout << "Success!" << endl;
-            fileOpenFail = false;
+            fileOpen = false;
         }
         else
         {
@@ -742,12 +746,12 @@ void ConsoleUI::saveToCustomFile()
                 cin  >> continuel;
                 if(continuel != 'Y' && continuel != 'y')
                 {
-                    fileOpenFail = false;
+                    fileOpen = false;
                     cont = false;
                 }
                 else if (continuel != 'N' && continuel != 'n')
                 {
-                    fileOpenFail = true;
+                    fileOpen = true;
                     cont = false;
                 }
                 else
@@ -757,7 +761,7 @@ void ConsoleUI::saveToCustomFile()
                 }
             }
         }
-    } while (fileOpenFail);
+    } while (fileOpen);
 }
 
 //a function which checks whether a certain entered string is a year.
