@@ -76,7 +76,7 @@ void ConsoleUI::listData()
     {
         cout << serve.list()[i];
     }
-     cout << "_____________________________________________________" << endl;
+    cout << "_____________________________________________________" << endl;
 
 }
 
@@ -118,10 +118,10 @@ void ConsoleUI::sortData()
                     break;
             }
              case 3:
-                {
+            {
                     sortByDeathYear(input, choice, choice2, error);
                     break;
-                }
+            }
              case 4:
             {
                     sortByGender(input, choice, choice2, error);
