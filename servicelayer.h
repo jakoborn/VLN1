@@ -24,6 +24,7 @@ public:
     vector<int> searchByYear(const int year);
     vector<int> searchByRange(const int f, const int l);
     void deletePerson(int n);
+    bool saveToOtherFile(string input);
 };
 
 #endif // SERVICELAYER_H

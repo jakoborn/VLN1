@@ -216,3 +216,8 @@ void ServiceLayer::deletePerson(int n)
 {
     dl.deletePerson(n);
 }
+
+bool ServiceLayer::saveToOtherFile(string input)
+{
+    return dl.saveToOtherFile(input);
+}
