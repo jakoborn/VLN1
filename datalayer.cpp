@@ -75,7 +75,7 @@ void DataLayer::saveToFile()
     ofstream out;
     out.open(DEFAULT_FILENAME);
 
-    out.width(16);
+    out.width(26);
     out << left << "Name";
     out <<  "\tGender\tBorn\tDied" << endl;
     out << "_____________________________________________________" << endl;
@@ -83,6 +83,7 @@ void DataLayer::saveToFile()
     out.seekp(90);
     for (size_t i = 0; i < people.size(); i++)
     {
+        out.width(26);
         out << people[i].getName() << ";\t" << people[i].getGender() << "\t" << people[i].getBirthYear() << "\t";
         if(people[i].getAlive())
         {
@@ -112,7 +113,7 @@ bool DataLayer::saveToOtherFile(string input)
     }
     else
     {
-        out.width(16);
+        out.width(26);
         out << left << "Name";
         out <<  "\tGender\tBorn\tDied" << endl;
         out << "_____________________________________________________" << endl;
@@ -120,6 +121,7 @@ bool DataLayer::saveToOtherFile(string input)
         out.seekp(90);
         for (size_t i = 0; i < people.size(); i++)
         {
+            out.width(26);
             out << people[i].getName() << ";\t" << people[i].getGender() << "\t" << people[i].getBirthYear() << "\t";
             if(people[i].getAlive())
             {
