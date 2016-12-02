@@ -33,19 +33,19 @@ void DataLayer::loadFromFile()
     }
     else
     {
-    in.seekg(100);
+        in.seekg(100);
 
-    while(in >> p)
-    {
-        //Checks if person is valid, i.e. has a valid name, gender, birthyear and deathyear.
-        //An invalid person will not be added.
-        Persons compare;
-        if (p != compare)
+        while(in >> p)
         {
-            people.push_back(p);
+            //Checks if person is valid, i.e. has a valid name, gender, birthyear and deathyear.
+            //An invalid person will not be added.
+            Persons compare;
+            if (p != compare)
+            {
+                people.push_back(p);
+            }
         }
-    }
-    in.close();
+        in.close();
     }
  }
 
@@ -56,7 +56,6 @@ void DataLayer::loadFromFile()
 //If you have a list, you may want to check whether it has the header.
 bool DataLayer::loadFromOtherFile(string input)
 {
-
     Persons p;
     ifstream in;
 

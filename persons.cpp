@@ -69,7 +69,7 @@ void Persons::operator = (const Persons& p)
 
 //Overloads the == and != operators.
 //Two persons are equal if and only if each
-//Parameter is equal.
+//parameter is equal.
 bool Persons::operator == (const Persons& p)
 {
     return name == p.name && gender == p.gender && birthYear == p.birthYear && deathYear == p.deathYear;
@@ -105,7 +105,7 @@ bool validName(const string& s)
     string::const_iterator it = s.begin();
     while (it != s.end() && (isalpha(*it) || *it == ' '))
     {
-        ++it;
+        it++;
     }
 
     return !s.empty() && it == s.end();
@@ -133,13 +133,16 @@ bool genderCheck(char& gender)
     }
 }
 
-//makes sure that the given year is a number and not letters
+//makes sure that the given year is a number
 //and that the year is positive and equal to or lower than the current year.
 bool validYear(const string& s, int& year)
 {
     string::const_iterator it = s.begin();
-    //Checks if the string 's' is a number
-    while (it != s.end() && isdigit(*it)) ++it;
+    //Checks whether the string 's' is a number
+    while (it != s.end() && isdigit(*it))
+    {
+        it++;
+    }
     if (s.empty() || it != s.end())
     {
         return false;
@@ -154,14 +157,13 @@ bool validYear(const string& s, int& year)
 }
 
 //We compare the birth year and death year and make sure that the person is not too old
-//as in that he/she died before he/she was born and that the person's death year is not before
-//its birth year.
+//or that he/she died before he/she was born
 bool birthChecks(int birthYear, int deathYear)
 {
     time_t t = time(NULL);
     tm* TimePtr = localtime(&t);
     int currentYear = TimePtr->tm_year + 1900;
-    return ((deathYear - birthYear) >= 0 && (((deathYear -birthYear) < 123) ||(deathYear == 0 && (currentYear - birthYear) < 123)));
+    return ((deathYear - birthYear) >= 0 && (deathYear -birthYear) < 123)||(deathYear == 0 && (currentYear - birthYear) < 123);
 }
 
 //Overloads the >> (input) operator.

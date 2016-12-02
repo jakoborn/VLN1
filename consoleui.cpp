@@ -88,7 +88,7 @@ void ConsoleUI::listData()
     cout << endl;
     printLine();
 
-    for(size_t i = 0; i < serve.list().size();i++)
+    for(size_t i = 0; i < serve.list().size(); i++)
     {
         cout << serve.list()[i];
     }
@@ -101,7 +101,6 @@ void ConsoleUI::sortData()
 {
     char input = '0';
     int choice = 0;
-    int order = 0;
     bool error = false;
 
     do
@@ -118,29 +117,28 @@ void ConsoleUI::sortData()
         cin >> input;
         onlyTakeOneInput();
         choice = input - '0';
-        order = 0;
         input = '1';
 
             switch (choice)
             {
             case 1:
             {
-                sortByName(input, order, error);
+                sortByName(input, error);
                 break;
             }
              case 2:
             {
-                sortByGender(input, order, error);
+                sortByGender(input, error);
                 break;
             }
              case 3:
              {
-                sortByBirthYear(input, order, error);
+                sortByBirthYear(input, error);
                 break;
             }
              case 4:
             {
-                sortByDeathYear(input, order, error);
+                sortByDeathYear(input, error);
                 break;
             }
              case 5:
@@ -164,14 +162,11 @@ void ConsoleUI::sortData()
 }
 
 //We sort by name, and want to know whether you want to sort reversed or not.
-void ConsoleUI::sortByName(char input, int order, bool& error)
+void ConsoleUI::sortByName(char input, bool& error)
 {
+    int order = 0;
     do
     {
-        if (input != '1' && input != '2' && input != '3')
-        {
-            cout << "Error! Invalid input" << endl;
-        }
         cout << "Regular or Reversed sorting?"      << endl;
         cout << " ================================" << endl;
         cout << "Press 1 for regular sorting"       << endl;
@@ -181,6 +176,10 @@ void ConsoleUI::sortByName(char input, int order, bool& error)
 
         cin >> input;
         onlyTakeOneInput();
+        if (input != '1' && input != '2' && input != '3')
+        {
+            cout << "Error! Invalid input" << endl;
+        }
     }
     while (input != '1' && input != '2' && input != '3');
     order = input - '0';
@@ -198,14 +197,11 @@ void ConsoleUI::sortByName(char input, int order, bool& error)
 
 //Do you want to see all the ladies first? Or maybe the men?
 //Then this function is for you!!
-void ConsoleUI::sortByGender(char input, int order, bool& error)
+void ConsoleUI::sortByGender(char input, bool& error)
 {
+    int order = 0;
     do
     {
-        if (input != '1' && input != '2' && input != '3')
-        {
-            cout << "Error! Invalid input" << endl;
-        }
         cout << "Sort by Males or Females?"         << endl;
         cout << " ================================" << endl;
         cout << "Press 1 to sort by females first"  << endl;
@@ -215,6 +211,10 @@ void ConsoleUI::sortByGender(char input, int order, bool& error)
 
         cin >> input;
         onlyTakeOneInput();
+        if (input != '1' && input != '2' && input != '3')
+        {
+            cout << "Error! Invalid input" << endl;
+        }
     }
     while (input != '1' && input != '2' && input != '3');
     order = input - '0';
@@ -231,8 +231,9 @@ void ConsoleUI::sortByGender(char input, int order, bool& error)
 }
 
 //We sort by birthyear, and want to know whether we want to sort reversed or not.
-void ConsoleUI::sortByBirthYear(char input, int order, bool& error)
+void ConsoleUI::sortByBirthYear(char input, bool& error)
 {
+    int order = 0;
     do
     {
         if (input != '1' && input != '2' && input != '3')
@@ -264,8 +265,9 @@ void ConsoleUI::sortByBirthYear(char input, int order, bool& error)
 
 //We sort by death year, and want to know whether we want to sort reversed or not.
 //Alive people will be listed last (or first for reversed).
-void ConsoleUI::sortByDeathYear(char input, int order, bool& error)
+void ConsoleUI::sortByDeathYear(char input, bool& error)
 {
+    int order = 0;
     do
     {
         if (input != '1' && input != '2' && input != '3')
@@ -340,7 +342,7 @@ void ConsoleUI::addData()
         }
         }
     }
-    while (error == true);
+    while (error);
 }
 
 //We add a person through the console.
@@ -372,7 +374,7 @@ void ConsoleUI::addPersonManually()
     cout << "Enter gender (M/F): ";
     cin >> gender;
     onlyTakeOneInput();
-    while(genderCheck(gender) == false)
+    while(!genderCheck(gender))
     {
         cout << "Wrong input for gender!" << endl;
         cout << "Enter gender (M/F): ";
@@ -384,7 +386,8 @@ void ConsoleUI::addPersonManually()
         cout << "Enter birth year: ";
         cin >> year;
         onlyTakeOneInput();
-        if (!validYear(year, birthYear) || birthYear == 0) {
+        if (!validYear(year, birthYear) || birthYear == 0)
+        {
             cout << "Invalid input!\n";
         }
     }
@@ -394,7 +397,8 @@ void ConsoleUI::addPersonManually()
         cout << "Enter death year (0 for living person): ";
         cin >> year;
         onlyTakeOneInput();
-        if(!validYear(year, deathYear)) {
+        if(!validYear(year, deathYear))
+        {
             cout << "Invalid input!\n";
         }
     }
@@ -415,7 +419,7 @@ void ConsoleUI::addPersonManually()
                 break;
             }
         }
-        if (a ==0)
+        if (a == 0)
         {
             serve.add(newPerson);
             cout << "Scientist added\n";
@@ -596,7 +600,7 @@ void ConsoleUI::searchByGender()
     }
 }
 
-//We search for a certain year in which people might be born in.
+//We search for people born in a certain year.
 void ConsoleUI::searchByBirthYear()
 {
     int y = 0;
@@ -649,23 +653,23 @@ void ConsoleUI::searchByYearRange()
             cout << "Invalid input!\n";
         }
     }
-    vector<int> v_r = serve.searchByRange(f,l);
-    if (v_r.size() == 0)
+    vector<int> vR = serve.searchByRange(f,l);
+    if (vR.size() == 0)
     {
         cout << "No results found" << endl;
     }
     else
     {
         printLine();
-        for (unsigned int i = 0; i < v_r.size(); i++)
+        for (unsigned int i = 0; i < vR.size(); i++)
         {
-            cout << serve.list()[v_r[i]];
+            cout << serve.list()[vR[i]];
         }
     }
 
 }
 
-//This deletes a scientist. RIP. He/she probably didn't belong on the list anyways.
+//This deletes a scientist. RIP. He/she probably didn't belong on the list anyway.
 void ConsoleUI::deleteData()
 {
     cout << "Enter name of scientist(s) you would like to delete: ";
@@ -744,14 +748,14 @@ void ConsoleUI::saveToCustomFile()
             {
                 cout << "Do you want to try again? (Y for yes and N for no) " ;
                 cin  >> continuel;
-                if(continuel != 'Y' && continuel != 'y')
-                {
-                    fileOpen = false;
-                    cont = false;
-                }
-                else if (continuel != 'N' && continuel != 'n')
+                if(continuel == 'Y' && continuel == 'y')
                 {
                     fileOpen = true;
+                    cont = false;
+                }
+                else if (continuel == 'N' && continuel == 'n')
+                {
+                    fileOpen = false;
                     cont = false;
                 }
                 else
@@ -761,7 +765,8 @@ void ConsoleUI::saveToCustomFile()
                 }
             }
         }
-    } while (fileOpen);
+    }
+    while (fileOpen);
 }
 
 //a function which checks whether a certain entered string is a year.
@@ -770,7 +775,10 @@ bool ConsoleUI::validYear(const string& s, int& year)
 {
     string::const_iterator it = s.begin();
     //Checks if the string 's' is a number
-    while (it != s.end() && isdigit(*it)) ++it;
+    while (it != s.end() && isdigit(*it))
+    {
+        it++;
+    }
     if (s.empty() || it != s.end())
     {
         return false;
@@ -792,7 +800,7 @@ bool ConsoleUI::validName(const string& s)
     string::const_iterator it = s.begin();
     while (it != s.end() && (isalpha(*it) || *it == ' '))
     {
-        ++it;
+        it++;
     }
 
     return !s.empty() && it == s.end();
@@ -845,7 +853,6 @@ bool ConsoleUI::check()
 //Errorcheck for whether the entered char is a recognised gender.
 bool ConsoleUI::genderCheck(char& gender)
 {
-
     if (gender == 'm' || gender == 'M' || gender == 'f' || gender == 'F')
     {
         if(gender == 'm')

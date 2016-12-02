@@ -8,10 +8,10 @@ class ConsoleUI
     ServiceLayer serve;
     void listData(); // Lists the data from the vector.
     void sortData();
-    void sortByName(char input, int order, bool &error);
-    void sortByGender(char input, int order, bool& error);
-    void sortByBirthYear(char input, int order, bool &error);
-    void sortByDeathYear(char input, int order, bool& error);
+    void sortByName(char input, bool &error);
+    void sortByGender(char input, bool& error);
+    void sortByBirthYear(char input, bool &error);
+    void sortByDeathYear(char input, bool& error);
     void addData();
     void addPersonManually();
     void addPeopleFromFile();

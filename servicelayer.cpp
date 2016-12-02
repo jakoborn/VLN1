@@ -17,11 +17,17 @@ vector<Persons> ServiceLayer::list()
 //(both a separate class and this class). It was only okay if
 // we used these global functions.
 bool sortByName2(const Persons &lhs, const Persons &rhs)
-{ return lhs.getName() < rhs.getName(); }
+{
+    return lhs.getName() < rhs.getName();
+}
 bool sortByGender2(const Persons &lhs, const Persons &rhs)
-{ return lhs.getGender() < rhs.getGender(); }
+{
+    return lhs.getGender() < rhs.getGender();
+}
 bool sortByBirthYear2(const Persons &lhs, const Persons &rhs)
-{ return lhs.getBirthYear() < rhs.getBirthYear(); }
+{
+    return lhs.getBirthYear() < rhs.getBirthYear();
+}
 bool sortByDeathYear2(const Persons &lhs, const Persons &rhs)
 {
     if (lhs.getDeathYear() == 0 && rhs.getDeathYear() == 0)
@@ -43,13 +49,19 @@ bool sortByDeathYear2(const Persons &lhs, const Persons &rhs)
 }
 
 //reverse sorting. Same with these as above.
-bool rSortByName2(const Persons &lhs, const Persons &rhs)
-{ return lhs.getName() > rhs.getName(); }
-bool rSortByGender2(const Persons &lhs, const Persons &rhs)
-{ return lhs.getGender() > rhs.getGender(); }
-bool rSortByBirthYear2(const Persons &lhs, const Persons &rhs)
-{ return lhs.getBirthYear() > rhs.getBirthYear(); }
-bool rSortByDeathYear2(const Persons &lhs, const Persons &rhs)
+bool rSortByName(const Persons &lhs, const Persons &rhs)
+{
+    return lhs.getName() > rhs.getName();
+}
+bool rSortByGender(const Persons &lhs, const Persons &rhs)
+{
+    return lhs.getGender() > rhs.getGender();
+}
+bool rSortByBirthYear(const Persons &lhs, const Persons &rhs)
+{
+    return lhs.getBirthYear() > rhs.getBirthYear();
+}
+bool rSortByDeathYear(const Persons &lhs, const Persons &rhs)
 {
     if (lhs.getDeathYear() == 0 && rhs.getDeathYear() == 0)
     {
@@ -81,7 +93,7 @@ void ServiceLayer::sortByName(int order)
     else //order == 2
     {
         //Z-A
-        stable_sort(people.begin(), people.end(), rSortByName2);
+        stable_sort(people.begin(), people.end(), rSortByName);
     }
     dl.setVector(people);
 }
@@ -98,7 +110,7 @@ void ServiceLayer::sortByGender(int order)
     else //order == 2
     {
         //Males first
-        stable_sort(people.begin(), people.end(), rSortByGender2);
+        stable_sort(people.begin(), people.end(), rSortByGender);
     }
     dl.setVector(people);
 }
@@ -116,7 +128,7 @@ void ServiceLayer::sortByBirthYear(int order)
     else //order == 2
     {
         //Descending
-        stable_sort(people.begin(), people.end(), rSortByBirthYear2);
+        stable_sort(people.begin(), people.end(), rSortByBirthYear);
     }
     dl.setVector(people);
 }
@@ -133,7 +145,7 @@ void ServiceLayer::sortByDeathYear(int order)
     else //order == 2
     {
         //Descending
-        stable_sort(people.begin(), people.end(), rSortByDeathYear2);
+        stable_sort(people.begin(), people.end(), rSortByDeathYear);
     }
     dl.setVector(people);
 }
@@ -148,7 +160,6 @@ void ServiceLayer::add(const Persons& p)
 bool ServiceLayer::addFromFile(string input)
 {
     return dl.loadFromOtherFile(input);
-
 }
 
 //Returns a vector containing places (in vector of people) of the people whose names contain 'name'
@@ -159,15 +170,15 @@ vector<int> ServiceLayer::searchByName(const string name)
     {
         if (name.length() <= list()[i].getName().length())
         {
-                //Checks if search term 'name' is a substring in name of person in place i
-                for (unsigned int p = 0; p <=(list()[i].getName().length() - name.length()); p++)
+            //Checks if search term 'name' is a substring in name of person in place i
+            for (unsigned int p = 0; p <=(list()[i].getName().length() - name.length()); p++)
+            {
+                if(name == list()[i].getName().substr(p, name.length()))
                 {
-                    if(name == list()[i].getName().substr(p, name.length()))
-                    {
-                        v.push_back(i);
-                        break;
-                    }
+                    v.push_back(i);
+                    break;
                 }
+            }
         }
     }
     return v;
